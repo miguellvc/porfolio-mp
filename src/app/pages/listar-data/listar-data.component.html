@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+
+<div class="title">
+    <h3>Listado de Inscriptos</h3>
+    <h1></h1>
+</div>
+<div class="table-container">
+    <table width=90%>
+      <tr class="table-header">
+        <td> D.N.I. </td>
+        <td> Apellido </td>
+        <td> Nombre </td>
+        <td>Correo</td>
+        <td>Sede</td>
+        <td>Localidad</td>
+      </tr>
+      <tr class="even" *ngFor="let usuario of usuarios">
+        <td>{{usuario.dni}}</td>
+        <td>{{usuario.apellido}}</td>
+        <td>{{usuario.nombre}}</td>
+        <td>{{usuario.correo}}</td>
+        <td>{{usuario.sede}}</td>
+        <td>{{usuario.localidad}}</td>
+      </tr>
+    </table>
+  </div>
+

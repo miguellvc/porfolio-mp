@@ -1,0 +1,93 @@
+<section id="content">
+    
+    <div id="menuSection">
+        <ul>
+            <li><a href=""># Introducción</a></li>
+        </ul>
+    </div>
+
+    <div id="contentInfo">
+        <div class="cajas info">
+            <h3>Sobre el curso</h3>
+            <iframe width="95%" height="95%" src="https://www.youtube.com/embed/T-8yf_Bwzu0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div class="cajas formulario">
+            <h3>Formulario de Inscripción</h3>
+            <form (ngSubmit)="newUsuario(form)" #form="ngForm">
+                <input type="text" 
+                placeholder="D.N.I." 
+                name="dni"
+                required
+                [(ngModel)]="usuario.dni"
+                (change)="verificar()"
+                [disabled]="campos">
+                
+                <input type="text" 
+                placeholder="Nombre" 
+                name="nombre"
+                required
+                [(ngModel)]="usuario.nombre"
+                [disabled]="campos">
+
+                <input type="text" 
+                placeholder="Apellido" 
+                name="apellido"
+                required
+                [(ngModel)]="usuario.apellido"
+                [disabled]="campos"
+                [disabled]="campos">
+                
+                <input type="email" 
+                placeholder="Correo" 
+                name="correo"
+                required
+                [(ngModel)]="usuario.correo"
+                [disabled]="campos">
+
+                <input type="text" 
+                placeholder="Delegación/Sede" 
+                name="sede"
+                required
+                [(ngModel)]="usuario.sede"
+                [disabled]="campos">
+
+                <input type="text" 
+                placeholder="Localidad" 
+                name="localidad"
+                required
+                [(ngModel)]="usuario.localidad"
+                [disabled]="campos">
+
+                <input 
+                type="submit" 
+                value="#Inscribirse"
+                [disabled]="btn">
+            </form>
+        </div>
+    </div>
+
+</section>
+<div class="clearfix"></div>
+
+<h3 class="titleSection">Módulos a cursar</h3>
+<section id="modulos">
+    <section *ngFor="let modulo of modulos">
+        <article class="article">
+            <h3 class="titleModulo"></h3>
+            <span class="stickers">
+                <img class="stickerOne" src="../assets/img/scotch.png" alt="pegatina">
+                <img class="stickerTwo" src="../assets/img/scotch.png" alt="pegatina">
+            </span>
+            <h5>{{modulo.title}}</h5>
+            <iframe width="560" height="315" 
+            [src]="getVideoIframe(modulo.multimedia)" 
+            frameborder="0" allow="accelerometer; autoplay; 
+            clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+            <p>
+               {{modulo.text}}
+            </p>
+        </article>
+    </section>
+</section>

@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* variables globales */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap");
+:root{
+    --color-fondo: linear-gradient(0deg, rgba(3,14,14,1) 0%, rgb(1, 2, 49) 100%);
+    --color-primario: linear-gradient(90deg, rgba(8,6,10,1) 0%, rgba(12,12,12,1) 26%, rgba(24,96,111,1) 100%);
+    --text-color: hsl(0, 6%, 84%);
+    --color-secundario: hsl(0, 0%, 31%);
+    --color-white: hsl(0, 10%, 92%);
+    --shadow: 1px 1px 15px gray; 
+
+}
+
+*{
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+}
+
+/* estilos generales */
+.clearfix{
+    float: none;
+    clear: both;
+}
+
+.wrap{
+    max-width: 80%;
+    margin: 0px auto; /*esto es para que el contenido se centre */
+}
+
+body{
+    /* background-image: url(assets/img/paven.png); */
+    background: linear-gradient(0deg, rgba(3,14,14,1) 0%, rgb(1, 2, 49) 100%);
+    background-repeat: no-repeat;
+}

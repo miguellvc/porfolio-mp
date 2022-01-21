@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "desarrolloweb-c938c": {
+      "hosting": {
+        "desarrolloWeb": [
+          "desarrolloweb-c938c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "myn-inner"
+  }
+}
