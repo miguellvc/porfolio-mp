@@ -22,7 +22,8 @@ export class ContentComponent implements OnInit {
   public btn = false; 
   public campos = false; 
   constructor(private _usuarios: UsuariosService,
-              private _sanitizer: DomSanitizer) {}
+              private _sanitizer: DomSanitizer) {
+              }
 
   ngOnInit(): void {
 

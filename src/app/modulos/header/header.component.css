@@ -1,84 +1,111 @@
 /* css header */
-header{
-    width: 100%;
-    height: 728px;
-    /* background: var(--color-fondo); */
-    text-align: center;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  /* box-shadow: var(--shadow); */
+  /* position: fixed; */
+  z-index: 1000;
+  /* background: var(--color-background); */
+  width: 100%;
 }
 
-header #navbar li{
+.icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon img{
+    width: 10rem;
+    height: 100%;
+    color: var(--title-color);
+}
+
+.social{
+    position: relative;
+    width: 20rem;  
+    display: flex; 
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+    font-size: 2rem;
+   
+}
+
+.social a{
+    padding: 2px 8px; 
+    border-radius: 25px;
+    box-shadow: var(--shadow);
+}
+.social a i{
+    color: var(--title-color);
+}
+
+.login a i{
+    color: crimson; 
+}
+
+.tooltip{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: var(--color-primary);
+    padding: 5px;
+    transform: rotate(90deg);
+    border-radius: 25px;
+    box-shadow: var(--shadow);
+    color: var(--title-color);
+    font-size: 0.5em;
+    transition: all 20s ease-out;
+}
+
+.tooltip__email{
+    display: none;
+    top: 45px; 
+    right: 160px;
+}
+
+.tooltip__facebook{
+    display: none;
+    top: 55px; 
+    right: 110px;
+}
+
+.tooltip__linkedin{
+    display: none;
+    top: 50px; 
+    right: 70px;
+}
+
+.tooltip__github{ 
+    display: none; 
+    top: 50px;
+    right: 30px;
+}
+
+.tooltip__login{
+    display: none; 
+    top: 40px;
+}
+
+.email:hover .tooltip__email{
     display: block;
-    float: left;
-    padding: 20px;
 }
-header #navbar li a{
-  text-decoration: none;
-  color: white;
-}
-#logo{
+
+.facebook:hover .tooltip__facebook{
     display: block;
-    float: right;
-    width: 55px;
-    height: 55px;
-    margin-top: 10px;
-    background-color: var(--color-secundario);
-    /* box-shadow: 0px 0px 1px, 0px 0px 2px, 0px 0px 3px, 0px 0px 4px, 0px 0px 5px, 0px 0px 6px; */
-    border-radius: 60px 20px 5px;
-    font-size: 10px;
-    text-align: center;
-    color: black;
-}
-#logo h1{
-    /* letter-spacing: 15px; */
-    margin-top: 16px;
 }
 
-#textcenter{
-    margin: 150px auto;
-    color: white;
-}
-#textcenter h1{
-    font-family: cursive;
-    font-size: 40px;
-    letter-spacing: 1px;
-    
-}
-#textcenter img{
-    width: 10%;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    margin-top: 10px;
-}
-/*RESPONSIVE */
-@media(min-width: 300px) and (max-width: 560px){
-    header{
-        height: 670px;
-    }
-    header #navbar li{
-        padding: 10px;
-    }
-    header #navbar li a{
-        font-size: 12px;
-    }
-    #logo{
-        width: 50px;
-        height: 50px;
-    }
-    #logo h1{
-        font-size: 15px;
-        margin-top: 10px;
-    }
-
+.linkedin:hover .tooltip__linkedin{
+    display: block;
 }
 
-@media(min-width: 560px) and (max-width: 768px){
-
+.github:hover .tooltip__github{
+    display: block;
 }
 
-@media(min-width: 768px) and (max-width: 992px){
-
-}
-@media(min-width: 992px) and (max-width: 1300px){
-
+.login:hover .tooltip__login{
+    display: block;
 }
