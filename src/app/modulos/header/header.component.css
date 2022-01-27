@@ -5,9 +5,10 @@
   justify-content: space-between;
   padding: 10px;
   /* box-shadow: var(--shadow); */
-  /* position: fixed; */
+  position: fixed;
   z-index: 1000;
-  /* background: var(--color-background); */
+  background: var(--color-background);
+  opacity: 0.9;
   width: 100%;
 }
 
@@ -18,7 +19,7 @@
 }
 
 .icon img{
-    width: 10rem;
+    width: 11rem;
     height: 100%;
     color: var(--title-color);
 }
@@ -57,7 +58,7 @@
     border-radius: 25px;
     box-shadow: var(--shadow);
     color: var(--title-color);
-    font-size: 0.5em;
+    font-size: 0.6em;
     transition: all 20s ease-out;
 }
 

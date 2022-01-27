@@ -44,6 +44,24 @@ body {
   background-repeat: no-repeat;
 }
 
-.wrap {
+section {
   padding: 5rem 9%;
+}
+
+.section_title {
+  text-align: center;
+  font-size: 6vw;
+  color: var(--title-color);
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+}
+
+@media (max-width: 500px) {
+  section {
+    padding: 5rem 9%;
+  }
+
+  .section_title{
+    font-size: 9vw; 
+  }
 }

@@ -1,4 +1,134 @@
-.titleSection { 
+.banner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    min-height: calc(100vh - 6.5rem);
+  }
+
+.banner__img{
+    flex: 1 1 35rem;
+    text-align: center; 
+}
+
+.banner__img img{
+
+    height: 40rem;
+    width: 40rem;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.banner__content{
+    flex: 1 1 35rem;
+}
+
+.banner__content .content__title{
+    font-size: 4rem;
+    color: var(--title-color);
+    margin-bottom: 2rem;
+}
+
+.content__sub-title{
+    font-size: 3rem; 
+    color: var(--text-color);
+    padding: .5rem 0;
+    display: block;
+}
+
+.banner__content .content__description{
+    font-size: 1.5rem;
+    color: var(--text-color);
+    padding: 1rem 0;
+}
+
+@media (max-width: 500px) {
+    .banner__img img{
+        height: 30rem;
+        width: 30rem;
+    }
+}
+
+/* end del banner */
+
+.about__container{
+    display: flex; 
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-between;
+    gap: 2rem;
+}
+
+
+.about__info{
+    flex: 1 1 35rem;
+}
+
+.box__content{
+    flex: 1 1 35rem;
+}
+.info_content div{
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.info_content p{
+    font-size: 1.7rem;
+    color: var(--text-color) 
+}
+
+.info_content .about__info--icon{
+    padding: 7px 10px; 
+    border-radius: 25px;
+    background: var(--color-primary);
+    box-shadow: var(--shadow);
+}
+.info_content .about__info--icon i{
+    font-size: 2rem; 
+    color: var(--title-color);
+   
+}
+
+/* box */
+
+.box__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.box__content .box{
+    flex: 40%;
+    height: 130px;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+}
+
+
+.box h3{
+    font-size: 50px;
+    margin-top: 5px;
+    color: var(--title-color);
+}
+
+.box p{
+    color: var(--text-color);
+}
+
+@media (max-width: 500px) {
+    .box__content .box{
+        flex: 50%;
+    }
+}
+
+
+
+
+
+/* para las cards */
+
+/* .titleSection { 
     background: var(--color-fondo);
     margin: 60px auto;
     margin-bottom: -20px;
@@ -16,53 +146,19 @@ p{
     font-size: 20px;
 }
 
-
-#menuSection{
-    width: 100%;
-    height: 60px;
-    padding: 10px;
-    /* box-shadow: var(--shadow); */
-    /* background: rgb(8,6,10); */
-}
-#menuSection ul li{
-    display: block;
-    float: left;
-    list-style: none;
-    margin-left: 10px;
-}
-#menuSection ul li a{
-    text-decoration: none;
-    font-size: 30px;
-    font-family: Impact;
-    color: var(--color-secundario);
-}
-#contentInfo{
-    width: 95%;
-    margin: 0px auto;
-    margin-top: -3px;
-}
 .cajas{
-    /* display: block; */
-    /* float: left; */
-    /* background: linear-gradient(9deg, rgba(8,6,10,1) 0%, rgba(12,12,12,1) 26%, rgba(24,96,111,1) 100%); */
     box-shadow: var(--shadow);
-    /* text-align: center; */
     border-radius: 5px;
-    /* margin-top: -50px; */
 }
 .formulario{
     width: 250px;
     height: 140px;
-    /* padding: 50px;  */
-    /* max-height: 400px; */
-    /* margin-left: 20px; */
+   
 }
 
 .formulario div{
     width: 80%;
     margin: auto;
-    /* background: red;  */
-
 }
 .formulario h3{
     font-size: 50px;
@@ -72,22 +168,11 @@ p{
 
 .formulario .p{
     color: var(--text-color);
-}
-
-input[type="text"],
-input[type="email"]{
-    padding: 7px;
-    width: 300px;
-    outline: none;
-    margin-top: 10px;
-    border: 2px solid rgb(76, 0, 255);
-    background-color: white;
-    border-radius: 5px;
-}
+} */
 
 /* para los btn */
 
-.btn {
+/* .btn {
     display: inline-block;
     margin-top: 1rem;
     border-radius: 5rem;
@@ -106,8 +191,6 @@ input[type="email"]{
     line-height: 4rem;
     font-size: 1.7rem;
     text-align: center;
-    /* background: #fff; */
-    /* color: crimson; */
     border-radius: 50%;
     margin-left: 1rem;
     transition: .2s linear;
@@ -115,253 +198,5 @@ input[type="email"]{
   
   .btn:hover{
     background: var(--color-secundario);
-    /* margin-left: 2rem; */
   }
-  
-
-
-/* fin btn */
-
-h1{
-    color: var(--title-color);
-    margin-bottom: 20px;
-}
-
-
-
-
-
-input[type="submit"]{
-    width: 200px;
-    padding: 15px;
-    margin-top: 15px;
-    font-size: 15px;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-family: Arial;
-    border: 1px ;
-    cursor: pointer;
-    text-decoration: none;
-    background: rgb(1, 92, 92);
-    color: white;
-    transition: all 500ms;
-}
-input[type="submit"]:hover{
-    background-color: rgb(73, 156, 4);
-}
-
-/* sección principal */
-
-
-/* modulos */
-#modulos{
-    margin-top: 40px;
-}
-#modulos .article{
-    margin-top: 30px;
-}
-#modulos .article:last-child{
-    margin-bottom: 10px;
-}
-.titleModulo{
-    background-color: darkcyan;
-    width: 85%;  
-    box-shadow: 0px 0px 4px grey;
-    margin: 0px auto;
-    padding: 20px;
-    /* text-align: center; */
-}
-#modulos article{
-    width: 95%;
-    margin: 0px auto;
-    margin-top: 10px;
-    min-height: 400px;
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 4px #c9c9c9;
-}
-
-#modulos article h5{
-    font-size: 20px;
-    display: block;
-    /* position: absolute; */
-    margin: 0px auto;
-    margin-top: -45px ;
-    width: 70%;
-    background-color: #f2f3f2;
-    color: #333333;
-    padding: 10px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    margin-bottom: 15px;
-    border-top: 2px solid #ccc;
-    border-bottom: 2px solid #ccc;
-    text-align: center;
-    cursor: pointer;
-}
-#modulos article iframe{
-    margin-top: 20px;
-    padding: 10px;
-    float: left;
-}
-#modulos article p{
-    padding: 10px;
-    margin-top: 30px;
-}
-#modulos .stickers {
-    display: block;
-    z-index: 1;
-    margin-top: -50px;
-    
-}
-#modulos .stickers .stickerOne{
-    float: left;
-}
-#modulos .stickers .stickerTwo{
-    float: right;
-   
-}
-
-/*RESPONSIVE */
-@media(min-width: 300px) and (max-width: 560px){
-    /* título secciones */
-    .titleSection{
-        max-width: 65%;
-        padding: 5px;
-        font-size: 20px;
-    }
-    header h1{
-        font-size: 30px;
-    } 
-    .wrap{
-        max-width: 95%;
-    }  
-    #menuSection ul li{
-        float: left;
-        margin-left: 7px;
-    }
-    #menuSection ul li a{
-        font-size: 21px;
-    }
-    .info{
-        width: 100%;
-    }
-    .formulario{
-        width: 100%;
-        height: 370px;
-        margin-top: 30px;
-        margin-left: 0px;
-    }
-    .formulario h3{
-        font-size: 20px;
-        padding: 10px;
-    }
-
-    input[type="text"],
-    input[type="email"]{
-        width: 200px;
-    }
-
-    /* Módulos */
-    #modulos article h5{
-        font-size: 13px;
-    }
-    #modulos article iframe{
-        width: 94%;
-        float: none;
-        margin-top: 0px;
-    } 
-    #modulos article p{
-        margin-top: 0px;
-    }
-   
-}
-@media(min-width: 560px) and (max-width: 768px){
-    .titleSection{
-        max-width: 30%;
-        padding: 5px;
-        font-size: 20px;
-    }
-
-    /* para las cajas del contenido y formulario */
-    .wrap{
-        max-width: 100%;
-    }
-    #menuSection ul li{
-        float: left;
-    }
-    #menuSection ul li a{
-        font-size: 23px;
-    }
-    #contentInfo{
-        width: 95%;
-    }
-     .info{
-        width: 50%;
-    } 
-    .formulario{
-        width: 48%;
-        margin-left: 9px;
-    }
-    input[type="text"],
-    input[type="email"]{
-        width: 218px;
-    }
-    /* módulos */
-    #modulos article iframe{
-        width: 94%;
-        float: none;
-        margin-top: 0px;
-    } 
-    #modulos article p{
-        margin-top: 0px;
-    }
-} 
-@media(min-width: 768px) and (max-width: 992px){
-    .wrap{
-        max-width: 98%;
-    }
-    
-    .titleSection{
-        max-width: 41%;
-        padding: 10px;
-    }
-
-    /* para las cajas del contenido y formulario */
-    #menuSection ul li a{
-        font-size: 26px;
-    }
-    .info{
-        width: 52%;
-    }
-    .formulario{
-        /* width: 45%; */
-        margin-left: 6px;
-    }
-    input[type="text"],
-    input[type="email"]{
-        width: 237px;
-    }
-
-    /* módulos */
-    #modulos article iframe{
-        width: 97%;
-        float: none;
-        margin-top: 0px;
-    } 
-    #modulos article p{
-        margin-top: 0px;
-    }
-
-} 
-@media(min-width: 992px) and (max-width: 1300px){
-    /* para las cajas del contenido y formulario */
-    .info{
-        width: 55%;
-    }
-    .formulario{
-        /* width: 44%; */
-        margin-left: 7px;
-    }
-
-} 
+   */
