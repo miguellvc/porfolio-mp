@@ -20,12 +20,16 @@
             <div class="tooltip tooltip__github">Github</div>
             <a href=""><i class="fab fa-github-square"></i></a>
         </li>
-        <li class="login">
+        <li class="login" (click)="openModalLogin()">
             <div class="tooltip tooltip__login">Login</div>
-            <a href=""><i class="far fa-user"></i></a>
+            <a><i class="far fa-user"></i></a>
         </li>
     </ul>
+
 </header>
+<div class="background_modal" *ngIf="openModal">
+    <app-login></app-login>
+</div>
 
 
 

@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 
 // módulos
 import { ModulosComponentModule } from './modulos/modulos-component.module';
+import { AuthModule } from './auth/auth.module';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 
 // componentes
 import { HomeComponent } from './pages/home/home.component';
 import { ListarDataComponent } from './pages/listar-data/listar-data.component';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { ListarDataComponent } from './pages/listar-data/listar-data.component';
     BrowserModule,
     AppRoutingModule,
     ModulosComponentModule,
+    AuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],

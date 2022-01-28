@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -8,12 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   
+  openModal:boolean = true; 
+  
+  constructor(private _auth: AuthService) {}
 
-  constructor() { 
-      
+  openModalLogin(){
+    this.openModal = true; 
   }
 
   ngOnInit(): void {
+  
+    this._auth.$modal.subscribe(resp => this.openModal = resp); 
   }
 
   

@@ -30,7 +30,7 @@
   list-style: none;
   outline: none;
   border: none;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 
 html {
@@ -42,6 +42,17 @@ body {
   /* background-image: url(assets/img/paven.png); */
   background: var(--color-background);
   background-repeat: no-repeat;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  border-radius: 5rem;
+  background: crimson;
+  padding: .7rem;
+  font-size: 1.7rem;
+  color: #fff;
+  padding-left: 2rem;
 }
 
 section {
@@ -56,12 +67,29 @@ section {
   text-transform: uppercase;
 }
 
+.background_modal {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 1001;
+  /* opacity: 0.6; */
+  /* background: var(--color-primary); */
+  background-color: rgba(67, 68, 69, 0.5);
+  display: flex; 
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end; 
+  padding: 45px; 
+}
+
+
+
 @media (max-width: 500px) {
   section {
     padding: 5rem 9%;
   }
 
-  .section_title{
-    font-size: 9vw; 
+  .section_title {
+    font-size: 9vw;
   }
 }
