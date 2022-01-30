@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   
-  openModal:boolean = true; 
+  openModal:boolean = false; 
   
   constructor(private _auth: AuthService) {}
 

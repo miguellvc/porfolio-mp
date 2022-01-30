@@ -45,7 +45,7 @@
 }
 
 .login a i{
-    color: crimson; 
+    color: var(--color-icon); 
 }
 
 .tooltip{

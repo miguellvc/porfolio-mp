@@ -1,4 +1,5 @@
 .banner {
+    position: relative;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -122,81 +123,13 @@
     }
 }
 
-
-
-
-
-/* para las cards */
-
-/* .titleSection { 
-    background: var(--color-fondo);
-    margin: 60px auto;
-    margin-bottom: -20px;
-    max-width: 30%;
-    padding: 5px;
-    border-radius: 20px 20px 20px 20px;
-    color: white;
-    font-family: cursive;
-    font-size: 30px;
-    text-align: center;
-}
-
-p{
-    color: var(--text-color);
-    font-size: 20px;
-}
-
-.cajas{
-    box-shadow: var(--shadow);
-    border-radius: 5px;
-}
-.formulario{
-    width: 250px;
-    height: 140px;
-   
-}
-
-.formulario div{
+/* 
+.container_edition{
     width: 80%;
-    margin: auto;
-}
-.formulario h3{
-    font-size: 50px;
-    margin-top: 5px;
+    height: 200px; 
+    position: absolute;
+    background: black; 
+    top: 100px;
     color: var(--title-color);
-}
-
-.formulario .p{
-    color: var(--text-color);
+    z-index: 1002;
 } */
-
-/* para los btn */
-
-/* .btn {
-    display: inline-block;
-    margin-top: 1rem;
-    border-radius: 5rem;
-    padding: .7rem;
-    font-size: 1rem;
-    color: #fff;
-    padding-left: 2rem;
-    background: var(--color-fondo);
-    box-shadow: var(--shadow);
-    transition: .4s linear;
-  }
-  
-  .btn i {
-    height: 2rem;
-    width: 2rem;
-    line-height: 4rem;
-    font-size: 1.7rem;
-    text-align: center;
-    border-radius: 50%;
-    margin-left: 1rem;
-    transition: .2s linear;
-  }
-  
-  .btn:hover{
-    background: var(--color-secundario);
-  }
-   */

@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,39 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _auth : AuthService) { }
+  public formSubmitted = false;
+
+  constructor(private _auth : AuthService,
+              private fb: FormBuilder) {}
 
   ngOnInit(): void {
+  }
+
+  public loginForm = this.fb.group({
+    email: ['' , [ Validators.required, Validators.email ] ],
+    password: ['', Validators.required ],
+    remember: [false]
+  });
+
+  login(){
+    this.formSubmitted = true;
+    
+    if ( this.loginForm.invalid ) {
+      return;
+    }
+    
+    console.log(this.loginForm.value);
+  }
+
+
+  campoNoValido( campo: string ): boolean {
+    
+    if ( this.loginForm.get(campo).invalid && this.formSubmitted ) {
+      return true;
+    } else {
+      return false;
+    }
+
   }
   
   closeModalLogin(){
