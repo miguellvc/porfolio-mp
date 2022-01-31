@@ -1,25 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// módulos
-
+// modules
 import { AuthModule } from '../auth/auth.module';
-
-// componentes
-import { HeaderComponent } from './header/header.component';
-import { ContentComponent } from './content/content.component';
-import { FooterComponent } from './footer/footer.component';
-import { ModalComponent } from './modal/modal.component';
-
-// 
-
 import { FormsModule } from '@angular/forms';
+
+// components
+import { BannerComponent } from './banner/banner.component';
+import { AboutComponent } from './about/about.component';
+
 @NgModule({
   declarations: [
-    HeaderComponent,
-    ContentComponent,
-    FooterComponent,
-    ModalComponent,
+    BannerComponent,
+    AboutComponent,
   ],
   imports: [
     CommonModule,
@@ -27,9 +20,8 @@ import { FormsModule } from '@angular/forms';
     AuthModule
   ],
   exports: [
-    HeaderComponent,
-    ContentComponent,
-    FooterComponent, 
+    BannerComponent,
+    AboutComponent
   ]
 })
 export class ModulosComponentModule { }

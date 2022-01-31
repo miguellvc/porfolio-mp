@@ -4,27 +4,26 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-// módulos
+// modules
 import { ModulosComponentModule } from './modulos/modulos-component.module';
+import { PagesModule } from './pages/pages.module';
 import { AuthModule } from './auth/auth.module';
 import { AngularFireModule } from '@angular/fire';
+
 import { environment } from '../environments/environment';
 
-// componentes
-import { HomeComponent } from './pages/home/home.component';
-import { ListarDataComponent } from './pages/listar-data/listar-data.component';
+// components
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ListarDataComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ModulosComponentModule,
+    PagesModule,
     AuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
