@@ -7,12 +7,14 @@ import { AuthModule } from '../auth/auth.module';
 // components
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { EditingIconsComponent } from './editing-icons/editing-icons.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    EditingIconsComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { FooterComponent } from './footer/footer.component';
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    EditingIconsComponent
   ]
 })
 export class SharedModule { }

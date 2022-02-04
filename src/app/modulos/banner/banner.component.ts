@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-banner',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BannerComponent implements OnInit {
 
-  constructor() { }
+  public openModalBanner:boolean = true; 
+
+  public userLogin:boolean; 
+  
+  constructor(private _auth: AuthService) { 
+    this.userLogin = this._auth.userLogin; 
+  }
 
   ngOnInit(): void {
+  }
+
+  closeModalBanner(){
+     this.openModalBanner = false;
   }
 
 }

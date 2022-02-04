@@ -23,7 +23,7 @@
     flex: 1 1 35rem;
 }
 
-.banner__content .content__title{
+.content__title{
     font-size: 4rem;
     color: var(--title-color);
     margin-bottom: 2rem;
@@ -52,13 +52,38 @@
 /* end del banner */
 
 
-/* 
-.container_edition{
-    width: 80%;
-    height: 200px; 
+/* editing icon */
+
+.position__editing--icon{
     position: absolute;
-    background: black; 
-    top: 100px;
-    color: var(--title-color);
-    z-index: 1002;
+    top: 420px; 
+    right: 100px; 
+}
+
+/* banner edition */
+
+.banner__edition .banner__edition--title{
+    text-align: center;
+}
+
+.column{
+    max-width: 90%;
+    /* margin: 0px auto; */
+    margin-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    
+}
+
+.btn__form--banner {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+}
+
+/* .column__right{
+    display: flex;
+    background: red; 
+    align-items: stretch;
 } */

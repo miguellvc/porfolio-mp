@@ -9,17 +9,16 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   
-  openModal:boolean = false; 
+  openModalLogin:boolean = false; 
   
   constructor(private _auth: AuthService) {}
 
-  openModalLogin(){
-    this.openModal = true; 
+  openLogin(){
+    this.openModalLogin = true; 
   }
 
   ngOnInit(): void {
-  
-    this._auth.$modal.subscribe(resp => this.openModal = resp); 
+    this._auth.$modal.subscribe(resp => this.openModalLogin = resp); 
   }
 
   

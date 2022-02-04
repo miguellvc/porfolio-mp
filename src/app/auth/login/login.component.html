@@ -8,16 +8,16 @@
     <form autocomplete="off" [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="login__body">
 
-            <div class="form--group">
-                <label for="email">Email</label>
-                <input type="email" formControlName="email">
-                <span class="validator" *ngIf="campoNoValido('email')">el email es requerido y debe ser válido</span>
+            <div class="form__group">
+                <label class="form__label" for="email">Email</label>
+                <input class="form__control" id="email" type="email" formControlName="email">
+                <span class="invalid__feedback" *ngIf="campoNoValido('email')">el email es requerido y debe ser válido</span>
             </div>
 
-            <div class="form--group">
-                <label for="password">Password</label>
-                <input type="password" formControlName="password">
-                <span class="validator" *ngIf="campoNoValido('password')">el password es requerido</span>
+            <div class="form__group">
+                <label class="form__label" for="password">Password</label>
+                <input class="form__control" id="password" type="password" formControlName="password">
+                <span class="invalid__feedback" *ngIf="campoNoValido('password')">el password es requerido</span>
             </div>
 
 

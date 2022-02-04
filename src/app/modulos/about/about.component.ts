@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
+  public openModalAbout:boolean = false; 
   constructor() { }
 
   ngOnInit(): void {

@@ -45,7 +45,7 @@
   color: var(--title-color);
 }
 
-label,
+/* label,
 input {
   width: 100%;
   display: block;
@@ -66,7 +66,7 @@ input:focus {
   outline: none;
   outline: 3px solid var(--color-secondary);
   box-shadow: var(--shadow);
-}
+} */
 .login__footer {
   width: 100%;
   margin-top: 10px;
@@ -77,8 +77,8 @@ input:focus {
 }
 .login__btn {
   background: var(--color-background);
-  border-radius: 5px;
   border: 2px solid var(--color-secondary);
+  color: var(--text-color);
   box-shadow: var(--shadow);
   transition: background-color 1.9s ease-in-out;
 }

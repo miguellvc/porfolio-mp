@@ -7,23 +7,60 @@
     <article class="banner__content">
         <h2 class="content__title">Hola, Mi nombre es Miguel</h2>
         <h3 class="content__sub-title">Fullstack Developer</h3>
-        <p class="content__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit itaque rem delectus enim voluptatibus deserunt, ut voluptatum minus libero dolorum possimus a aut architecto sint repudiandae dolore, culpa tenetur tempora?</p>
+        <p class="content__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit itaque
+            rem delectus enim voluptatibus deserunt, ut voluptatum minus libero dolorum possimus a aut architecto sint
+            repudiandae dolore, culpa tenetur tempora?</p>
     </article>
 
-    <span><i class="fas fa-pen-square"></i></span>
+    <!-- iditing icon -->
+    <div class="position__editing--icon">
+        <app-editing-icons (valueOutput)="openModalBanner = $event" [valueInput]="openModalBanner"></app-editing-icons>
+    </div>
+    <!-- end iditing icon -->
 
+    <div class="container__edition banner__edition" *ngIf="openModalBanner && userLogin">
+        <h2 class="content__sub-title banner__edition--title">Editando banner</h2>
 
-    <!-- form edition -->
-<!-- 
-    <div class="background_modal">
+        <div class="column">
 
-        <article class="container_edition">
-            <h1>Formulario de edición</h1>
-        </article>
-    </div> -->
+            <article class="banner__img">
+                <img src="assets/img/personal_img.png" alt="foto_personal">
+            </article>
 
+            <article class="banner__content column__right">
 
-    <!-- end form edition -->
+                <form>
+                    <div class="form__group">
+                        <label class="form__label" for="name">Nombre</label>
+                        <input class="form__control" id="name" type="input" value="Miguel">
+                        <span class="invalid__feedback">campo requerido</span>
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label" for="training">Formación</label>
+                        <input class="form__control" id="training" type="input" value="Fullstack Developer">
+                        <span  class="invalid__feedback">campo requerido</span>
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label" for="description">Descripción</label>
+                        <textarea class="form__control form__textarea" id="description" rows="5"
+                        > Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
+                        itaque rem delectus enim voluptatibus deserunt, ut voluptatum minus libero dolorum possimus a aut
+                        architecto sint repudiandae dolore, culpa tenetur tempora?</textarea>
+                        <span class="invalid__feedback">campo requerido</span>
+                    </div>
+
+                    <div class="form__group btn__form--banner">
+                        <button class="btn btn__danger" (click)="closeModalBanner()"> <span>Cancelar</span> </button>
+                        <button class="btn btn__success" type="submit"> <span>Aceptar</span> </button>
+                    </div>
+
+                </form>
+            </article>
+
+        </div>
+    </div>
 
 </section>
 <!-- end banner -->

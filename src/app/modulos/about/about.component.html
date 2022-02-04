@@ -47,5 +47,17 @@
            </div>
         </article>
     </div>
+
+     <!-- iditing icon -->
+     <div class="position__editing--icon">
+        <app-editing-icons (valueOutput) = "openModalAbout = $event"  [valueInput] = "openModalAbout"></app-editing-icons>
+    </div>
+    <!-- end iditing icon -->
+
+    <div class="container__edition banner__edition" *ngIf="openModalAbout">
+        <h1>Contenedor</h1>
+    </div>
     
 </section>
+
+

@@ -38,6 +38,11 @@
    
 }
 
+.content__sub-title{
+    font-size: 3rem; 
+    color: var(--text-color);
+}
+
 /* box */
 
 .box__content {

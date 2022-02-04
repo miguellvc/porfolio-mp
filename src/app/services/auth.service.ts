@@ -6,7 +6,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 export class AuthService {
 
   $modal = new EventEmitter<boolean>(); 
-
+  userLogin:boolean = true; 
   constructor() { }
 
   

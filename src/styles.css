@@ -45,17 +45,6 @@ body {
   background-repeat: no-repeat;
 }
 
-.btn {
-  display: inline-block;
-  margin-top: 1rem;
-  border-radius: 5rem;
-  background: crimson;
-  padding: .7rem;
-  font-size: 1.7rem;
-  color: #fff;
-  padding-left: 2rem;
-}
-
 section {
   padding: 5rem 9%;
 }
@@ -81,6 +70,129 @@ section {
   justify-content: flex-start;
   align-items: flex-end; 
   padding: 45px; 
+}
+
+
+.container__edition{
+  position: absolute;
+  width: 85%;
+  height: auto;
+  padding: 15px;  
+  background: var(--color-background);
+  border-radius: 10px;  
+  color: var(--title-color);
+  z-index: 999;
+}
+
+/* button */
+
+.btn {
+  display: inline-block;
+  position: relative;
+  margin-top: 1rem;
+  padding: .7rem;
+  border-radius: 5rem;
+  font-size: 1.7rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn span {
+	position: relative;
+	z-index: 2;
+	transition: .3s ease all;
+}
+
+/* bnt success */
+
+.btn__success {
+  width: 12rem; 
+  border: 3px solid #157347;
+  background: transparent; 
+  color: var(--title-color);
+  transition: 1s;
+}
+
+.btn__success::after {
+	content: "";
+	width: 100%;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: calc(-100% - 80px);
+	border-bottom: 80px solid #0f5b37;
+	border-right: 80px solid transparent;
+	transition: .4s ease-in-out all;
+}
+
+.btn__success:hover::after {
+	left: 0;
+}
+
+/* btn danger */
+
+.btn__danger {
+  width: 12rem; 
+  border: 3px solid #BB2D3B;
+  background: transparent; 
+  color: var(--title-color);
+  transition: .3s ease all;
+
+}
+
+.btn__danger::after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	background: #94212d;
+	position: absolute;
+	z-index: 1;
+	top: -80px;
+	left: 0;
+	transition: .4s ease-in-out all;
+}
+
+.btn__danger:hover::after {
+	top: 0;
+}
+
+/* forms */
+
+.form__group {
+  margin-bottom: 20px;
+}
+
+.form__label, .form__control {
+  width: 100%;
+  display: block;
+  font-size: 15px;
+}
+
+.form__control {
+  background: #fdfcfb;
+  font-family: inherit;
+  color: #737373;
+  letter-spacing: 1px;
+  text-indent: 1%;
+  border-radius: 5px 5px 5px 5px;
+  padding: 3px;
+}
+
+.form__control:focus {
+  outline: none;
+  outline: 3px solid var(--color-secondary);
+  box-shadow: var(--shadow);
+}
+
+.form__textarea {
+  overflow: scroll;
+  resize: none;
+}
+
+.invalid__feedback {
+  /* padding: 5px; */
+  font-size: 1.2rem;
+  color: var(--color-icon);
 }
 
 

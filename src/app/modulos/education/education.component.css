@@ -1,0 +1,126 @@
+.education .education__container{
+    display: block;
+    margin: 4rem auto;
+}
+.card{
+    width: 45%;
+    padding: 30px;
+    border-radius: 10px;
+    color: var(--title-color);
+    display: block;
+    margin: -10px 0;
+    position: relative;
+}
+
+.card:nth-child(even){
+    margin-left: auto;
+}
+
+.card:nth-child(even):before{
+    content: '';
+    position: absolute;
+    left: -15%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 5px solid #191919;
+    border-radius: 50%;
+}
+
+.card:nth-child(even):after{
+    content: '';
+    position: absolute;
+    left: -8.5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7%;
+    height: 2px;
+    background: #fff;
+    z-index: -1;
+}
+
+.card:nth-child(odd):before{
+    content: '';
+    position: absolute;
+    right: -13%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 5px solid #191919;
+    border-radius: 50%;
+}
+
+.card:nth-child(odd):after{
+    content: '';
+    position: absolute;
+    right: -8.5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7%;
+    height: 2px;
+    background: #fff;
+    z-index: -1;
+}
+
+.card:nth-child(2){
+    background: #ff4f4f;
+}
+.card:nth-child(3){
+    background: #ffb84f;
+}
+.card:nth-child(4){
+    background: #3dca5c;
+}
+.card:nth-child(5){
+    background: #565252;
+}
+.card:nth-child(6){
+    background: #4fa0ff;
+}
+
+.card:nth-child(even) .card-body:before{
+    content: '';
+    position: absolute;
+    left: -12%;
+    top: -100px;
+    width: 0px;
+    height: 300%;
+    border: 1px dashed var(--title-color);
+    z-index: -1;
+}
+
+.card:before{
+    background: var(--text-color);
+}
+
+.card-title{
+    font-size: 2.5rem;
+    text-align: center;
+    /* margin-bottom: 80px; */
+}
+
+.card--detail{
+    font-size: 12px;    
+}
+.card--detail_short{
+    font-size: 13px; 
+    text-align: center;
+}
+
+
+
+@media screen and (max-width: 700px){
+    .card-title{
+        font-size: 1.8rem;
+    }
+    .card{
+        padding-left: 15px;
+    }
+
+    .card--detail{
+        display: none;
+    }
+}
+

@@ -1,0 +1,13 @@
+.icon__edit{
+    background-color: hsl(151, 69%, 26%);
+    color: var(--text-color);
+    font-size: 2rem;
+    padding: 4px 8px; 
+    border-radius: 25px;
+    text-align: center;
+    cursor: pointer;
+
+}
+.icon__edit:hover{
+    background-color: hsl(151, 69%, 19%);
+}
