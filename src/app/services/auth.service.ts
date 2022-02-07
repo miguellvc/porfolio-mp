@@ -7,6 +7,7 @@ export class AuthService {
 
   $modal = new EventEmitter<boolean>(); 
   userLogin:boolean = true; 
+  
   constructor() { }
 
   

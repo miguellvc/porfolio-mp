@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // modules
 import { AuthModule } from '../auth/auth.module';
-import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -21,6 +21,7 @@ import { EducationComponent } from './education/education.component';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     AuthModule,
     SharedModule
   ],
