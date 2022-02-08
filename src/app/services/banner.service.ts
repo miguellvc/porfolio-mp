@@ -23,6 +23,8 @@ export class BannerService {
       this.banner = {
         ...banner
       } 
+
+      console.log(this.banner);
   }
   
 }

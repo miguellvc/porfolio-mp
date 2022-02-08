@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BannerService } from 'src/app/services/banner.service';
 
+// import functions
+import { setValueForm, enableForm } from 'src/app/util/util';
 
 @Component({
   selector: 'app-banner',
@@ -11,10 +13,13 @@ import { BannerService } from 'src/app/services/banner.service';
 })
 export class BannerComponent implements OnInit {
 
-  public openModalBanner:boolean = false; 
+  public openModalBanner:boolean = true; 
   public userLogin:boolean; 
   public formSubmitted = false;
   public banner; 
+  
+  public loading = false; 
+  
 
   constructor(private _auth: AuthService, 
               private fb: FormBuilder, 
@@ -23,7 +28,7 @@ export class BannerComponent implements OnInit {
     this.userLogin = this._auth.userLogin; 
   }
 
-  public bannerForm = this.fb.group({
+  public bannerForm:FormGroup = this.fb.group({
     name: [ '', [ Validators.required ] ], 
     training: [ '', [ Validators.required ] ], 
     description: [ '', [ Validators.required ] ], 
@@ -33,30 +38,42 @@ export class BannerComponent implements OnInit {
 
   ngOnInit(): void {
     this.banner = this._banner.getBanner();
-    this.setValueForm(); 
+    setValueForm(this.bannerForm, this.banner); 
   }
   
   submit() {
     this.formSubmitted = true; 
-
-    // if ( this.bannerForm.invalid ) {
-    //   return;
-    // }
-
+    enableForm(this.bannerForm, this.banner, false ); 
+    
+    if ( this.bannerForm.invalid ) {
+      return;
+    }
+    
+    this.loading = true; 
     // llamada al método para actulizar el banner 
-    console.log(this.bannerForm.value); 
+
+    setTimeout(()=>{
+      this._banner.updateBanner(this.bannerForm.value); 
+      this.banner = this._banner.getBanner(); 
+      console.log("se ejecuta la función setInterval");  
+      this.loading = false; 
+      enableForm(this.bannerForm, this.banner, true ); 
+    },5000)
+    // console.log(this.bannerForm.value); 
   }
   
+  // disabledForm(){
+  //   this.bannerForm.controls['name'].disable();
+  //   this.bannerForm.controls['training'].disable();
+  //   this.bannerForm.controls['description'].disable();
+  //   this.bannerForm.controls['urlImgBanner'].disable();
+  // }
 
-  setValueForm(){
-      this.bannerForm.controls['name'].setValue(this.banner.name);
-      this.bannerForm.controls['training'].setValue(this.banner.training);
-      this.bannerForm.controls['description'].setValue(this.banner.description);
-      this.bannerForm.controls['urlImgBanner'].setValue(this.banner.urlImgBanner);
-  }
+
+
 
   invalidFiel( value: string ): boolean {
-        
+       
     console.log("se ejecuta el método")
     if ( this.bannerForm.get(value).invalid && this.formSubmitted ) {
       return true;

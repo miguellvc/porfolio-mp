@@ -8,13 +8,15 @@ import { AuthModule } from '../auth/auth.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { EditingIconsComponent } from './editing-icons/editing-icons.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    EditingIconsComponent
+    EditingIconsComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { EditingIconsComponent } from './editing-icons/editing-icons.component';
   exports: [
     HeaderComponent,
     FooterComponent,
-    EditingIconsComponent
+    EditingIconsComponent, 
+    SpinnerComponent
   ]
 })
 export class SharedModule { }
