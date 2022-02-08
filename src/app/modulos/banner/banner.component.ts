@@ -3,6 +3,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BannerService } from 'src/app/services/banner.service';
 
+import Swal from 'sweetalert2';
+
 // import functions
 import { setValueForm, enableForm } from 'src/app/util/util';
 
@@ -39,10 +41,13 @@ export class BannerComponent implements OnInit {
   ngOnInit(): void {
     this.banner = this._banner.getBanner();
     setValueForm(this.bannerForm, this.banner); 
+    
   }
   
   submit() {
     this.formSubmitted = true; 
+  
+
     enableForm(this.bannerForm, this.banner, false ); 
     
     if ( this.bannerForm.invalid ) {
@@ -58,20 +63,15 @@ export class BannerComponent implements OnInit {
       console.log("se ejecuta la función setInterval");  
       this.loading = false; 
       enableForm(this.bannerForm, this.banner, true ); 
+      Swal.fire({
+        title: "Cambios registrados",
+        text: "Se registraron los cambios con éxito",
+        icon: "success",
+      });
     },5000)
     // console.log(this.bannerForm.value); 
   }
   
-  // disabledForm(){
-  //   this.bannerForm.controls['name'].disable();
-  //   this.bannerForm.controls['training'].disable();
-  //   this.bannerForm.controls['description'].disable();
-  //   this.bannerForm.controls['urlImgBanner'].disable();
-  // }
-
-
-
-
   invalidFiel( value: string ): boolean {
        
     console.log("se ejecuta el método")

@@ -23,6 +23,7 @@
     "@angular/youtube-player": "^11.2.5",
     "firebase": "^8.2.6",
     "rxjs": "~6.5.4",
+    "sweetalert": "^2.1.2",
     "sweetalert2": "^10.14.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
