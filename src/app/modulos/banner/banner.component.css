@@ -94,9 +94,3 @@
 .btn--loading::after {
     border-bottom: none;
 }
-
-/* .column__right{
-    display: flex;
-    background: red; 
-    align-items: stretch;
-} */

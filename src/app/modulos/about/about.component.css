@@ -1,11 +1,11 @@
 .about__container{
+    position: relative;
     display: flex; 
     flex-wrap: wrap;
     align-items: center;
     align-content: space-between;
     gap: 2rem;
 }
-
 
 .about__info{
     flex: 1 1 35rem;
@@ -74,3 +74,21 @@
         flex: 50%;
     }
 }
+
+
+/* end about */
+
+
+/* editing icon */
+
+.position__editing--icon{
+    position: absolute;
+    top: 300px; 
+    right: 0px; 
+}
+
+/* about edition */
+
+
+
+

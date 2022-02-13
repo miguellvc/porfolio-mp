@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { NgChartsModule } from 'ng2-charts';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -25,6 +27,7 @@ import { environment } from '../environments/environment';
     ModulosComponentModule,
     PagesModule,
     AuthModule,
+    NgChartsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],

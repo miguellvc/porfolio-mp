@@ -15,7 +15,7 @@ import { setValueForm, enableForm } from 'src/app/util/util';
 })
 export class BannerComponent implements OnInit {
 
-  public openModalBanner:boolean = true; 
+  public openModalBanner:boolean = false; 
   public userLogin:boolean; 
   public formSubmitted = false;
   public banner; 
@@ -64,6 +64,7 @@ export class BannerComponent implements OnInit {
       this.loading = false; 
       enableForm(this.bannerForm, this.banner, true ); 
       Swal.fire({
+        allowOutsideClick: false,
         title: "Cambios registrados",
         text: "Se registraron los cambios con éxito",
         icon: "success",

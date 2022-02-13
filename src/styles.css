@@ -20,6 +20,17 @@
   --text-color: hsl(0, 6%, 84%);
   --shadow: 1px 1px 10px rgba(61, 111, 185, 0.89);
   /* --shadow: 1px 1px 15px gray;  */
+  /* ----------------------- */
+
+  /* style circle skill */
+  --width--skill--circle: 250px; 
+  --height--skill--circle: 250px; 
+  --border-fondo1:20px solid rgb(34, 231, 34,.3);
+  --border-fondo2:20px solid rgba(206, 11, 11, 0.3);
+  --border-fondo3:20px solid rgba(6, 22, 168, 0.3);
+  --border1:20px solid rgb(10, 214, 10);
+  --border2:20px solid rgb(204, 10, 4);
+  --border3:20px solid rgba(5, 21, 170);
 }
 
 * {
