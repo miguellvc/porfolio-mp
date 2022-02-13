@@ -13,8 +13,8 @@
 }
 
 .skill__progress {
-    width: var(--width--skill--circle);
-    height: var(--height--skill--circle);
+    width: var(--width--skill__progress);
+    height: var(--height--skill__progress);
     /* background: red;  */
     overflow: hidden;
     /* margin: 110px 30px; */
@@ -22,10 +22,10 @@
 }
 
 .skill__progress .progress{
+    width: var(--width--skill--circle);
+    height: var(--height--skill--circle);
     margin: 130px auto;
     border-radius: 50%;
-    height: 250px;
-    width: 250px;
     border-left: var(--border3);
     border-right: var(--border3);
     border-top: var(--border3);
@@ -63,9 +63,9 @@
 }
 
 .progress .circle{
+    width: var(--width--skill--circle);
+    height: var(--height--skill--circle);
     border-radius: 50%;
-    height: 250px;
-    width: 250px;
     position: absolute;
     top: -20px;
     left: -20px;
@@ -108,6 +108,6 @@
 
 @media (min-width: 1200px) {
     .skill {
-        --width--skill--circle: 300px; 
+        --width--skill__progress: 300px; 
     }
 }

@@ -23,6 +23,9 @@
   /* ----------------------- */
 
   /* style circle skill */
+
+  --width--skill__progress: 250px; 
+  --height--skill__progress: 250px;
   --width--skill--circle: 250px; 
   --height--skill--circle: 250px; 
   --border-fondo1:20px solid rgb(34, 231, 34,.3);
