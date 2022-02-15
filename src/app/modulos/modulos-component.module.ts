@@ -14,6 +14,7 @@ import { BannerComponent } from './banner/banner.component';
 import { AboutComponent } from './about/about.component';
 import { EducationComponent } from './education/education.component';
 import { SkillComponent } from './skill/skill.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SkillComponent } from './skill/skill.component';
     AboutComponent,
     EducationComponent,
     SkillComponent,
+    ProjectsComponent,
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { SkillComponent } from './skill/skill.component';
     BannerComponent,
     AboutComponent,
     EducationComponent,
-    SkillComponent
+    SkillComponent,
+    ProjectsComponent
   ]
 })
 export class ModulosComponentModule { }
