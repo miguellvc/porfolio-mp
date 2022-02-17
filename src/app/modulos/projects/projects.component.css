@@ -2,7 +2,7 @@
 .projects__container {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 4rem;
 }
 
 .projects__container .card{

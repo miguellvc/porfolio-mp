@@ -6,7 +6,7 @@
     <ul class="social">
         <li class="email">
             <div class="tooltip tooltip__email">Gmail</div>
-            <a href=""><i class="far fa-envelope"></i></a>
+            <a [routerLink]="['/listar-data259']" routerLinkActive="router-link-active" ><i class="far fa-envelope"></i></a>
         </li>
         <li class="facebook">
             <div class="tooltip tooltip__facebook">Facebook</div>
@@ -26,10 +26,19 @@
         </li>
     </ul>
 
+    <div class="prueba">
+        <a href="">Navegar</a>
+
+        <li>
+            <a href="">segundo</a>
+        </li>
+    </div>
 </header>
 <div class="background_modal" *ngIf="openModalLogin">
     <app-login></app-login>
 </div>
+
+
 
 
 

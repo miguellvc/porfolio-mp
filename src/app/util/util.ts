@@ -3,7 +3,7 @@ import { FormGroup } from "@angular/forms";
 export const setValueForm = (form:FormGroup, content:Object) => {
     
     /*
-        El método Object.keys() devuelve un array de las propiedades names de un objeto, 
+        El método Object.keys() devuelve un array con las propiedades names de un objeto, 
         en el mismo orden como se obtienen en un loop normal.
     */ 
     let keysObject = Object.keys(content); 
@@ -36,8 +36,6 @@ export const enableForm = (form:FormGroup, content:Object, enable:boolean ) => {
         
         }
     }
-    
-    
 
   }
 

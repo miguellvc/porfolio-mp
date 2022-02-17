@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { AuthService } from 'src/app/services/auth.service';
 import { BannerService } from 'src/app/services/banner.service';
+
+import { animate } from 'src/app/util/animate';
 
 import Swal from 'sweetalert2';
 
@@ -42,6 +45,7 @@ export class BannerComponent implements OnInit {
     this.banner = this._banner.getBanner();
     setValueForm(this.bannerForm, this.banner); 
     
+    animate('banner', 3000, 'top', '-100px'); 
   }
   
   submit() {
