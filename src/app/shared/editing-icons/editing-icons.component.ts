@@ -10,12 +10,13 @@ export class EditingIconsComponent {
   @Input() valueInput: boolean;
   @Output() valueOutput: EventEmitter<boolean> = new EventEmitter();
   
+  public iconVisible:boolean = true; 
+  
   private output:boolean = true;
   constructor() { }
 
-  click(){
+  click() {
     this.output = !this.valueInput; 
     this.valueOutput.emit(this.output);
-    console.log("se ejecuta el evento click", this.output);
   }
 }

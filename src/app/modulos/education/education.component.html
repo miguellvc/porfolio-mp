@@ -1,80 +1,117 @@
+<div *ngIf="modalVisible" class="background_modal modal">
+    <div class="container__edition education__edition">
+        <span class="btn__close" (click)="closeModal()"><i class="fas fa-times"></i></span>
+
+        <h2 class="content__sub-title">Editando Educación</h2>
+        <form [formGroup]="educationForm" (ngSubmit)="submit()">
+
+            <div class="row">
+
+                <div class="left">
+
+                    <div class="card__model" [ngStyle]="{'background' : dataModel.color}">
+                        <div class="card-body">
+                            <h1 class="card-title">{{dataModel.year}}</h1>
+                            <p class="card--detail_short">{{dataModel.certificate}}</p>
+                            <p class="card__model--detail card--detail ">{{dataModel.description}}</p>
+                        </div>
+                    </div>
+
+                    <div class="color--picker">
+                        <ngx-colors 
+                        ngx-colors-trigger style="display: inline-block; margin:5px;" 
+                        formControlName="color"
+                        >
+                        </ngx-colors>
+                    </div>
+                    
+                </div>
+
+                <div class="right">
+
+                    <div class="row">
+                        <div class="form__group">
+                            <label class="form__label" for="year">Año</label>
+                            <input 
+                            class="form__control" 
+                            type="number"
+                            formControlName="year">
+                        </div>
+                        
+                        <div class="form__group">
+                            <label class="form__label" for="cetificate">Certificado</label>
+                            <input 
+                            class="form__control" id="certificate" 
+                            type="input" 
+                            formControlName="certificate"
+                            >
+                           
+                        </div>
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label" for="description">Descripción</label>
+                        <textarea 
+                        class="form__control form__textarea" 
+                        id="description" 
+                        rows="5"
+                        formControlName="description"> </textarea>
+                 
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="container__btn">
+                
+                    <button (click)="ver()" *ngIf="!centinela" class="btn btn__danger ">
+                        <span>Cancelar</span> 
+                     </button>
+                     <button *ngIf="!centinela" class="btn btn__success" type="submit">
+                         <span>Aceptar</span>
+                     </button>
+                
+
+                <ul *ngIf="centinela" class="icon__float float">
+                    <li class="edit">
+                        <!-- <div class="tooltip tooltip__edit">Editar</div> -->
+                        <a (click)="ver()"><i class="fas fa-edit"></i></a>
+                    </li>
+
+                    <li class="create">
+                        <!-- <div class="tooltip tooltip__edit">Editar</div> -->
+                        <a><i class="fas fa-plus"></i></a>
+                    </li>
+
+                    <li class="delete">
+                        <!-- <div class="tooltip tooltip__edit">Editar</div> -->
+                        <a><i class="fas fa-trash"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
 <section class="education">
     <h1 class="section_title">Educación</h1>
+
     <div class="education__container">
 
-        <div class="card" [ngStyle]="{'background': colorCard}">
+        <div *ngFor="let data of educationData" class="card" [ngStyle]="{'background': data.color}">
             <div class="card-body">
-                <h1 class="card-title">2000-2002</h1>
-                <p class="card--detail">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto sequi
-                    recusandae laborum ipsam dignissimos nostrum vitae provident officia, consectetur ab accusantium
-                    corrupti exercitationem temporibus repellat non magni cupiditate ea reprehenderit.</p>
-                <p class="card--detail_short">Técnico Universitario en Informática - UNLaR</p>
-                    
+                <h1 class="card-title">{{data.year}}</h1>
+                <p class="card--detail_short">{{data.certificate}}</p>
+                <p class="card--detail">{{data.description}}</p>
+            </div>
+
+            <div class="position__editing--icon">
+                <app-editing-icons (click)="openModal(data.id)"></app-editing-icons>
             </div>
         </div>
 
-        <div class="card">
-            <div class="card-body" >
-                <h1 class="card-title">2000-2002</h1>
-                <!-- <p class="card-detail">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto sequi
-                    recusandae laborum ipsam dignissimos nostrum vitae provident officia, consectetur ab accusantium
-                    corrupti exercitationem temporibus repellat non magni cupiditate ea reprehenderit.</p> -->
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <h1 class="card-title">2000-2002</h1>
-                <!-- <p class="card-detail">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto sequi
-                    recusandae laborum ipsam dignissimos nostrum vitae provident officia, consectetur ab accusantium
-                    corrupti exercitationem temporibus repellat non magni cupiditate ea reprehenderit.</p> -->
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <h1 class="card-title">2000-2002</h1>
-                <!-- <p class="card-detail">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto sequi
-                    recusandae laborum ipsam dignissimos nostrum vitae provident officia, consectetur ab accusantium
-                    corrupti exercitationem temporibus repellat non magni cupiditate ea reprehenderit.</p> -->
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <h1 class="card-title">2000-2002</h1>
-                <p class="card-detail">VER</p>
-            </div>
-        </div>
-
-        <!-- <div class="card">
-            <div class="card-body">
-                <h1 class="card-title">2000-2002</h1>
-                <p class="card-detail">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto sequi
-                    recusandae laborum ipsam dignissimos nostrum vitae provident officia, consectetur ab accusantium
-                    corrupti exercitationem temporibus repellat non magni cupiditate ea reprehenderit.</p>
-            </div>
-        </div> -->
-
-        <!-- <div class="card">
-            <div class="card-body">
-                <h1 class="card-title">2000-2002</h1>
-                <p class="card-detail">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto sequi
-                    recusandae laborum ipsam dignissimos nostrum vitae provident officia, consectetur ab accusantium
-                    corrupti exercitationem temporibus repellat non magni cupiditate ea reprehenderit.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <h1 class="card-title">2000-2002</h1>
-                <p class="card-detail">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto sequi
-                    recusandae laborum ipsam dignissimos nostrum vitae provident officia, consectetur ab accusantium
-                    corrupti exercitationem temporibus repellat non magni cupiditate ea reprehenderit.</p>
-            </div>
-        </div> -->
-       
     </div>
-
 
 </section>

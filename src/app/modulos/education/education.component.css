@@ -1,6 +1,7 @@
 .education .education__container{
-    display: block;
+    display: relative;
     margin: 4rem auto;
+    overflow: hidden;
 }
 .card{
     width: 45%;
@@ -10,6 +11,23 @@
     display: block;
     margin: -10px 0;
     position: relative;
+}
+
+.card__model{
+    position:relative;
+    display: block;
+    max-width: 150px;
+    height: 200px;
+    padding: 5px;
+    border-radius: 10px;
+    color: var(--title-color);
+  
+}
+
+.card__model .card__model--detail {
+    max-height: 110px; 
+    text-overflow:ellipsis;
+    overflow:hidden;
 }
 
 .card:nth-child(even){
@@ -107,8 +125,85 @@
 .card--detail_short{
     font-size: 13px; 
     text-align: center;
+    
 }
 
+
+/* editing icon */
+
+.position__editing--icon {
+    display: flex; 
+    justify-content: flex-end;
+}
+
+.edit a i {
+    color: rgb(202, 202, 14); 
+}
+
+.create a i {
+    color: #14ba6d;
+}
+
+.delete a i {
+    color: var(--color-icon);
+}
+
+
+.float {
+    animation:  mover .7s linear forwards;
+}
+
+
+@keyframes mover {
+    0%{
+        transform: translateX(200px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+/* modal education edition */
+.modal {
+    z-index: 999;
+    justify-content: center;
+    align-items: center; 
+}
+
+.education__edition {
+    width: 700px; 
+    position: absolute;
+    top: 20%;
+}
+
+
+/* form */
+.row {
+    display: flex;
+    gap: 50px; 
+    justify-content: flex-start;
+    align-items: center; 
+}
+
+.left{
+    flex-basis: 250px;
+ 
+}
+
+.color--picker {
+    position: absolute;
+    top: 235px;
+    left: 150px;
+}
+
+.container__btn {
+    min-height: 60px;
+    display: flex;
+    gap: 30px; 
+    justify-content: flex-end;
+    overflow: hidden;
+    /* background-color: red; */
+}
 
 
 @media screen and (max-width: 700px){

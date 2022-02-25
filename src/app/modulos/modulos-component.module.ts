@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
 
+import { NgxColorsModule } from 'ngx-colors';
 
 // modules
 import { AuthModule } from '../auth/auth.module';
@@ -30,7 +31,8 @@ import { ProjectsComponent } from './projects/projects.component';
     ReactiveFormsModule,
     AuthModule,
     SharedModule,
-    NgChartsModule
+    NgChartsModule,
+    NgxColorsModule
   ],
   exports: [
     BannerComponent,

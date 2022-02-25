@@ -19,6 +19,17 @@
   --title-color: hsl(0, 10%, 92%);
   --text-color: hsl(0, 6%, 84%);
   --shadow: 1px 1px 10px rgba(61, 111, 185, 0.89);
+
+  /* TODO */
+  /* Crear variables para:
+  
+    color success 
+    color danger
+    color info
+  
+  */
+
+
   /* --shadow: 1px 1px 15px gray;  */
   /* ----------------------- */
 
@@ -76,6 +87,7 @@ section {
   width: 100%;
   height: 100vh;
   z-index: 1001;
+  top: 0px;
   /* opacity: 0.6; */
   /* background: var(--color-primary); */
   background-color: rgba(67, 68, 69, 0.5);
@@ -88,7 +100,7 @@ section {
 
 
 .container__edition{
-  position: absolute;
+  /* position: absolute; */
   width: 85%;
   height: auto;
   padding: 15px;  
@@ -96,6 +108,41 @@ section {
   border-radius: 10px;  
   color: var(--title-color);
   z-index: 999;
+}
+
+/* ICON FLOAT */
+
+.icon__float{
+  position: relative;
+  width: 20rem;  
+  display: flex; 
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 10px;
+  font-size: 2rem;
+}
+
+.icon__float a{
+  padding: 2px 8px; 
+  border-radius: 25px;
+  box-shadow: var(--shadow);
+}
+.icon__float a i{
+  color: var(--title-color);
+}
+
+.tooltip{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: var(--color-primary);
+  padding: 5px;
+  transform: rotate(90deg);
+  border-radius: 25px;
+  box-shadow: var(--shadow);
+  color: var(--title-color);
+  font-size: 0.6em;
+  transition: all 20s ease-out;
 }
 
 /* button */
@@ -173,6 +220,18 @@ section {
 
 .btn__danger:hover::after {
 	top: 0;
+}
+
+/* btn close */
+
+.btn__close {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 2px 8px;
+  font-size: 2.2rem;
+  color: var(--color-icon);
+  cursor: pointer;
 }
 
 /* forms */
