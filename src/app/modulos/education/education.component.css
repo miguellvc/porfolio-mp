@@ -137,15 +137,15 @@
 }
 
 .edit a i {
-    color: rgb(202, 202, 14); 
+    color: var(--color-warning); 
 }
 
 .create a i {
-    color: #14ba6d;
+    color: var(--color-success);
 }
 
 .delete a i {
-    color: var(--color-icon);
+    color: var(--color-danger);
 }
 
 

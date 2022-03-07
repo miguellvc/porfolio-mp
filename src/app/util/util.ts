@@ -1,41 +1,27 @@
 import { FormGroup } from "@angular/forms";
 
-export const setValueForm = (form:FormGroup, content:Object) => {
+export const setValueForm = (formGroup:FormGroup, content) => {
     
     /*
         El método Object.keys() devuelve un array con las propiedades names de un objeto, 
         en el mismo orden como se obtienen en un loop normal.
-    */ 
-    let keysObject = Object.keys(content); 
-    let propiedadesObject = Object.values(content); 
-
-    for(let i = 0; i < keysObject.length; i++) {
-
-        form.controls[keysObject[i]].setValue(propiedadesObject[i]);
-    
-    }
+    */
+    const updateContent = {...content}
+    if(updateContent.id != undefined ) { delete updateContent.id} ;  
+    const contentObject = Object.values(updateContent); 
+    Object.keys(formGroup.controls).forEach((key, index) => { formGroup.controls[key].setValue(contentObject[index])});  
 
 }
 
 
-export const enableForm = (form:FormGroup, content:Object, enable:boolean ) => {
+export const enableForm = (formGroup:FormGroup, enable:boolean ) => {
     
-    let keysObject = Object.keys(content); 
-        
+    let keysObject = Object.keys(formGroup.controls); 
     
-    if(enable) {
-        for(let i = 0; i < keysObject.length; i++) {
-
-            form.controls[keysObject[i]].enable();
-        
-        } 
-    }else {
-        for(let i = 0; i < keysObject.length; i++) {
-
-            form.controls[keysObject[i]].disable();
-        
-        }
-    }
+    enable ? 
+    keysObject.forEach( key => formGroup.controls[key].enable() )
+    : 
+    keysObject.forEach( key => formGroup.controls[key].disable() );
 
   }
 

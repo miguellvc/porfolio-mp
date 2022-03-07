@@ -64,7 +64,7 @@
 
             <div class="container__btn">
                 
-                    <button (click)="ver()" *ngIf="!centinela" class="btn btn__danger ">
+                    <button (click)="cancelAction(false)" *ngIf="!centinela" class="btn btn__danger ">
                         <span>Cancelar</span> 
                      </button>
                      <button *ngIf="!centinela" class="btn btn__success" type="submit">
@@ -75,17 +75,17 @@
                 <ul *ngIf="centinela" class="icon__float float">
                     <li class="edit">
                         <!-- <div class="tooltip tooltip__edit">Editar</div> -->
-                        <a (click)="ver()"><i class="fas fa-edit"></i></a>
+                        <a (click)="editEducation(true)"><i class="fas fa-edit"></i></a>
                     </li>
 
                     <li class="create">
                         <!-- <div class="tooltip tooltip__edit">Editar</div> -->
-                        <a><i class="fas fa-plus"></i></a>
+                        <a (click)="newEducation(true)"><i class="fas fa-plus"></i></a>
                     </li>
 
                     <li class="delete">
                         <!-- <div class="tooltip tooltip__edit">Editar</div> -->
-                        <a><i class="fas fa-trash"></i></a>
+                        <a (click)="deleteEducation(dataModel.certificate, dataModel.id)"><i class="fas fa-trash"></i></a>
                     </li>
                 </ul>
             </div>

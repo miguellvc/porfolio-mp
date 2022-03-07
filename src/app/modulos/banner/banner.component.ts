@@ -52,7 +52,7 @@ export class BannerComponent implements OnInit {
     this.formSubmitted = true; 
   
 
-    enableForm(this.bannerForm, this.banner, false ); 
+    enableForm(this.bannerForm, false ); 
     
     if ( this.bannerForm.invalid ) {
       return;
@@ -66,7 +66,7 @@ export class BannerComponent implements OnInit {
       this.banner = this._banner.getBanner(); 
       console.log("se ejecuta la función setInterval");  
       this.loading = false; 
-      enableForm(this.bannerForm, this.banner, true ); 
+      enableForm(this.bannerForm, true ); 
       Swal.fire({
         allowOutsideClick: false,
         title: "Cambios registrados",
@@ -79,6 +79,8 @@ export class BannerComponent implements OnInit {
   
   invalidFiel( value: string ): boolean {
        
+    
+
     console.log("se ejecuta el método")
     if ( this.bannerForm.get(value).invalid && this.formSubmitted ) {
       return true;

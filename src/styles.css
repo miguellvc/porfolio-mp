@@ -15,19 +15,21 @@
     rgba(24, 96, 111, 1) 100%
   );
   --color-secondary: hsl(0, 0%, 31%);
-  --color-icon: hsl(348, 83%, 47%); 
   --title-color: hsl(0, 10%, 92%);
   --text-color: hsl(0, 6%, 84%);
   --shadow: 1px 1px 10px rgba(61, 111, 185, 0.89);
 
   /* TODO */
   /* Crear variables para:
-  
     color success 
     color danger
-    color info
+    color warning
   
   */
+  --color-success : hsl(151, 69%, 26%); 
+  --color-danger : hsl(348, 83%, 47%);
+  --color-warning: hsl(42, 100%, 50%); 
+
 
 
   /* --shadow: 1px 1px 15px gray;  */
@@ -171,7 +173,7 @@ section {
 .btn__success {
   display: flex;
   width: 12rem; 
-  border: 3px solid #157347;
+  border: 3px solid var(--color-success);
   background: transparent; 
   color: var(--title-color);
   transition: 1s;
@@ -184,7 +186,7 @@ section {
 	z-index: 1;
 	top: 0;
 	left: calc(-100% - 80px);
-	border-bottom: 80px solid #0f5b37;
+	border-bottom: 80px solid var(--color-success);
 	border-right: 80px solid transparent;
 	transition: .4s ease-in-out all;
 }
@@ -199,7 +201,7 @@ section {
 
 .btn__danger {
   width: 12rem; 
-  border: 3px solid #BB2D3B;
+  border: 3px solid var(--color-danger);
   background: transparent; 
   color: var(--title-color);
   transition: .3s ease all;
@@ -210,7 +212,7 @@ section {
 	content: "";
 	width: 100%;
 	height: 100%;
-	background: #94212d;
+	background: var(--color-danger);
 	position: absolute;
 	z-index: 1;
 	top: -80px;
@@ -230,7 +232,7 @@ section {
   right: 0px;
   padding: 2px 8px;
   font-size: 2.2rem;
-  color: var(--color-icon);
+  color: var(--color-danger);
   cursor: pointer;
 }
 
