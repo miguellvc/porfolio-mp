@@ -129,53 +129,19 @@
 }
 
 
-/* editing icon */
-
-.position__editing--icon {
-    display: flex; 
-    justify-content: flex-end;
-}
-
-.edit a i {
-    color: var(--color-warning); 
-}
-
-.create a i {
-    color: var(--color-success);
-}
-
-.delete a i {
-    color: var(--color-danger);
-}
-
-
-.float {
-    animation:  mover .7s linear forwards;
-}
-
-
-@keyframes mover {
-    0%{
-        transform: translateX(200px);
-    }
-    100%{
-        transform: translateX(0px);
-    }
-}
-
 /* modal education edition */
-.modal {
-    z-index: 999;
-    justify-content: center;
-    align-items: center; 
-}
-
 .education__edition {
     width: 700px; 
     position: absolute;
     top: 20%;
 }
 
+/* editing icon*/
+
+.position__editing--icon {
+    display: flex; 
+    justify-content: flex-end;
+  }
 
 /* form */
 .row {
@@ -187,7 +153,6 @@
 
 .left{
     flex-basis: 250px;
- 
 }
 
 .color--picker {
@@ -202,7 +167,6 @@
     gap: 30px; 
     justify-content: flex-end;
     overflow: hidden;
-    /* background-color: red; */
 }
 
 

@@ -88,28 +88,22 @@ section {
   position: fixed;
   width: 100%;
   height: 100vh;
-  z-index: 1001;
+  z-index: 999;
   top: 0px;
-  /* opacity: 0.6; */
-  /* background: var(--color-primary); */
   background-color: rgba(67, 68, 69, 0.5);
   display: flex; 
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end; 
+  justify-content: center;
+  align-items: center; 
   padding: 45px; 
 }
 
-
 .container__edition{
-  /* position: absolute; */
   width: 85%;
   height: auto;
   padding: 15px;  
   background: var(--color-background);
   border-radius: 10px;  
   color: var(--title-color);
-  z-index: 999;
 }
 
 /* ICON FLOAT */
@@ -123,7 +117,9 @@ section {
   gap: 10px;
   font-size: 2rem;
 }
-
+.icon__float li {
+  cursor: pointer;
+}
 .icon__float a{
   padding: 2px 8px; 
   border-radius: 25px;
@@ -236,6 +232,37 @@ section {
   cursor: pointer;
 }
 
+/* editing icon model*/
+
+
+.edit a i {
+  color: var(--color-warning); 
+}
+
+.create a i {
+  color: var(--color-success);
+}
+
+.delete a i {
+  color: var(--color-danger);
+}
+
+
+.float {
+  animation:  mover .7s linear forwards;
+}
+
+
+@keyframes mover {
+  0%{
+      transform: translateX(200px);
+  }
+  100%{
+      transform: translateX(0px);
+  }
+}
+
+
 /* forms */
 
 .form__group {
@@ -270,7 +297,6 @@ section {
 }
 
 .invalid__feedback {
-  /* padding: 5px; */
   font-size: 1.2rem;
   color: var(--color-icon);
 }

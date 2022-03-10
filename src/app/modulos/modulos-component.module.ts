@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NgChartsModule } from 'ng2-charts';
+
+
+
 
 import { NgxColorsModule } from 'ngx-colors';
 
@@ -31,8 +33,7 @@ import { ProjectsComponent } from './projects/projects.component';
     ReactiveFormsModule,
     AuthModule,
     SharedModule,
-    NgChartsModule,
-    NgxColorsModule
+    NgxColorsModule,
   ],
   exports: [
     BannerComponent,

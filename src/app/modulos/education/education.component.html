@@ -1,4 +1,4 @@
-<div *ngIf="modalVisible" class="background_modal modal">
+<div *ngIf="modalVisible" class="background_modal">
     <div class="container__edition education__edition">
         <span class="btn__close" (click)="closeModal()"><i class="fas fa-times"></i></span>
 
@@ -20,8 +20,7 @@
                     <div class="color--picker">
                         <ngx-colors 
                         ngx-colors-trigger style="display: inline-block; margin:5px;" 
-                        formControlName="color"
-                        >
+                        formControlName="color">
                         </ngx-colors>
                     </div>
                     
@@ -45,7 +44,6 @@
                             type="input" 
                             formControlName="certificate"
                             >
-                           
                         </div>
                     </div>
 

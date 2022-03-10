@@ -8,16 +8,13 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
-
-  
 }
 
 .skill__progress {
+    position: relative;
     width: var(--width--skill__progress);
     height: var(--height--skill__progress);
-    /* background: red;  */
     overflow: hidden;
-    /* margin: 110px 30px; */
     margin-top: -100px;
 }
 
@@ -38,7 +35,7 @@
 }
 .skill__progress .pro-1{
     border: var(--border-fondo1);
-    color: rgb(10, 214, 10);
+    /* color: rgb(10, 214, 10); */
    
 } 
 .skill__progress .pro-2{
@@ -72,13 +69,16 @@
     /* transform: rotate(-45deg); */
 }
 .circle--1{
-    border-top: var(--border1);
-    border-left: var(--border1);
+    /* border-top: var(--border1);
+    border-left: var(--border1); */
     border-right: 20px solid transparent;
     border-bottom: 20px solid transparent;
     
-    /* completo: 45deg mínimo: -135deg */
-    transform: rotate(-135deg);
+    /* completo: 45deg mínimo: -135deg  medio: -45*/
+    transform: rotate(-125deg);
+    /*
+        
+    */
     /* animation:  rotar1 1s linear forwards;
     animation-delay: 1s; */
 }
@@ -110,4 +110,40 @@
     .skill {
         --width--skill__progress: 300px; 
     }
+}
+
+/* editing icon */
+
+.position__editing--icon {
+    position: absolute;
+    display: flex; 
+    justify-content: flex-start;
+    margin-left: 240px;
+    margin-top: 120px;
+}
+
+/* modal edition */
+.skill__edition {
+    width: 700px;
+    position: absolute;
+    top: 20%; 
+}
+
+/* form */
+.row {
+    display: flex;
+    gap: 50px; 
+    justify-content: flex-start;
+    align-items: center; 
+}
+.left{
+    flex-basis: 250px;
+}
+
+.container__btn {
+    min-height: 60px;
+    display: flex;
+    gap: 30px; 
+    justify-content: flex-end;
+    overflow: hidden;
 }
