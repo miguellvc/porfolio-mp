@@ -21,7 +21,9 @@ export class SkillComponent implements OnInit {
                                colorBackground: '', 
                                colorBorder: '', 
                                color: '', 
-                               rotate: '' }; 
+                               rotate: '' };
+  private dataModelTwo : Skill; 
+  public iconFloatVisible = true; 
   constructor(private _skill : SkillService,
               private fb : FormBuilder) { }
 
@@ -67,6 +69,7 @@ export class SkillComponent implements OnInit {
 
   submit(){
     console.log(this.dataModel);
+    this.updateSkill(); 
   }
   
   openModal(id:Number) {
@@ -79,20 +82,54 @@ export class SkillComponent implements OnInit {
     this.dataModel = {...data[0]};
 
     setValueForm(this.skillForm, this.dataModel); 
-    // enableForm(this.skillForm, false);
+    enableForm(this.skillForm, false);
   }
+
   closeModal() { 
     this.modalVisible = false;
   }
 
-  // Method rest
-  getSkill(skill: Skill[]) {
+  newSkill(value:boolean) {
     
+    this.dataModelTwo = {...this.dataModel}; 
+    const content:Skill = {language: '', porcentage: 30, colorBackground: '', colorBorder: '', color: '', rotate: ''};
+    setValueForm(this.skillForm, content);
+    // TODO
+    this.iconFloatVisible = !value;
+    enableForm(this.skillForm, value);
   }
+  
+  editSkill(value:boolean) {
+    // TODO
+    this.iconFloatVisible = !value;
+    enableForm(this.skillForm, value);
+  }
+
+  cancelAction(value:boolean) {
+    // TODO
+    this.iconFloatVisible = !value; 
+    
+    // console.log("se ejecuta el método cancelar", this.dataModelTwo);
+    setValueForm(this.skillForm, this.dataModelTwo)
+
+    enableForm(this.skillForm, value);
+  }
+  // Method rest
+  getSkill(skill: Skill) {
+    // this.skill = skill; 
+  }
+  
   getSkills(skills: Skill[]) {
     this.skills = skills; 
   }
+  
+  updateSkill() {
+    const dataUpdate =  this.skills.map(data => data.id == this.dataModel.id? {...this.dataModel}  : data ); 
+    this.getSkills(dataUpdate);
+  }
+  deleteSkill(content, id){
 
+  }
   // fuction generales
 
   mapearData = (valor: number ) =>  (-135 + ( valor * 1.8 )).toString() ;
@@ -113,6 +150,5 @@ export class SkillComponent implements OnInit {
     console.log(`rotate(${value}deg)`); 
     return `rotate(${value}deg)`
   }
-  // mapearData = (valor:Number ) => parseInt(-135 + (valor * 1.8));
 
 }

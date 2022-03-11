@@ -61,15 +61,30 @@
 
             <div class="container__btn">
                 
-                <button class="btn btn__danger ">
+                <button *ngIf="!iconFloatVisible" class="btn btn__danger" (click)="cancelAction(false)">
                     <span>Cancelar</span> 
                  </button>
-                 <button  class="btn btn__success" type="submit">
+                 <button *ngIf="!iconFloatVisible" class="btn btn__success" type="submit">
                      <span>Aceptar</span>
                  </button>
                  
                  <!-- AQUÍ VAN LOS OTROS BOTONES -->
+                 <ul *ngIf="iconFloatVisible" class="icon__float float">
+                    <li class="edit">
+                        <!-- <div class="tooltip tooltip__edit">Editar</div> -->
+                        <a (click)="editSkill(true)"><i class="fas fa-edit"></i></a>
+                    </li>
 
+                    <li class="create">
+                        <!-- <div class="tooltip tooltip__edit">Editar</div> -->
+                        <a (click)="newSkill(true)"><i class="fas fa-plus"></i></a>
+                    </li>
+
+                    <li class="delete">
+                        <!-- <div class="tooltip tooltip__edit">Editar</div> -->
+                        <a (click)="deleteSkill(dataModel.language, dataModel.id)"><i class="fas fa-trash"></i></a>
+                    </li>
+                </ul>
     
         </div>
         </form>

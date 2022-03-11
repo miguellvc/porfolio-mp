@@ -8,6 +8,7 @@ export class SkillService {
 
   private skills : Skill[] = [
     {
+      id : 111,
       language: 'HTLM', 
       porcentage: 50, 
       colorBackground: '#ff00d820',
