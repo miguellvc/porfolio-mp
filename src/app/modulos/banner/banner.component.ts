@@ -18,7 +18,7 @@ import { setValueForm, enableForm } from 'src/app/util/util';
 })
 export class BannerComponent implements OnInit {
 
-  public openModalBanner:boolean = false; 
+  public modalVisible:boolean = false; 
   public userLogin:boolean; 
   public formSubmitted = false;
   public banner; 
@@ -42,10 +42,11 @@ export class BannerComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.banner = this._banner.getBanner();
+
+    this.getBanner(this._banner.getBanner().getBanner); 
     setValueForm(this.bannerForm, this.banner); 
     
-    animate('banner', 3000, 'top', '-100px'); 
+    // animate('banner', 3000, 'top', '-100px'); 
   }
   
   submit() {
@@ -76,10 +77,13 @@ export class BannerComponent implements OnInit {
     },5000)
     // console.log(this.bannerForm.value); 
   }
+
+  getBanner(banner) {
+    this.banner = banner; 
+    
+  }
   
   invalidFiel( value: string ): boolean {
-       
-    
 
     console.log("se ejecuta el método")
     if ( this.bannerForm.get(value).invalid && this.formSubmitted ) {
@@ -89,9 +93,12 @@ export class BannerComponent implements OnInit {
     }
   }
  
+  openModal(){
+    this.modalVisible = true; 
+  }
 
-  closeModalBanner(){
-     this.openModalBanner = false;
+  closeModal(){
+     this.modalVisible = false;
   }
 
 }

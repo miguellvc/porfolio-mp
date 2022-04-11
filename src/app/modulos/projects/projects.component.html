@@ -1,6 +1,104 @@
+<div *ngIf="modalVisible" class="background_modal">
+    <div class="container__edition project__edition">
+        <span class="btn__close" (click)="closeModal()"><i class="fas fa-times"></i></span>
+        <h2 class="content__sub-title">Editando Proyectos</h2>
+
+        <form [formGroup]="projectForm" (ngSubmit)="submit()">
+            <div class="row">
+                <div class="left">
+                    <div class="card headline">
+                
+                        <div class="card__image-container">
+                            <img src="../../../assets/img/undraw_Proud_coder_re_exuy.png" alt="">
+                        </div>
+                        <h3>Sistema gestión escolar</h3>
+                        
+                        <div class="card__header">
+                            <p>Demo -></p>
+                            <a href=""><i class="fab fa-github-square"></i></a>
+                        </div>
+                        <!-- <button class="btn btn__success">Ver</button> -->
+                    </div> 
+                </div>
+
+                <div class="right">
+                    <div class="form__group">
+                        <label class="form__label" for="title">Título </label>
+                            <input 
+                            class="form__control" 
+                            type="text"
+                            formControlName="title">
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label" for="urlImg">Url Imagen</label>
+                            <input 
+                            class="form__control" 
+                            type="text"
+                            formControlName="urlImg">
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label" for="urlGit">Url Git</label>
+                            <input 
+                            class="form__control" 
+                            type="text"
+                            formControlName="urlGit">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container__btn">   
+                <button *ngIf="!iconFloatVisible" (click)="cancelAction(true)"  class="btn btn__danger ">
+                    <span>Cancelar</span> 
+                 </button>
+                 <button *ngIf="!iconFloatVisible" class="btn btn__success" type="submit">
+                     <span>Aceptar</span>
+                 </button>
+
+                 <ul *ngIf="iconFloatVisible" class="icon__float float">
+                    <li class="edit">
+                        <!-- <div class="tooltip tooltip__edit">Editar</div> -->
+                        <a (click)="editProject(false)"><i class="fas fa-edit"></i></a>
+                    </li>
+
+                    <li class="create">
+                        <!-- <div class="tooltip tooltip__edit">Editar</div> -->
+                        <a (click)="newProject(false)"><i class="fas fa-plus"></i></a>
+                    </li>
+
+                    <li class="delete">
+                        <!-- <div class="tooltip tooltip__edit">Editar</div> -->
+                        <a (click)="deleteProject(dataModel.title, dataModel.id)"><i class="fas fa-trash"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</div>
+
 <section class="projects">
     <h1 class="section_title">Proyectos</h1>
     <article class="projects__container">
+            
+
+            <div *ngFor="let project of projects" class="card headline">
+                <div class="card__image-container">
+                    <img [src]="project.urlImg" [alt]="project.title">
+                </div>
+             
+                <h3>{{project.title}}</h3>
+                <!-- <div class="card__header">
+                    <p>Demo -></p>
+                    <a (click)="onNavigate( project.urlGit )"><i class="fab fa-github-square"></i></a>
+                </div>  -->
+
+                <div class="position__editing--icon">
+                    <app-editing-icons (click)="openModal(project.id)"></app-editing-icons>
+                </div>
+
+            </div>
+
             <div class="card headline">
                 
                 <div class="card__image-container">
@@ -41,3 +139,5 @@
             </div>
     </article>
 </section>
+
+

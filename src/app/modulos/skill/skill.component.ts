@@ -147,7 +147,6 @@ export class SkillComponent implements OnInit {
   } 
 
   setRotate(value) {
-    console.log(`rotate(${value}deg)`); 
     return `rotate(${value}deg)`
   }
 

@@ -18,7 +18,7 @@ import { swalDelete, isConfirmed } from 'src/app/util/swal';
 })
 export class EducationComponent implements OnInit {
   
-  modalVisible:boolean = false; 
+  modalVisible : boolean = false; 
   educationData : Education[] = []; 
   dataModel : Education = {certificate: '', description: '', year: '', color: ''}; 
   colorCardModel : String;  
@@ -116,6 +116,7 @@ export class EducationComponent implements OnInit {
   // Method rest
   getEducationData (data:Education[]) {
     this.educationData = data; 
+    console.log("se ejecuta el método getEducationData");
   }
 
   updateEducation() {

@@ -62,12 +62,12 @@
 
             <div class="container__btn">
                 
-                    <button *ngIf="!centinela" (click)="cancelAction(false)"  class="btn btn__danger ">
-                        <span>Cancelar</span> 
-                     </button>
-                     <button *ngIf="!centinela" class="btn btn__success" type="submit">
-                         <span>Aceptar</span>
-                     </button>
+                <button *ngIf="!centinela" (click)="cancelAction(false)"  class="btn btn__danger ">
+                    <span>Cancelar</span> 
+                </button>
+                <button *ngIf="!centinela" class="btn btn__success" type="submit">
+                    <span>Aceptar</span>
+                </button>
                 
 
                 <ul *ngIf="centinela" class="icon__float float">
