@@ -9,9 +9,9 @@
         <div class="login__body">
 
             <div class="form__group">
-                <label class="form__label" for="email">Email</label>
-                <input class="form__control" id="email" type="email" formControlName="email">
-                <span class="invalid__feedback" *ngIf="campoNoValido('email')">el email es requerido y debe ser válido</span>
+                <label class="form__label" for="mail">Email</label>
+                <input class="form__control" id="mail" type="mail" formControlName="mail">
+                <span class="invalid__feedback" *ngIf="campoNoValido('mail')">el email es requerido y debe ser válido</span>
             </div>
 
             <div class="form__group">
@@ -24,9 +24,10 @@
         </div>
 
         <div class="login__footer form__group">
-            <button class="btn login__btn" type="submit">
+            <button class="btn login__btn" [ngClass]="{'btn__hover' : !btnDisabled}" type="submit" [disabled]="btnDisabled">
                 <div class="icono"><i class="fas fa-user"></i></div>
-                <span>Login</span>
+                <span *ngIf="!btnDisabled">Login</span>
+                <span *ngIf="btnDisabled" class="container__spinner"><div class="spinner"></div> Iniciando sesión...</span>  
             </button>
         </div>
 

@@ -9,18 +9,42 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   
-  openModalLogin:boolean = false; 
+  openModalLogin : boolean = false; 
+  public login = {
+    msg : "login", 
+    color : "color-danger", 
+    isLogin : false
+  }
   
-  constructor(private _auth: AuthService) {}
+  constructor(private _auth: AuthService) {
+  }
 
-  openLogin(){
+  openModal(isLogin : boolean) {
+
+    if(isLogin){
+      this._auth.logout(); 
+      return; 
+    }
     this.openModalLogin = true; 
   }
 
   ngOnInit(): void {
-    this._auth.$modal.subscribe(resp => this.openModalLogin = resp); 
+    this._auth.$modal.subscribe(resp => this.openModalLogin = resp);
+    this.isSession(this._auth.validateSession());
+    this._auth.$isLogin.subscribe(resp => this.isSession(resp));
+
   }
 
-  
+  isSession(resp){
+      if(resp){
+        this.login.msg = "Salir"; 
+        this.login.color = "color-success";
+        this.login.isLogin = true; 
+    }else{
+        this.login.msg = "Login"; 
+        this.login.color = "color-danger";
+        this.login.isLogin = false; 
+    }
+  }
 
 }

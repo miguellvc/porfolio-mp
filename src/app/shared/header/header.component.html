@@ -20,9 +20,9 @@
             <div class="tooltip tooltip__github">Github</div>
             <a href=""><i class="fab fa-github-square"></i></a>
         </li>
-        <li class="login" (click)="openLogin()">
-            <div class="tooltip tooltip__login">Login</div>
-            <a><i class="far fa-user"></i></a>
+        <li class="login" (click)="openModal(login.isLogin)">
+            <div class="tooltip tooltip__login">{{login.msg}}</div>
+            <a><i class="far fa-user color" [class]="login.color"></i></a>
         </li>
     </ul>
 

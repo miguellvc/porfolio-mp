@@ -1,17 +1,27 @@
-import { Component, Input, Output, EventEmitter, } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-editing-icons',
   templateUrl: './editing-icons.component.html',
   styleUrls: ['./editing-icons.component.css']
 })
-export class EditingIconsComponent {
 
-  
-  
-  public iconVisible:boolean = true; 
-  
-  constructor() { }
+export class EditingIconsComponent implements OnInit{
 
+  iconVisible:boolean = false; 
+  
+  constructor(private _auth: AuthService) { 
+    this.iconVisible = this._auth.validateSession(); 
+  }
+
+  ngOnInit(): void {
+    
+    console.log("se ejecuta validar sesión de editing-icons.component", this.iconVisible);
+    this._auth.$isLogin.subscribe(isLogin => {
+      this.iconVisible = isLogin;
+    }) 
+  }
  
+
 }

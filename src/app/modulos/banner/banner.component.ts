@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { BannerService } from 'src/app/services/banner.service';
 
-import { animate } from 'src/app/util/animate';
 
 import Swal from 'sweetalert2';
 
@@ -19,7 +18,6 @@ import { setValueForm, enableForm } from 'src/app/util/util';
 export class BannerComponent implements OnInit {
 
   public modalVisible:boolean = false; 
-  public userLogin:boolean; 
   public formSubmitted = false;
   public banner; 
   
@@ -30,7 +28,6 @@ export class BannerComponent implements OnInit {
               private fb: FormBuilder, 
               private _banner: BannerService
               ) { 
-    this.userLogin = this._auth.userLogin; 
   }
 
   public bannerForm:FormGroup = this.fb.group({
@@ -97,7 +94,7 @@ export class BannerComponent implements OnInit {
     this.modalVisible = true; 
   }
 
-  closeModal(){
+  closeModal(){  
      this.modalVisible = false;
   }
 

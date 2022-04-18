@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
               private _banner: BannerService) { }
 
   ngOnInit(): void {
+
     // this.getUsers();
     
     // this._banner.getBanner().getBannerApi 

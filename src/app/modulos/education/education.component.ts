@@ -116,7 +116,6 @@ export class EducationComponent implements OnInit {
   // Method rest
   getEducationData (data:Education[]) {
     this.educationData = data; 
-    console.log("se ejecuta el método getEducationData");
   }
 
   updateEducation() {
