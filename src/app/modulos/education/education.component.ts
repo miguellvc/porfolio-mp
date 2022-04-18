@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 
@@ -20,6 +20,7 @@ export class EducationComponent implements OnInit {
   
   modalVisible : boolean = false; 
   educationData : Education[] = []; 
+  @Input() educationDataTwo: any[] = []; 
   dataModel : Education = {certificate: '', description: '', year: '', color: ''}; 
   colorCardModel : String;  
   
@@ -38,6 +39,8 @@ export class EducationComponent implements OnInit {
   }) 
   
   ngOnInit(): void {
+    
+    console.log("se ejecuta console log de education para mostrar data del input", this.educationDataTwo); 
 
     animate('education', 3000, 'top', '-100px'); 
     this.getEducationData(this._education.getEducationData());

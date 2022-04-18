@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from 'src/app/services/auth.service';
@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 
 // import functions
 import { setValueForm, enableForm } from 'src/app/util/util';
+import { animate } from 'src/app/util/animate';
 
 @Component({
   selector: 'app-banner',
@@ -21,6 +22,8 @@ export class BannerComponent implements OnInit {
   public formSubmitted = false;
   public banner; 
   
+  @Input() bannerTwo: any;
+
   public loading = false; 
   
 
@@ -42,8 +45,8 @@ export class BannerComponent implements OnInit {
 
     this.getBanner(this._banner.getBanner().getBanner); 
     setValueForm(this.bannerForm, this.banner); 
-    
-    // animate('banner', 3000, 'top', '-100px'); 
+    console.log("contenido del banner two", this.bannerTwo); 
+    animate('banner', 3000, 'top', '-100px'); 
   }
   
   submit() {
