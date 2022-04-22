@@ -66,5 +66,17 @@ export class AuthService {
       console.log("se ejecuta validateSession", respApi);  
     }));
   }
+  
+  getToken(){
+    const token = localStorage.getItem('x_token')
+  
+    return this.http.get(`${this.urlApiPorfolio}/token`,{
+      headers: {
+         'x-token' : token
+      }
+    }).pipe(map((respApi:boolean) => {
+       return respApi ? token : null; 
+    }))
 
+  }
 }

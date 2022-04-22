@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
     forkJoin(this.arrayOfData)
        .subscribe(data => {
          this.arrayConten = data; 
-         console.log("array del content", this.arrayConten); 
          this.cargandoData = false;
        }); 
        

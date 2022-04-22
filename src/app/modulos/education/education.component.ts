@@ -72,12 +72,7 @@ export class EducationComponent implements OnInit {
 
   openModal(id:Number) {
     this.modalVisible = true; 
-    
-    // let data = this.educationData.filter(data => {
-    //   if(data.id == id) return data ; 
-    // }); 
-    
-    //this.dataModel = {...data[0]};
+
 
     setValueForm(this.educationForm, this.dataModel); 
     enableForm(this.educationForm, false);
@@ -122,10 +117,7 @@ export class EducationComponent implements OnInit {
       }) 
   }
 
-//   updateEducation() {
-//     const dataUpdate =  this.educationData.map(data => data.id == this.dataModel.id? {...this.dataModel}  : data ); 
-//     this.getEducationData(dataUpdate); 
-//  }
+
  // TODO
  postEducation() {
 
