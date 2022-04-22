@@ -19,7 +19,7 @@ import { swalDelete, isConfirmed } from 'src/app/util/swal';
 export class EducationComponent implements OnInit {
   
   modalVisible : boolean = false; 
-  educationData : Education[] = []; 
+  educationData : Education; 
   @Input() educationDataTwo: any[] = []; 
   dataModel : Education = {certificate: '', description: '', year: '', color: ''}; 
   colorCardModel : String;  
@@ -39,11 +39,9 @@ export class EducationComponent implements OnInit {
   }) 
   
   ngOnInit(): void {
-    
-    console.log("se ejecuta console log de education para mostrar data del input", this.educationDataTwo); 
 
     animate('education', 3000, 'top', '-100px'); 
-    this.getEducationData(this._education.getEducationData());
+    this.getEducationData();
     
     //TO DO
     this.educationForm.get("certificate").valueChanges
@@ -69,17 +67,17 @@ export class EducationComponent implements OnInit {
   }
 
   submit() {
-    this.updateEducation();
+    //this.updateEducation();
   }
 
   openModal(id:Number) {
     this.modalVisible = true; 
     
-    let data = this.educationData.filter(data => {
-      if(data.id == id) return data ; 
-    }); 
+    // let data = this.educationData.filter(data => {
+    //   if(data.id == id) return data ; 
+    // }); 
     
-    this.dataModel = {...data[0]};
+    //this.dataModel = {...data[0]};
 
     setValueForm(this.educationForm, this.dataModel); 
     enableForm(this.educationForm, false);
@@ -117,14 +115,17 @@ export class EducationComponent implements OnInit {
   }
   
   // Method rest
-  getEducationData (data:Education[]) {
-    this.educationData = data; 
+  getEducationData() {
+    this._education.getEducationData()
+      .subscribe((education:Education) =>{
+        this.educationData = education;
+      }) 
   }
 
-  updateEducation() {
-    const dataUpdate =  this.educationData.map(data => data.id == this.dataModel.id? {...this.dataModel}  : data ); 
-    this.getEducationData(dataUpdate); 
- }
+//   updateEducation() {
+//     const dataUpdate =  this.educationData.map(data => data.id == this.dataModel.id? {...this.dataModel}  : data ); 
+//     this.getEducationData(dataUpdate); 
+//  }
  // TODO
  postEducation() {
 

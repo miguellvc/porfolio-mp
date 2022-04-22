@@ -20,9 +20,8 @@ export class BannerComponent implements OnInit {
 
   public modalVisible:boolean = false; 
   public formSubmitted = false;
-  public banner; 
   
-  @Input() bannerTwo: any;
+  @Input() banner: any;
 
   public loading = false; 
   
@@ -43,9 +42,9 @@ export class BannerComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getBanner(this._banner.getBanner().getBanner); 
+    //this.getBanner(this._banner.getBanner().getBanner); 
     setValueForm(this.bannerForm, this.banner); 
-    console.log("contenido del banner two", this.bannerTwo); 
+    console.log("contenido del banner two", this.banner); 
     animate('banner', 3000, 'top', '-100px'); 
   }
   
@@ -79,8 +78,7 @@ export class BannerComponent implements OnInit {
   }
 
   getBanner(banner) {
-    this.banner = banner; 
-    
+   // this.banner = banner; 
   }
   
   invalidFiel( value: string ): boolean {

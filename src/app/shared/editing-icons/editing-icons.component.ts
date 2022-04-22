@@ -11,16 +11,12 @@ export class EditingIconsComponent implements OnInit{
 
   iconVisible:boolean = false; 
   
-  constructor(private _auth: AuthService) { 
-    this.iconVisible = this._auth.validateSession(); 
-  }
+  constructor(private _auth: AuthService) {}
 
   ngOnInit(): void {
     
     console.log("se ejecuta validar sesión de editing-icons.component", this.iconVisible);
-    this._auth.$isLogin.subscribe(isLogin => {
-      this.iconVisible = isLogin;
-    }) 
+    this._auth.$isLogin.subscribe(isLogin => this.iconVisible = isLogin);
   }
  
 

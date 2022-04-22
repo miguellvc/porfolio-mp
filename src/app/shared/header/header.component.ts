@@ -30,13 +30,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this._auth.$modal.subscribe(resp => this.openModalLogin = resp);
-    this.isSession(this._auth.validateSession());
     this._auth.$isLogin.subscribe(resp => this.isSession(resp));
-
+    this._auth.validateSession().subscribe();
   }
-
-  isSession(resp){
-      if(resp){
+  isSession(value:boolean){
+      if(value){
         this.login.msg = "Salir"; 
         this.login.color = "color-success";
         this.login.isLogin = true; 

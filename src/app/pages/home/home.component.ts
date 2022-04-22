@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   arrayOfData: any[] = [];
   constructor(private _auth: AuthService, 
               private _banner: BannerService) { 
-                this.arrayOfData.push(this._banner.getBanner().getBannerApi, this._auth.getUsers());   
+                this.arrayOfData.push(this._banner.getBanner().getBannerApi);   
               }
 
   ngOnInit(): void {
@@ -27,16 +27,7 @@ export class HomeComponent implements OnInit {
          console.log("array del content", this.arrayConten); 
          this.cargandoData = false;
        }); 
-    //this.getUsers(); 
        
   }
   
-
-  getUsers() {
-    this._auth.getUsers()
-      .subscribe(data =>{
-        console.log(data, "datos desde el componente home user", data); 
-        this.cargandoData = false; 
-      })
-  }
 }

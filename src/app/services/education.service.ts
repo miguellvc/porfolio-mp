@@ -1,10 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
+import { Education } from '../interfaces/education.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EducationService {
 
+ urlApiPorfolio:string = environment.urlApiPorfolio; 
 
  private educationData: any[] = [
    {
@@ -37,17 +41,15 @@ export class EducationService {
    }
  ];
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
 
   getEducationData() {
-      return this.educationData; 
+     return this.http.get(`${this.urlApiPorfolio}/education`)
   }
 
-  // const updatedOSArray = osArray.map(p =>
-  //   p.id === 1
-  //     ? { ...p, name: 'Ubuntu' }
-  //     : p
-  // );
+  newEducation(education:Education) {
+    return this.http.post(`${this.urlApiPorfolio}/education`, education)
+  }
 
 
   upDateEducationData(id, key, value) {

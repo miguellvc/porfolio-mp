@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment.prod';
 import { HttpClient } from "@angular/common/http";
 import { tap, map, catchError } from 'rxjs/operators';
 import { User } from '../interfaces/user.interface'; 
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -41,7 +42,7 @@ export class AuthService {
     location.reload();
   }
 
-  getUsers() {
+  getUsers():Observable<any> {
     return this.http.get(`${this.urlApiPorfolio}/users`); 
   }
 
@@ -53,11 +54,17 @@ export class AuthService {
    }
   }
 
-  validateSession(){
-    const x_token = localStorage.getItem('x_token');
-    console.log("se ejecuta el método validar sesión", x_token);
-    return x_token != null; 
+  validateSession() {   
+    //let resp:boolean = false; 
+    const token = localStorage.getItem('x_token');
+   return this.http.get(`${this.urlApiPorfolio}/token`,{
+      headers: {
+         'x-token' : token
+      }
+    }).pipe(tap((respApi:boolean) => {
+      this.$isLogin.emit(respApi) 
+      console.log("se ejecuta validateSession", respApi);  
+    }));
   }
-
 
 }
