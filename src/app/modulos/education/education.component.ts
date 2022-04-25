@@ -10,6 +10,7 @@ import { EducationService } from 'src/app/services/education.service';
 import { animate } from 'src/app/util/animate';
 import { setValueForm, enableForm } from 'src/app/util/util';
 import { swalDelete, isConfirmed } from 'src/app/util/swal';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-education',
@@ -20,7 +21,6 @@ export class EducationComponent implements OnInit {
   
   modalVisible : boolean = false; 
   educationData : Education; 
-  @Input() educationDataTwo: any[] = []; 
   dataModel : Education = {certificate: '', description: '', year: '', color: ''}; 
   colorCardModel : String;  
   
@@ -29,6 +29,7 @@ export class EducationComponent implements OnInit {
   centinela = true; 
   
   constructor(private _education: EducationService,
+              private _auth : AuthService,
               private fb : FormBuilder) { }
   
   public educationForm = this.fb.group({
@@ -40,6 +41,7 @@ export class EducationComponent implements OnInit {
   
   ngOnInit(): void {
 
+   
     animate('education', 3000, 'top', '-100px'); 
     this.getEducationData();
     
@@ -72,7 +74,8 @@ export class EducationComponent implements OnInit {
 
   openModal(id:Number) {
     this.modalVisible = true; 
-
+    
+    this.getEducation(id); 
 
     setValueForm(this.educationForm, this.dataModel); 
     enableForm(this.educationForm, false);
@@ -110,6 +113,15 @@ export class EducationComponent implements OnInit {
   }
   
   // Method rest
+
+  getEducation(id:Number){
+    this._education.getEducation(id, this._auth.getToken())
+      .subscribe(education =>{
+        console.log("se muestra el objeto education", education); 
+      })
+  }
+
+
   getEducationData() {
     this._education.getEducationData()
       .subscribe((education:Education) =>{

@@ -29,9 +29,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
+    this.isSession(this._auth.isSession); 
     this._auth.$modal.subscribe(resp => this.openModalLogin = resp);
     this._auth.$isLogin.subscribe(resp => this.isSession(resp));
-    this._auth.validateSession().subscribe();
   }
   isSession(value:boolean){
       if(value){

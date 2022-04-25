@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
 import { Education } from '../interfaces/education.interface';
+
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +48,14 @@ export class EducationService {
 
   getEducationData() {
      return this.http.get(`${this.urlApiPorfolio}/education`)
+  }
+  
+  getEducation(id:Number, token):Observable<Education> {
+    return this.http.get(`${this.urlApiPorfolio}/education/${id}`, {
+      headers: {
+         'x-token' : token
+      }
+    }).pipe(map(resp =>resp as Education))
   }
 
   newEducation(education:Education) {

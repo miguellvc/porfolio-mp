@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   arrayOfData: any[] = [];
   constructor(private _auth: AuthService, 
               private _banner: BannerService) { 
-                this.arrayOfData.push(this._banner.getBanner().getBannerApi);   
+                this.arrayOfData.push(this._banner.getBanner().getBannerApi, this._auth.validateSession());   
               }
 
   ngOnInit(): void {

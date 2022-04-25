@@ -13,6 +13,7 @@ export class AuthService {
 
   $modal = new EventEmitter<boolean>(); 
   $isLogin = new EventEmitter<boolean>(); 
+  isSession = false; 
   urlApiPorfolio:string  = environment.urlApiPorfolio; 
   constructor(private http: HttpClient) {}
 
@@ -39,7 +40,7 @@ export class AuthService {
 
   logout() { 
     localStorage.removeItem('x_token'); 
-    location.reload();
+    this.$isLogin.emit(false);
   }
 
   getUsers():Observable<any> {
@@ -53,30 +54,21 @@ export class AuthService {
       localStorage.setItem('x_token', x_token);
    }
   }
-
+ 
   validateSession() {   
-    //let resp:boolean = false; 
-    const token = localStorage.getItem('x_token');
-   return this.http.get(`${this.urlApiPorfolio}/token`,{
-      headers: {
-         'x-token' : token
-      }
-    }).pipe(tap((respApi:boolean) => {
-      this.$isLogin.emit(respApi) 
-      console.log("se ejecuta validateSession", respApi);  
-    }));
+    return this.http.get(`${this.urlApiPorfolio}/token`,{
+        headers: {
+           'x-token' : this.getToken()
+        }
+      }).pipe(tap((respApi:boolean) => {
+        this.isSession = respApi; 
+      }));
   }
   
   getToken(){
-    const token = localStorage.getItem('x_token')
-  
-    return this.http.get(`${this.urlApiPorfolio}/token`,{
-      headers: {
-         'x-token' : token
-      }
-    }).pipe(map((respApi:boolean) => {
-       return respApi ? token : null; 
-    }))
-
+    const token = localStorage.getItem('x_token') || ""
+    return token; 
   }
+
+
 }
