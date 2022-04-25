@@ -20,7 +20,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class EducationComponent implements OnInit {
   
   modalVisible : boolean = false; 
-  educationData : Education; 
+  educationData : Education[];
+  education : Education; 
   dataModel : Education = {certificate: '', description: '', year: '', color: ''}; 
   colorCardModel : String;  
   
@@ -76,63 +77,58 @@ export class EducationComponent implements OnInit {
     this.modalVisible = true; 
     
     this.getEducation(id); 
-
-    setValueForm(this.educationForm, this.dataModel); 
-    enableForm(this.educationForm, false);
   }
 
   closeModal() { 
     this.modalVisible = false;
+    this.setEducationForm();
   }
   
   // TODO
   newEducation(value:boolean) {
-    
-    this.dataModel2 = {...this.dataModel}; 
-    const content:Education = {certificate: '', description: '', year: '', color: ''};
-    setValueForm(this.educationForm, content);
-    // TODO
     this.centinela = !value;
-    enableForm(this.educationForm, value);
+    this.setEducationForm(null,value);
   }
 
   editEducation(value:boolean) {
-      // TODO
       this.centinela = !value;
       enableForm(this.educationForm, value);
   }
 
   cancelAction(value:boolean) {
-      // TODO
       this.centinela = !value; 
-      
-      console.log("se ejecuta el método cancelar", this.dataModel2);
-      setValueForm(this.educationForm, this.dataModel2)
-
-      enableForm(this.educationForm, value);
+      this.setEducationForm(this.education, value); 
   }
   
+  setEducationForm(education:Education = null, valueForm = false){
+    let dataForm:Education = {certificate: '', description: '', year: '', color: ''};
+    if(education != null){ dataForm = education}
+    setValueForm(this.educationForm, dataForm); 
+    enableForm(this.educationForm, valueForm);
+  }
+
   // Method rest
 
   getEducation(id:Number){
     this._education.getEducation(id, this._auth.getToken())
       .subscribe(education =>{
-        console.log("se muestra el objeto education", education); 
+        this.setEducationForm(education);
+        this.education = {...education};
+        console.log("petición al server", education);
       })
   }
 
 
   getEducationData() {
     this._education.getEducationData()
-      .subscribe((education:Education) =>{
+      .subscribe((education:Education[]) =>{
         this.educationData = education;
       }) 
   }
 
-
  // TODO
  postEducation() {
-
+  
  }
  // TODO
  deleteEducation(content, id) {

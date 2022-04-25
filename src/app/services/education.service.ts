@@ -46,8 +46,9 @@ export class EducationService {
 
   constructor(private http : HttpClient) { }
 
-  getEducationData() {
+  getEducationData():Observable<Education[]> {
      return this.http.get(`${this.urlApiPorfolio}/education`)
+             .pipe(map(resp => resp as Education[]))
   }
   
   getEducation(id:Number, token):Observable<Education> {
