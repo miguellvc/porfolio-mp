@@ -110,7 +110,10 @@ export class EducationComponent implements OnInit {
  postEducation() {
   this._education.newEducation(this.educationForm.value, this._auth.getToken())
   .subscribe((education:Education)=>{
-    if(education!= null){this.getEducationData()}
+    if(education!= null){
+      this.getEducationData()
+      
+    }
   });
  }
  // TODO
@@ -132,7 +135,7 @@ export class EducationComponent implements OnInit {
             // this.educationData = updateData;
             this.educationData = []; 
             this.getEducationData();  
-            swalIsConfirmed();
+            swalIsConfirmed("El archivo fue eliminado correctamente");
           }
         })
       } 
