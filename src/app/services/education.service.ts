@@ -12,35 +12,15 @@ import { Education } from '../interfaces/education.interface';
 export class EducationService {
 
  urlApiPorfolio:string = environment.urlApiPorfolio; 
-
- private educationData: any[] = [
+  
+ private date = new Date(); 
+ private educationData: Education[] = [
    {
-    id: '123', 
-    certificate: 'Argentina Programa primera etapa', 
-    description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto sequi recusandae laborum ipsam dignissimos nostrum vitae provident officia.',
-    year: 2021,
+    id: 3726356235492834093, 
+    certificate: 'Añadir una nueva card', 
+    description: 'Para añadir una nueva card debe hacer click en el botón',
+    year: this.date.getFullYear().toString(),
     color: '#ff4f4f'
-   },
-   {
-    id: '124', 
-    certificate: 'MERN Stack', 
-    description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto sequi recusandae laborum ipsam dignissimos nostrum vitae provident officia.',
-    year: 2021,
-    color: '#ffb84f'
-   },
-   {
-    id: '126', 
-    certificate: 'Intruducción a la programación', 
-    description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto sequi recusandae laborum ipsam dignissimos nostrum vitae provident officia.',
-    year: 2019,
-    color: '#0000ff'
-   },
-   {
-    id: '127', 
-    certificate: 'Técnico Universitario en Informática', 
-    description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto sequi recusandae laborum ipsam dignissimos nostrum vitae provident officia.',
-    year: 2011,
-    color: '#3dca5c'
    }
  ];
 
@@ -48,7 +28,7 @@ export class EducationService {
 
   getEducationData():Observable<Education[]> {
      return this.http.get(`${this.urlApiPorfolio}/education`)
-             .pipe(map(resp => resp as Education[]))
+             .pipe(map( (resp:Education[]) => resp.length !== 0 ? resp : this.educationData))
   }
   
   getEducation(id:Number, token):Observable<Education> {
@@ -56,11 +36,15 @@ export class EducationService {
       headers: {
          'x-token' : token
       }
-    }).pipe(map(resp =>resp as Education))
+    }).pipe(map((resp:Education) => resp != null ? resp : this.educationData[0] ))
   }
 
-  newEducation(education:Education) {
-    return this.http.post(`${this.urlApiPorfolio}/education`, education)
+  newEducation(education:Education, token):Observable<Education> {
+    return this.http.post(`${this.urlApiPorfolio}/education`, education, {
+      headers: {
+         'x-token' : token
+      }
+    }).pipe(map(resp =>resp as Education))
   }
 
 
@@ -72,13 +56,12 @@ export class EducationService {
     return updateData; 
   }
 
-  deleteEducationData(id) {
-
-    const deleteData = this.educationData.filter(data => {
-         if(data.id != id) return data;  
-    })
-    return deleteData; 
+  deleteEducationData(id:Number, token) {
     
-    // this.educationData.splice(idex, 1); 
+    return this.http.delete(`${this.urlApiPorfolio}/education/${id}`, {
+      headers: {
+         'x-token' : token
+      }
+    })
   }
 }

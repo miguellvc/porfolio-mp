@@ -25,3 +25,14 @@ export const enableForm = (formGroup:FormGroup, enable:boolean ) => {
 
   }
 
+
+export const getValueForm = <T>(object: T,  formGroup:FormGroup) => {
+  for(const property in object){
+    formGroup.get(property).valueChanges
+      .subscribe(data => {
+        object[property] = data; 
+      });
+  }
+}
+
+

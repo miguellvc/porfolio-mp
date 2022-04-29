@@ -1,16 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 
 import { Education } from 'src/app/interfaces/education.interface';
 
 import { EducationService } from 'src/app/services/education.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 import { animate } from 'src/app/util/animate';
-import { setValueForm, enableForm } from 'src/app/util/util';
-import { swalDelete, isConfirmed } from 'src/app/util/swal';
-import { AuthService } from 'src/app/services/auth.service';
+import { setValueForm, getValueForm, enableForm } from 'src/app/util/util';
+import { swalDelete, isConfirmed, error } from 'src/app/util/swal';
 
 @Component({
   selector: 'app-education',
@@ -24,9 +24,8 @@ export class EducationComponent implements OnInit {
   education : Education; 
   dataModel : Education = {certificate: '', description: '', year: '', color: ''}; 
   colorCardModel : String;  
-  
+  modifyEducation = true; 
   // TODO
-  dataModel2 : Education; 
   centinela = true; 
   
   constructor(private _education: EducationService,
@@ -41,58 +40,39 @@ export class EducationComponent implements OnInit {
   }) 
   
   ngOnInit(): void {
-
-   
     animate('education', 3000, 'top', '-100px'); 
     this.getEducationData();
-    
-    //TO DO
-    this.educationForm.get("certificate").valueChanges
-    .subscribe(data => {
-      this.dataModel.certificate = data; 
-    });
-
-    this.educationForm.get("description").valueChanges
-    .subscribe(data => {
-      this.dataModel.description = data; 
-    });
-
-    this.educationForm.get("color").valueChanges
-    .subscribe(data => {
-      this.dataModel.color = data; 
-    });
-
-    this.educationForm.get("year").valueChanges
-    .subscribe(data => {
-      this.dataModel.year = data; 
-    });
+    getValueForm(this.dataModel, this.educationForm); 
     
   }
-
   submit() {
-    //this.updateEducation();
+    if(this.modifyEducation){   
+      return 
+    }
+    this.postEducation(); 
   }
 
   openModal(id:Number) {
     this.modalVisible = true; 
-    
     this.getEducation(id); 
   }
 
   closeModal() { 
     this.modalVisible = false;
+    this.centinela = true; 
     this.setEducationForm();
   }
   
-  // TODO
   newEducation(value:boolean) {
     this.centinela = !value;
+    this.modifyEducation = false; 
     this.setEducationForm(null,value);
   }
 
   editEducation(value:boolean) {
       this.centinela = !value;
-      enableForm(this.educationForm, value);
+      this.modifyEducation = true; 
+      this.setEducationForm(this.education, value); 
   }
 
   cancelAction(value:boolean) {
@@ -113,8 +93,8 @@ export class EducationComponent implements OnInit {
     this._education.getEducation(id, this._auth.getToken())
       .subscribe(education =>{
         this.setEducationForm(education);
+        this.dataModel.id = education.id; 
         this.education = {...education};
-        console.log("petición al server", education);
       })
   }
 
@@ -128,18 +108,35 @@ export class EducationComponent implements OnInit {
 
  // TODO
  postEducation() {
-  
+  this._education.newEducation(this.educationForm.value, this._auth.getToken())
+  .subscribe((education:Education)=>{
+    if(education!= null){this.getEducationData()}
+  });
  }
  // TODO
- deleteEducation(content, id) {
+ deleteEducation(content:String, idEducation:Number) {
+  
+  if(idEducation === 3726356235492834093) {
+    error('Error, esta card no puede eliminarse'); 
+    return; 
+  }
+
   swalDelete({content})
     .then((result) => {
-      if (result.isConfirmed) {
-        console.log("llamar el método del servicio para eliminar el elemento", id);    
-        isConfirmed();
+      if (result.isConfirmed) {    
+        this._education.deleteEducationData(idEducation, this._auth.getToken())
+        .subscribe((resp)=>{
+          console.log(resp)
+          if(resp[0] == "ok"){
+            // let updateData = this.educationData.filter(data => data.id !== idEducation);
+            // this.educationData = updateData;
+            this.educationData = []; 
+            this.getEducationData();  
+            isConfirmed();
+          }
+        })
       } 
     })
  }
-
 
 }
