@@ -8,7 +8,7 @@ import { BannerService } from 'src/app/services/banner.service';
 import Swal from 'sweetalert2';
 
 // import functions
-import { setValueForm, enableForm } from 'src/app/util/util';
+import { setValueForm, enableForm } from 'src/app/util/form';
 import { animate } from 'src/app/util/animate';
 
 @Component({

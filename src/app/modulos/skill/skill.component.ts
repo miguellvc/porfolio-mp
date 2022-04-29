@@ -6,7 +6,7 @@ import { Skill } from 'src/app/interfaces/skill.interface';
 import { SkillService } from 'src/app/services/skill.service';
 
 import { animate } from 'src/app/util/animate';
-import { enableForm, setValueForm } from 'src/app/util/util';
+import { enableForm, setValueForm } from 'src/app/util/form';
 @Component({
   selector: 'app-skill',
   templateUrl: './skill.component.html',

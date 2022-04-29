@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 
 
 import { animate } from 'src/app/util/animate';
-import { setValueForm, getValueForm, enableForm } from 'src/app/util/util';
+import { setValueForm, getValueForm, enableForm } from 'src/app/util/form';
 import { swalDelete, swalIsConfirmed, swalError } from 'src/app/util/swal';
 
 @Component({
@@ -86,7 +86,13 @@ export class EducationComponent implements OnInit {
     setValueForm(this.educationForm, dataForm); 
     enableForm(this.educationForm, valueForm);
   }
-
+  
+  actionConfirmed(msg:String) {
+    this.educationData = []; 
+    this.getEducationData();
+    this.closeModal();
+    swalIsConfirmed(msg);
+   }
   // Method rest
 
   getEducation(id:Number){
@@ -106,17 +112,16 @@ export class EducationComponent implements OnInit {
       }) 
   }
 
- // TODO
+
  postEducation() {
   this._education.newEducation(this.educationForm.value, this._auth.getToken())
   .subscribe((education:Education)=>{
     if(education!= null){
-      this.getEducationData()
-      
+      this.actionConfirmed("El archivo se añadío correctamente");
     }
   });
  }
- // TODO
+
  deleteEducation(content:String, idEducation:Number) {
   
   if(idEducation === 3726356235492834093) {
@@ -131,11 +136,7 @@ export class EducationComponent implements OnInit {
         .subscribe((resp)=>{
           console.log(resp)
           if(resp[0] == "ok"){
-            // let updateData = this.educationData.filter(data => data.id !== idEducation);
-            // this.educationData = updateData;
-            this.educationData = []; 
-            this.getEducationData();  
-            swalIsConfirmed("El archivo fue eliminado correctamente");
+             this.actionConfirmed("El archivo fue eliminado correctamente");
           }
         })
       } 
