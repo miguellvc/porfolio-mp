@@ -13,12 +13,12 @@ export const swalDelete = (fireObject) => {
 } 
 
 
-export const isConfirmed = () => {
+export const swalIsConfirmed = () => {
 
     // la tercera opción el icon
     Swal.fire('Eliminado!', '', 'success')
 }
 
-export const error = (msg:string) => {
+export const swalError = (msg:string) => {
     Swal.fire(msg, '', 'error')
 }

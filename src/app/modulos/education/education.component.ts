@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 
 import { animate } from 'src/app/util/animate';
 import { setValueForm, getValueForm, enableForm } from 'src/app/util/util';
-import { swalDelete, isConfirmed, error } from 'src/app/util/swal';
+import { swalDelete, swalIsConfirmed, swalError } from 'src/app/util/swal';
 
 @Component({
   selector: 'app-education',
@@ -117,7 +117,7 @@ export class EducationComponent implements OnInit {
  deleteEducation(content:String, idEducation:Number) {
   
   if(idEducation === 3726356235492834093) {
-    error('Error, esta card no puede eliminarse'); 
+    swalError('Error, esta card no puede eliminarse'); 
     return; 
   }
 
@@ -132,7 +132,7 @@ export class EducationComponent implements OnInit {
             // this.educationData = updateData;
             this.educationData = []; 
             this.getEducationData();  
-            isConfirmed();
+            swalIsConfirmed();
           }
         })
       } 
