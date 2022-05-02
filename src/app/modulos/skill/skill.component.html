@@ -7,8 +7,8 @@
             <div class="row">
                 <div class="left">
                     <div class="skill__progress">
-                        <div class="progress" [ngStyle]="{'border' : setColorBackgroud(dataModel.colorBackground), 'color' : dataModel.color}">
-                            <div class="circle circle--1" [ngStyle]="{'border-top' : setColorBorder(dataModel.colorBorder), 'border-left' : setColorBorder(dataModel.colorBorder), 'transform' : setRotate(dataModel.rotate) }"></div>
+                        <div class="progress" [ngStyle]="{'border' : setColorBackgroud(dataModel.background), 'color' : dataModel.color}">
+                            <div class="circle circle--1" [ngStyle]="{'border-top' : setColorBorder(dataModel.border), 'border-left' : setColorBorder(dataModel.border), 'transform' : setRotate(dataModel.rotate) }"></div>
                             <h2>{{dataModel.porcentage}}%</h2>
                             <h3>{{dataModel.language}}</h3>
                         </div>
@@ -100,68 +100,12 @@
             <div class="position__editing--icon">
                 <app-editing-icons (click)="openModal(skill.id)"></app-editing-icons>
             </div>
-            <div class="progress" [ngStyle]="{'border' : setColorBackgroud(skill.colorBackground), 'color' : skill.color}">
-                <div class="circle circle--1" [ngStyle]="{'border-top' : setColorBorder(skill.colorBorder), 'border-left' : setColorBorder(skill.colorBorder), 'transform' : setRotate(skill.rotate)}"></div>
-                <h2>{{skill.porcentage}}%</h2>
-                <h3>{{skill.language}}</h3>
-            </div>
-               
+                <div class="progress" [ngStyle]="{'border' : setColorBackgroud(skill.background), 'color' : skill.color}">
+                    <div class="circle circle--1" [ngStyle]="{'border-top' : setColorBorder(skill.border), 'border-left' : setColorBorder(skill.border), 'transform' : setRotate(skill.rotate) }"></div>
+                    <h2>{{skill.porcentage}}%</h2>
+                    <h3>{{skill.language}}</h3>
+                </div>
         </div>
-  
-       
-
-        <div class="skill__progress">
-            <div class="progress pro-1">
-                <div class="circle circle--1"></div>
-                <h2>60%</h2>
-                <h3>Html:5</h3>
-            </div>
-        </div>
-
-        <div class="skill__progress">
-            <div class="progress pro-2">
-                <div class="circle circle2"></div>
-                <h2>60%</h2>
-                <h3>CSS</h3>
-            </div>
-        </div>
-
-        <div class="skill__progress">
-            <div class="progress pro-3">
-                <div class="circle circle3"></div>
-                <h2>60%</h2>
-                <h3>JavaScript</h3>
-            </div>
-        </div>
-
-
-        <!-- segundo grupo -->
-
-        <div class="skill__progress">
-            <div class="progress pro-1">
-                <div class="circle circle--1"></div>
-                <h2>60%</h2>
-                <h3>Html:5</h3>
-            </div>
-        </div>
-
-        <div class="skill__progress">
-            <div class="progress pro-2">
-                <div class="circle circle2"></div>
-                <h2>60%</h2>
-                <h3>CSS</h3>
-            </div>
-        </div>
-
-        <div class="skill__progress">
-            <div class="progress pro-3">
-                <div class="circle circle3"></div>
-                <h2>60%</h2>
-                <h3>JavaScript</h3>
-            </div>
-        </div>
-        
-
     </div>
 
 

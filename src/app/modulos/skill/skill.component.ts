@@ -7,6 +7,7 @@ import { SkillService } from 'src/app/services/skill.service';
 
 import { animate } from 'src/app/util/animate';
 import { enableForm, setValueForm } from 'src/app/util/form';
+
 @Component({
   selector: 'app-skill',
   templateUrl: './skill.component.html',
@@ -15,11 +16,11 @@ import { enableForm, setValueForm } from 'src/app/util/form';
 export class SkillComponent implements OnInit {
   
   modalVisible:boolean = false; 
-  public skills : Skill [] = []; 
+  public skills : Skill[]; 
   public dataModel : Skill = { language: '', 
                                porcentage: 0, 
-                               colorBackground: '', 
-                               colorBorder: '', 
+                               background: '', 
+                               border: '', 
                                color: '', 
                                rotate: '' };
   private dataModelTwo : Skill; 
@@ -36,35 +37,34 @@ export class SkillComponent implements OnInit {
 
   ngOnInit(): void {
     animate('skill', 3000, 'top', '-100px'); 
-    this.getSkills(this._skill.getSkill());
+    this.getSkills();
+   
+    //TO DO 
+
+     this.skillForm.get("language").valueChanges
+     .subscribe(data => {
+       this.dataModel.language = data; 
+     });
+  
+     this.skillForm.get("porcentage").valueChanges
+     .subscribe(data => {
+       this.dataModel.rotate = this.mapearData(data);
+       
+       this.dataModel.porcentage = data; 
+     });
+  
+     this.skillForm.get("colorBackground").valueChanges
+     .subscribe(data => {
+       this.dataModel.background = data;  
+     });
+  
+     this.skillForm.get("color").valueChanges
+     .subscribe(data => {
+       this.dataModel.border = data
+       this.dataModel.color = data; 
+     });
+
     
-    console.log('función mapear datos',  Number(this.mapearData(50))   );
-
-   //TO DO
-   this.skillForm.get("language").valueChanges
-   .subscribe(data => {
-     this.dataModel.language = data; 
-   });
-
-   this.skillForm.get("porcentage").valueChanges
-   .subscribe(data => {
-     this.dataModel.rotate = this.mapearData(data);
-     
-     this.dataModel.porcentage = data; 
-   });
-
-   this.skillForm.get("colorBackground").valueChanges
-   .subscribe(data => {
-     this.dataModel.colorBackground = data;  
-   });
-
-   this.skillForm.get("color").valueChanges
-   .subscribe(data => {
-     this.dataModel.colorBorder = data
-     this.dataModel.color = data; 
-   });
-
-
   }
 
   submit(){
@@ -92,7 +92,7 @@ export class SkillComponent implements OnInit {
   newSkill(value:boolean) {
     
     this.dataModelTwo = {...this.dataModel}; 
-    const content:Skill = {language: '', porcentage: 30, colorBackground: '', colorBorder: '', color: '', rotate: ''};
+    const content:Skill = {language: '', porcentage: 30, background: '', border: '', color: '', rotate: ''};
     setValueForm(this.skillForm, content);
     // TODO
     this.iconFloatVisible = !value;
@@ -114,19 +114,24 @@ export class SkillComponent implements OnInit {
 
     enableForm(this.skillForm, value);
   }
+
   // Method rest
-  getSkill(skill: Skill) {
+  getSkill() {
     // this.skill = skill; 
   }
   
-  getSkills(skills: Skill[]) {
-    this.skills = skills; 
+  getSkills() {
+    this._skill.getSkills()
+      .subscribe((skills:Skill[])=>{
+        this.skills = skills;
+        console.log("se ejecuta getSkills", this.skills); 
+      })
   }
   
   updateSkill() {
     const dataUpdate =  this.skills.map(data => data.id == this.dataModel.id? {...this.dataModel}  : data ); 
-    this.getSkills(dataUpdate);
   }
+
   deleteSkill(content, id){
 
   }

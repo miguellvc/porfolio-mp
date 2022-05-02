@@ -3,8 +3,8 @@ export interface Skill {
     id? : Number,
     language : String, 
     porcentage : Number,
-    colorBackground : String,
-    colorBorder : String,
+    background : String,
+    border : String,
     color: String,
     rotate: String
 }
