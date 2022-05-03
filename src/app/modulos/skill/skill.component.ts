@@ -8,6 +8,7 @@ import { SkillService } from 'src/app/services/skill.service';
 
 import { animate } from 'src/app/util/animate';
 import { enableForm, setValueForm } from 'src/app/util/form';
+import { swalDelete, swalIsConfirmed, swalError } from 'src/app/util/swal';
 
 @Component({
   selector: 'app-skill',
@@ -16,17 +17,19 @@ import { enableForm, setValueForm } from 'src/app/util/form';
 })
 export class SkillComponent implements OnInit {
   
-  modalVisible:boolean = false; 
-  public skills : Skill[];
-  skill:Skill;  
+  public modalVisible:boolean = false; 
+  public skills : Skill[];  
   public dataModel : Skill = { language: '', 
                                porcentage: 0, 
                                background: '', 
                                border: '', 
                                color: '', 
                                rotate: '' };
-  private dataModelTwo : Skill; 
   public iconFloatVisible = true; 
+  
+  private skill:Skill;
+  private modifySkill = true;
+
   constructor(private _skill : SkillService,
               private _auth: AuthService,
               private fb : FormBuilder) { }
@@ -34,7 +37,7 @@ export class SkillComponent implements OnInit {
   public skillForm = this.fb.group({
     language: ['', [ Validators.required]],
     porcentage: ['', [ Validators.required ]],
-    colorBackground: ['', [ Validators.required ]],
+    background: ['', [ Validators.required ]],
     color: ['', [ Validators.required ]],
   })
 
@@ -56,7 +59,7 @@ export class SkillComponent implements OnInit {
        this.dataModel.porcentage = data; 
      });
   
-     this.skillForm.get("colorBackground").valueChanges
+     this.skillForm.get("background").valueChanges
      .subscribe(data => {
        this.dataModel.background = data;  
      });
@@ -71,22 +74,19 @@ export class SkillComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.dataModel);
-    this.updateSkill(); 
+    if(this.modifySkill) {
+      console.log("llamar al método para modificar"); 
+      return; 
+    }
+
+    this.postSkill(); 
   }
   
   openModal(id:Number) {
     this.modalVisible = true; 
-  
+    console.log("data model", this.dataModel); 
     this.getSkill(id);
-    // let data = this.skills.filter(data => {
-    //   if(data.id == id) return data ; 
-    // }); 
     
-    // this.dataModel = {...data[0]};
-
-    // setValueForm(this.skillForm, this.dataModel); 
-    // enableForm(this.skillForm, false);
   }
 
   closeModal() { 
@@ -94,13 +94,9 @@ export class SkillComponent implements OnInit {
   }
 
   newSkill(value:boolean) {
-    
-    this.dataModelTwo = {...this.dataModel}; 
-   
-    //setValueForm(this.skillForm, content);
-    // TODO
     this.iconFloatVisible = !value;
-    enableForm(this.skillForm, value);
+    this.modifySkill = false; 
+    this.setEducationForm(null, value); 
   }
   
   editSkill(value:boolean) {
@@ -112,11 +108,7 @@ export class SkillComponent implements OnInit {
   cancelAction(value:boolean) {
     // TODO
     this.iconFloatVisible = !value; 
-    
-    // console.log("se ejecuta el método cancelar", this.dataModelTwo);
-    setValueForm(this.skillForm, this.dataModelTwo)
-
-    enableForm(this.skillForm, value);
+    this.setEducationForm(); 
   }
 
   setEducationForm(skill:Skill = null, valueForm = false) {
@@ -125,7 +117,13 @@ export class SkillComponent implements OnInit {
     setValueForm(this.skillForm, dataForm); 
     enableForm(this.skillForm, valueForm);
   }
-
+  
+  actionConfirmed(msg:String) {
+    this.skills = []; 
+    this.getSkills();
+    this.closeModal();
+    swalIsConfirmed(msg);
+   }
 
   // Method rest
   getSkill(id:Number) {
@@ -143,6 +141,23 @@ export class SkillComponent implements OnInit {
         this.skills = skills;
         console.log("se ejecuta getSkills", this.skills); 
       })
+  }
+
+  postSkill(){
+     const skill:Skill = { 
+       ...this.skillForm.value,
+       border: this.skillForm.value.color,
+       rotate : this.mapearData(this.skillForm.value.porcentage)
+     } 
+    console.log("Al hacer el post",skill);
+     
+     this._skill.newSkill(skill, this._auth.getToken())
+      .subscribe((skill:Skill)=>{
+        if(skill!= null){
+          this.actionConfirmed("El archivo se añadío correctamente");
+        }
+      });
+     
   }
   
   updateSkill() {

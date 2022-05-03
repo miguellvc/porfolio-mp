@@ -41,6 +41,13 @@ export class SkillService {
      .pipe(map( (resp:Skill[]) => resp.length !== 0 ? resp : this.skills))
   }
 
+  newSkill(skill:Skill, token):Observable<Skill> {
+    return this.http.post(`${this.urlApiPorfolio}/skill`, skill, {
+      headers: {
+         'x-token' : token
+      }
+    }).pipe(map((resp:Skill) => resp))
+  }
 
 
 }
