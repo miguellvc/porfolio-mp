@@ -87,7 +87,7 @@ export class EducationComponent implements OnInit {
     enableForm(this.educationForm, valueForm);
   }
   
-  actionConfirmed(msg:String) {
+   actionConfirmed(msg:String) {
     this.educationData = []; 
     this.getEducationData();
     this.closeModal();

@@ -28,11 +28,17 @@ export class SkillService {
 
   constructor(private http : HttpClient) { }
 
-  getSkills():Observable<Skill[]> {
-    
+  getSkill(id:Number, token):Observable<Skill>{
+    return this.http.get(`${this.urlApiPorfolio}/skill/${id}`, {
+      headers: {
+         'x-token' : token
+      }
+    }).pipe(map( (resp:Skill) => resp ))
+  }
+  //!= null ? resp : this.skills[0]
+  getSkills():Observable<Skill[]> {  
     return this.http.get(`${this.urlApiPorfolio}/skill`)
      .pipe(map( (resp:Skill[]) => resp.length !== 0 ? resp : this.skills))
-   
   }
 
 

@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 
 import { Skill } from 'src/app/interfaces/skill.interface';
+import { AuthService } from 'src/app/services/auth.service';
 import { SkillService } from 'src/app/services/skill.service';
 
 import { animate } from 'src/app/util/animate';
@@ -16,7 +17,8 @@ import { enableForm, setValueForm } from 'src/app/util/form';
 export class SkillComponent implements OnInit {
   
   modalVisible:boolean = false; 
-  public skills : Skill[]; 
+  public skills : Skill[];
+  skill:Skill;  
   public dataModel : Skill = { language: '', 
                                porcentage: 0, 
                                background: '', 
@@ -26,6 +28,7 @@ export class SkillComponent implements OnInit {
   private dataModelTwo : Skill; 
   public iconFloatVisible = true; 
   constructor(private _skill : SkillService,
+              private _auth: AuthService,
               private fb : FormBuilder) { }
 
   public skillForm = this.fb.group({
@@ -74,15 +77,16 @@ export class SkillComponent implements OnInit {
   
   openModal(id:Number) {
     this.modalVisible = true; 
-     
-    let data = this.skills.filter(data => {
-      if(data.id == id) return data ; 
-    }); 
+  
+    this.getSkill(id);
+    // let data = this.skills.filter(data => {
+    //   if(data.id == id) return data ; 
+    // }); 
     
-    this.dataModel = {...data[0]};
+    // this.dataModel = {...data[0]};
 
-    setValueForm(this.skillForm, this.dataModel); 
-    enableForm(this.skillForm, false);
+    // setValueForm(this.skillForm, this.dataModel); 
+    // enableForm(this.skillForm, false);
   }
 
   closeModal() { 
@@ -92,8 +96,8 @@ export class SkillComponent implements OnInit {
   newSkill(value:boolean) {
     
     this.dataModelTwo = {...this.dataModel}; 
-    const content:Skill = {language: '', porcentage: 30, background: '', border: '', color: '', rotate: ''};
-    setValueForm(this.skillForm, content);
+   
+    //setValueForm(this.skillForm, content);
     // TODO
     this.iconFloatVisible = !value;
     enableForm(this.skillForm, value);
@@ -115,9 +119,22 @@ export class SkillComponent implements OnInit {
     enableForm(this.skillForm, value);
   }
 
+  setEducationForm(skill:Skill = null, valueForm = false) {
+    let dataForm:Skill = {language: '', porcentage: 30, background: '', border: '', color: '', rotate: ''};
+    if(skill != null){ dataForm = skill}
+    setValueForm(this.skillForm, dataForm); 
+    enableForm(this.skillForm, valueForm);
+  }
+
+
   // Method rest
-  getSkill() {
-    // this.skill = skill; 
+  getSkill(id:Number) {
+    this._skill.getSkill(id, this._auth.getToken())
+    .subscribe(skill =>{
+      this.setEducationForm(skill);
+      this.dataModel.id = skill.id; 
+      this.skill = {...skill};
+    })
   }
   
   getSkills() {
