@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { animate } from 'src/app/util/animate';
+import { FormBuilder, Validators } from '@angular/forms';
+
+import { ProjectsService } from 'src/app/services/projects.service';
 
 import { Project } from 'src/app/interfaces/projects.interface';
 
-import { ProjectsService } from 'src/app/services/projects.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { animate } from 'src/app/util/animate';
+import { getValueForm, setValueForm } from 'src/app/util/form';
+import { AuthService } from 'src/app/services/auth.service';
+
+
 
 @Component({
   selector: 'app-projects',
@@ -14,20 +19,12 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class ProjectsComponent implements OnInit {
 
   modalVisible : boolean = false; 
-  projects : Project[] = []; 
-  dataModel : Project = {id: 1, title: '', urlImg: '', urlGit: ''}
+  projects : Project[]; 
+  dataModel : Project = {title: '', urlImg: '../../../assets/img/undraw_Proud_coder_re_exuy.png', urlGit: 'https://github.com/'}
   iconFloatVisible : boolean = true; 
 
-
-
-
-  
-
-
-
-
-
   constructor(private _project : ProjectsService,
+              private _auth: AuthService,
               private fb : FormBuilder ) { }
 
   public projectForm = this.fb.group({
@@ -38,7 +35,8 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     animate('headline', 3000, 'top', '-180px');
-    this.getProjects(this._project.getProjects()); 
+    getValueForm(this.dataModel, this.projectForm); 
+    this.getProjects();
   }
 
   submit() { 
@@ -47,16 +45,7 @@ export class ProjectsComponent implements OnInit {
   
   openModal(id:Number) {
     this.modalVisible = true; 
-
-    
-    // let data = this.educationData.filter(data => {
-    //   if(data.id == id) return data ; 
-    // }); 
-    
-    // this.dataModel = {...data[0]};
-
-    // setValueForm(this.educationForm, this.dataModel); 
-    // enableForm(this.educationForm, false);
+    setValueForm(this.projectForm, this.dataModel);
   }
 
   closeModal() {
@@ -76,9 +65,8 @@ export class ProjectsComponent implements OnInit {
 
   }
 
-  getProjects(projects: Project[]){
-    this.projects = projects; 
-  }
+  
+
   onNavigate(url: string){ 
     window.open(url, "_blank"); 
   }
@@ -88,5 +76,13 @@ export class ProjectsComponent implements OnInit {
     this.iconFloatVisible = value; 
   }
   // Method res
+
+  getProjects(){
+    this._project.getProjects()
+      .subscribe((projects:Project[])=>{
+        this.projects = projects;
+        console.log("se ejecuta getprojects", this.projects); 
+      })    
+  }
   
 }

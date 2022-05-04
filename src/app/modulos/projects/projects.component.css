@@ -95,8 +95,7 @@
 
 /* button edition */
 .position__editing--icon {
-    display: flex;
-    justify-content: flex-end;
+    position: absolute;
 }
 
 /* modal edition */

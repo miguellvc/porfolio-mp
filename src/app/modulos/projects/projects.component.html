@@ -1,7 +1,7 @@
 <div *ngIf="modalVisible" class="background_modal">
     <div class="container__edition project__edition">
         <span class="btn__close" (click)="closeModal()"><i class="fas fa-times"></i></span>
-        <h2 class="content__sub-title">Editando Proyectos</h2>
+        <h2 class="content__sub-title">Editando Proyecto</h2>
 
         <form [formGroup]="projectForm" (ngSubmit)="submit()">
             <div class="row">
@@ -9,13 +9,13 @@
                     <div class="card headline">
                 
                         <div class="card__image-container">
-                            <img src="../../../assets/img/undraw_Proud_coder_re_exuy.png" alt="">
+                            <img [src]="dataModel.urlImg" alt="">
                         </div>
-                        <h3>Sistema gestión escolar</h3>
+                        <h3>{{dataModel.title}}</h3>
                         
                         <div class="card__header">
                             <p>Demo -></p>
-                            <a href=""><i class="fab fa-github-square"></i></a>
+                            <a [href]="dataModel.urlGit"><i class="fab fa-github-square"></i></a>
                         </div>
                         <!-- <button class="btn btn__success">Ver</button> -->
                     </div> 
@@ -83,59 +83,21 @@
             
 
             <div *ngFor="let project of projects" class="card headline">
+    
+
                 <div class="card__image-container">
                     <img [src]="project.urlImg" [alt]="project.title">
+                    <div class="position__editing--icon">
+                        <app-editing-icons (click)="openModal(project.id)"></app-editing-icons>
+                    </div>
                 </div>
              
                 <h3>{{project.title}}</h3>
-                <!-- <div class="card__header">
-                    <p>Demo -></p>
-                    <a (click)="onNavigate( project.urlGit )"><i class="fab fa-github-square"></i></a>
-                </div>  -->
-
-                <div class="position__editing--icon">
-                    <app-editing-icons (click)="openModal(project.id)"></app-editing-icons>
-                </div>
-
-            </div>
-
-            <div class="card headline">
-                
-                <div class="card__image-container">
-                    <img src="../../../assets/img/undraw_Proud_coder_re_exuy.png" alt="">
-                </div>
-                <h3>Sistema gestión escolar</h3>
-                
                 <div class="card__header">
                     <p>Demo -></p>
-                    <a href=""><i class="fab fa-github-square"></i></a>
-                </div>
-                <!-- <button class="btn btn__success">Ver</button> -->
-            </div>
+                    <a (click)="onNavigate(project.urlGit )"><i class="fab fa-github-square"></i></a>
+                </div> 
 
-            <div class="card headline">
-                
-                <div class="card__image-container">
-                    <img src="../../../assets/img/personal_img.png" alt="">
-                </div>
-                <h3>Soporte ticket</h3>
-                <div class="card__header">
-                    <p>Demo -></p>
-                    <a href=""><i class="fab fa-github-square"></i></a>
-                </div>
-               
-            </div>
-
-            <div class="card headline">
-                
-                <div class="card__image-container">
-                    <img src="../../../assets/img/pen.jpg" alt="">
-                </div>
-                <h3>Sistema de notas</h3>
-                <div class="card__header">
-                    <p>Demo -></p>
-                    <a href=""><i class="fab fa-github-square"></i></a>
-                </div>
             </div>
     </article>
 </section>
