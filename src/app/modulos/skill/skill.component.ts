@@ -108,7 +108,7 @@ export class SkillComponent implements OnInit {
 
   cancelAction(value:boolean) {
     this.iconFloatVisible = !value; 
-    this.setEducationForm(); 
+    this.setEducationForm(this.skill); 
   }
 
   setEducationForm(skill:Skill = null, valueForm = false) {
@@ -123,6 +123,20 @@ export class SkillComponent implements OnInit {
     this.getSkills();
     this.closeModal();
     swalIsConfirmed(msg);
+   }
+
+   mapearData = (valor: number ) =>  (-135 + ( valor * 1.8 )).toString() ;
+  
+   setColorBackgroud(color: String) {
+     return `20px solid ${color}`; 
+   }
+ 
+   setColorBorder(color: String) {
+     return `20px solid ${color}`
+   } 
+ 
+   setRotate(value) {
+     return `rotate(${value}deg)`
    }
 
   // Method rest
@@ -181,24 +195,7 @@ export class SkillComponent implements OnInit {
         } 
       })
   }
-  // fuction generales
 
-  mapearData = (valor: number ) =>  (-135 + ( valor * 1.8 )).toString() ;
   
-  retorna(data){
-    return data; 
-  }
-
-  setColorBackgroud(color: String) {
-    return `20px solid ${color}`; 
-  }
-
-  setColorBorder(color: String) {
-    return `20px solid ${color}`
-  } 
-
-  setRotate(value) {
-    return `rotate(${value}deg)`
-  }
 
 }
