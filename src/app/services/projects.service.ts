@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment.prod';
@@ -23,6 +24,14 @@ export class ProjectsService {
   ]; 
 
   constructor(private http : HttpClient) { }
+
+  getProject(id:Number, token):Observable<Project>{
+    return this.http.get(`${this.urlApiPorfolio}/project/${id}`, {
+      headers: {
+         'x-token' : token
+      }
+    }).pipe(map( (resp:Project) => resp ))
+  }
 
   getProjects() {
     return this.http.get(`${this.urlApiPorfolio}/project`)

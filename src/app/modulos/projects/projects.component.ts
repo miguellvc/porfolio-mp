@@ -6,7 +6,7 @@ import { ProjectsService } from 'src/app/services/projects.service';
 import { Project } from 'src/app/interfaces/projects.interface';
 
 import { animate } from 'src/app/util/animate';
-import { getValueForm, setValueForm } from 'src/app/util/form';
+import { getValueForm, setValueForm, enableForm } from 'src/app/util/form';
 import { AuthService } from 'src/app/services/auth.service';
 
 
@@ -20,6 +20,7 @@ export class ProjectsComponent implements OnInit {
 
   modalVisible : boolean = false; 
   projects : Project[]; 
+  project : Project; 
   dataModel : Project = {title: '', urlImg: '../../../assets/img/undraw_Proud_coder_re_exuy.png', urlGit: 'https://github.com/'}
   iconFloatVisible : boolean = true; 
 
@@ -45,7 +46,7 @@ export class ProjectsComponent implements OnInit {
   
   openModal(id:Number) {
     this.modalVisible = true; 
-    setValueForm(this.projectForm, this.dataModel);
+    this.getProject(id);
   }
 
   closeModal() {
@@ -65,8 +66,6 @@ export class ProjectsComponent implements OnInit {
 
   }
 
-  
-
   onNavigate(url: string){ 
     window.open(url, "_blank"); 
   }
@@ -75,8 +74,24 @@ export class ProjectsComponent implements OnInit {
     console.log("se ejecuta cancelar");
     this.iconFloatVisible = value; 
   }
-  // Method res
 
+  setProjectForm(project:Project = null, valueForm = false) {
+    let dataForm:Project = {title: '', urlImg: '', urlGit: ''}
+    if(project != null){ dataForm = project}
+    setValueForm(this.projectForm, dataForm); 
+    enableForm(this.projectForm, valueForm);
+  }
+  // Method res
+  
+  getProject(id:Number) {
+    this._project.getProject(id, this._auth.getToken())
+    .subscribe(project =>{
+      this.setProjectForm(project);
+      this.dataModel.id = project.id; 
+      this.project = {...project};
+    })
+  }
+  
   getProjects(){
     this._project.getProjects()
       .subscribe((projects:Project[])=>{
