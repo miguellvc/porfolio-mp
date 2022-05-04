@@ -16,8 +16,8 @@ export class SkillService {
 
   private skills : Skill[] = [
     {
-      id : 3726356235492834093,
-      language: 'HTLM', 
+      id : 372343873403247,
+      language: 'Click en el btn', 
       porcentage: 50, 
       background: '#ff00d820',
       border: '#d81b60',
