@@ -49,5 +49,11 @@ export class SkillService {
     }).pipe(map((resp:Skill) => resp))
   }
 
-
+  deleteSkill(id:Number, token) {    
+    return this.http.delete(`${this.urlApiPorfolio}/skill/${id}`, {
+      headers: {
+         'x-token' : token
+      }
+    })
+  }
 }

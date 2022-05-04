@@ -25,7 +25,7 @@ export class SkillComponent implements OnInit {
                                border: '', 
                                color: '', 
                                rotate: '' };
-  public iconFloatVisible = true; 
+  public iconFloatVisible:boolean; 
   
   private skill:Skill;
   private modifySkill = true;
@@ -83,14 +83,15 @@ export class SkillComponent implements OnInit {
   }
   
   openModal(id:Number) {
-    this.modalVisible = true; 
+    this.modalVisible = true;
+    this.iconFloatVisible = true; 
     console.log("data model", this.dataModel); 
     this.getSkill(id);
-    
   }
 
   closeModal() { 
     this.modalVisible = false;
+    this.setEducationForm(); 
   }
 
   newSkill(value:boolean) {
@@ -106,7 +107,6 @@ export class SkillComponent implements OnInit {
   }
 
   cancelAction(value:boolean) {
-    // TODO
     this.iconFloatVisible = !value; 
     this.setEducationForm(); 
   }
@@ -149,8 +149,6 @@ export class SkillComponent implements OnInit {
        border: this.skillForm.value.color,
        rotate : this.mapearData(this.skillForm.value.porcentage)
      } 
-    console.log("Al hacer el post",skill);
-     
      this._skill.newSkill(skill, this._auth.getToken())
       .subscribe((skill:Skill)=>{
         if(skill!= null){
@@ -164,8 +162,24 @@ export class SkillComponent implements OnInit {
     const dataUpdate =  this.skills.map(data => data.id == this.dataModel.id? {...this.dataModel}  : data ); 
   }
 
-  deleteSkill(content, id){
-
+  deleteSkill(content, idSkill) {
+    if(idSkill === 372343873403247) {
+      swalError('Error, este component no se puede eliminar'); 
+      return; 
+    }
+  
+    swalDelete({content})
+      .then((result) => {
+        if (result.isConfirmed) {    
+          this._skill.deleteSkill(idSkill, this._auth.getToken())
+          .subscribe((resp)=>{
+            console.log(resp)
+            if(resp[0] == "ok"){
+               this.actionConfirmed("El archivo fue eliminado correctamente");
+            }
+          })
+        } 
+      })
   }
   // fuction generales
 
