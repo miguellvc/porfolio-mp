@@ -21,7 +21,7 @@ export class ProjectsComponent implements OnInit {
   modalVisible : boolean = false; 
   projects : Project[]; 
   project : Project; 
-  dataModel : Project = {title: '', urlImg: '../../../assets/img/undraw_Proud_coder_re_exuy.png', urlGit: 'https://github.com/'}
+  dataModel : Project = {title: '', urlImg: '', urlGit: ''}
   iconFloatVisible : boolean = true; 
 
   constructor(private _project : ProjectsService,
@@ -40,7 +40,10 @@ export class ProjectsComponent implements OnInit {
     this.getProjects();
   }
 
-  submit() { 
+  submit() {
+    
+
+    
     console.log("se ejecuta proyecto", this.projectForm.value);
   }
   
@@ -55,7 +58,8 @@ export class ProjectsComponent implements OnInit {
 
   // TODO
   newProject(value:boolean) {
-    this.iconFloatVisible = value; 
+    this.iconFloatVisible = value;
+    this.setProjectForm();  
   }
 
   editProject(value: boolean) {
@@ -71,8 +75,9 @@ export class ProjectsComponent implements OnInit {
   }
   
   cancelAction(value: boolean) {
-    console.log("se ejecuta cancelar");
+    
     this.iconFloatVisible = value; 
+    this.setProjectForm(this.project); 
   }
 
   setProjectForm(project:Project = null, valueForm = false) {

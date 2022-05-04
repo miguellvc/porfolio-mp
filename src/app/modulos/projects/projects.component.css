@@ -100,19 +100,16 @@
 
 /* modal edition */
 .project__edition {
-    width: 650px; 
+    width: 400px; 
     position: absolute;
     top: 20%;
 }
 
 
+
+
 /* form */
-.row {
-    display: flex;
-    gap: 50px; 
-    justify-content: flex-start;
-    align-items: center; 
-}
+
 
 .left{
     flex-basis: 240px;
@@ -138,4 +135,22 @@
 .contenedor{
     display: flex;
     gap: 30px;
+}
+
+/* Responsive */
+
+@media (min-width: 650px){
+    .project__edition {
+        width: 650px; 
+    }
+
+    .row {
+        display: flex;
+        gap: 50px; 
+        justify-content: flex-start;
+        align-items: center; 
+        flex-wrap: nowrap;
+    }
+
+  
 }
