@@ -1,5 +1,5 @@
 <div *ngIf="modalVisible" class="background_modal">
-    <div class="container__edition">
+    <div class="container__edition banner__edition">
         <span class="btn__close" (click)="closeModal()"><i class="fas fa-times"></i></span>
         <h2 class="content__sub-title">Editando Banner</h2>
         <div class="column">
@@ -37,7 +37,7 @@
                         <textarea 
                             class="form__control form__textarea" 
                             id="description" 
-                            rows="5"
+                            rows="2"
                             formControlName="description"
                         > </textarea>
                         <span class="invalid__feedback" *ngIf="invalidFiel('description')">campo requerido</span>

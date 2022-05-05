@@ -7,9 +7,14 @@
     min-height: calc(100vh - 6.5rem);
   }
 
-.banner__img{
-    flex: 1 1 35rem;
-    text-align: center; 
+.banner__edition {
+    height: 400px;
+    padding: 5px;
+}
+
+.banner__edition .banner__img img{
+    height: 30rem;
+    width: 30rem;
 }
 
 .banner__img img{
@@ -62,15 +67,15 @@
 
 /* banner edition */
 
-.banner__edition .banner__edition--title{
-    text-align: center;
+.banner__edition {
+    
 }
 
 .column{
     max-width: 90%;
     margin-top: 3rem;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 2rem;
     
 }
@@ -93,4 +98,8 @@
 }
 .btn--loading::after {
     border-bottom: none;
+}
+
+.form__group {
+    margin-bottom: 10px;
 }
