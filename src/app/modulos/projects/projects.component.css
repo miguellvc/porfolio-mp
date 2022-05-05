@@ -1,8 +1,12 @@
 /* box */
 .projects__container {
+    gap: 30px;
     display: flex;
     flex-wrap: wrap;
-    gap: 4rem;
+}
+
+.row .right{
+    margin-top: -10px; 
 }
 
 .card{
@@ -100,7 +104,7 @@
 
 /* modal edition */
 .project__edition {
-    width: 400px; 
+    width: 320px; 
     position: absolute;
     top: 20%;
 }
@@ -116,6 +120,7 @@
 }
 
 .container__btn {
+    margin-top: -40px; 
     min-height: 60px;
     display: flex;
     gap: 30px; 

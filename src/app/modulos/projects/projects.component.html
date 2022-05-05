@@ -9,13 +9,13 @@
                     <div class="card headline">
                 
                         <div class="card__image-container">
-                            <img [src]="dataModel.urlImg" alt="">
+                            <img [src]="dataModel.url_Img" alt="">
                         </div>
                         <h3>{{dataModel.title}}</h3>
                         
                         <div class="card__header">
                             <p>Demo -></p>
-                            <a [href]="dataModel.urlGit"><i class="fab fa-github-square"></i></a>
+                            <a [href]="dataModel.url_Git"><i class="fab fa-github-square"></i></a>
                         </div>
                         <!-- <button class="btn btn__success">Ver</button> -->
                     </div> 
@@ -31,19 +31,19 @@
                     </div>
 
                     <div class="form__group">
-                        <label class="form__label" for="urlImg">Url Imagen</label>
+                        <label class="form__label" for="url_Img">Url Imagen</label>
                             <input 
                             class="form__control" 
                             type="text"
-                            formControlName="urlImg">
+                            formControlName="url_Img">
                     </div>
 
                     <div class="form__group">
-                        <label class="form__label" for="urlGit">Url Git</label>
+                        <label class="form__label" for="url_Git">Url Git</label>
                             <input 
                             class="form__control" 
                             type="text"
-                            formControlName="urlGit">
+                            formControlName="url_Git">
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
 
                     <li class="create">
                         <!-- <div class="tooltip tooltip__edit">Editar</div> -->
-                        <a (click)="newProject(false)"><i class="fas fa-plus"></i></a>
+                        <a (click)="newProject(true)"><i class="fas fa-plus"></i></a>
                     </li>
 
                     <li class="delete">
@@ -86,7 +86,7 @@
     
 
                 <div class="card__image-container">
-                    <img [src]="project.urlImg" [alt]="project.title">
+                    <img [src]="project.url_Img" [alt]="project.title">
                     <div class="position__editing--icon">
                         <app-editing-icons (click)="openModal(project.id)"></app-editing-icons>
                     </div>
@@ -95,7 +95,7 @@
                 <h3>{{project.title}}</h3>
                 <div class="card__header">
                     <p>Demo -></p>
-                    <a (click)="onNavigate(project.urlGit )"><i class="fab fa-github-square"></i></a>
+                    <a (click)="onNavigate(project.url_Git )"><i class="fab fa-github-square"></i></a>
                 </div> 
 
             </div>

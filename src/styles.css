@@ -100,12 +100,19 @@ section {
 
 .container__edition{
   width: 85%;
-  height: auto;
+  height: 600px;
   padding: 15px;  
   background: var(--color-background);
   border-radius: 10px;  
   color: var(--title-color);
 }
+
+@media (min-width: 650px){
+  .container__edition {
+    height: auto;
+  }
+}
+
 
 /* ICON FLOAT */
 

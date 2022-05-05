@@ -16,10 +16,10 @@ export class ProjectsService {
   
   private projects : Project[] = [
     {
-      id : 100, 
-      title : 'Sistema de Gestión Escolar', 
-      urlImg : '../../../assets/img/undraw_Proud_coder_re_exuy.png', 
-      urlGit : 'https://www.google.com/' 
+      id : 2983273283226, 
+      title : 'Para añadir una nueva card click en el icon', 
+      url_Img : '../../../assets/img/undraw_Proud_coder_re_exuy.png', 
+      url_Git : 'https://www.google.com/' 
     }
   ]; 
 
@@ -30,12 +30,28 @@ export class ProjectsService {
       headers: {
          'x-token' : token
       }
-    }).pipe(map( (resp:Project) => resp ))
+    }).pipe(map( (resp:Project) => resp !== null ? resp : this.projects[0]))
   }
 
   getProjects() {
     return this.http.get(`${this.urlApiPorfolio}/project`)
     .pipe(map( (resp:Project[]) => resp.length !== 0 ? resp : this.projects))
+  }
+  
+  newProject(project:Project, token):Observable<Project> {
+    return this.http.post(`${this.urlApiPorfolio}/project`, project, {
+      headers: {
+         'x-token' : token
+      }
+    }).pipe(map((resp:Project) => resp))
+  }
+
+  deleteProject(id:Number, token) {    
+    return this.http.delete(`${this.urlApiPorfolio}/project/${id}`, {
+      headers: {
+         'x-token' : token
+      }
+    })
   }
   
 }
