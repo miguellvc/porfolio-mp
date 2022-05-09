@@ -12,35 +12,35 @@
                 <form [formGroup]="bannerForm" (ngSubmit)="submit()" >
                     
                     <div class="form__group">
-                        <label class="form__label" for="name">Nombre</label>
+                        <label class="form__label" for="title">Nombre</label>
                         <input 
                             class="form__control" 
-                            id="name" 
+                            id="title" 
                             type="input" 
-                            formControlName="name">
-                        <span class="invalid__feedback" *ngIf="invalidFiel('name')">campo requerido</span>
+                            formControlName="title">
+                        <span class="invalid__feedback" *ngIf="invalidFiel('title')">campo requerido</span>
                     </div>
     
                     <div class="form__group">
-                        <label class="form__label" for="training">Formación</label>
+                        <label class="form__label" for="sub_title">Formación</label>
                         <input 
                             class="form__control" 
-                            id="training" 
+                            id="sub_title" 
                             type="input" 
-                            formControlName="training"
+                            formControlName="sub_title"
                             >
-                        <span  class="invalid__feedback" *ngIf="invalidFiel('training')">campo requerido</span>
+                        <span  class="invalid__feedback" *ngIf="invalidFiel('sub_title')">campo requerido</span>
                     </div>
     
                     <div  class="form__group">
-                        <label class="form__label" for="description">Descripción</label>
+                        <label class="form__label" for="content">Descripción</label>
                         <textarea 
                             class="form__control form__textarea" 
-                            id="description" 
+                            id="content" 
                             rows="2"
-                            formControlName="description"
+                            formControlName="content"
                         > </textarea>
-                        <span class="invalid__feedback" *ngIf="invalidFiel('description')">campo requerido</span>
+                        <span class="invalid__feedback" *ngIf="invalidFiel('content')">campo requerido</span>
                         
                     </div>
     

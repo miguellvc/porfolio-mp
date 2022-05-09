@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
+import { Banner } from '../interfaces/banner';
 
 
 @Injectable({
@@ -15,10 +18,12 @@ export class BannerService {
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit itaque rem delectus enim voluptatibus deserunt",
     urlImgBanner: "assets/img/personal_img.png"
   }
-  urlApiPorfolio:string = environment.urlApiPorfolio; 
+
+  private urlApiPorfolio:string = environment.urlApiPorfolio; 
   public cargandoData = true; 
   constructor(private http : HttpClient) { }
 
+  
   getBanner() {
     return  {
              getBanner :  this.banner,
