@@ -15,11 +15,38 @@
     rgba(24, 96, 111, 1) 100%
   );
   --color-secondary: hsl(0, 0%, 31%);
-  --color-icon: hsl(348, 83%, 47%); 
   --title-color: hsl(0, 10%, 92%);
   --text-color: hsl(0, 6%, 84%);
   --shadow: 1px 1px 10px rgba(61, 111, 185, 0.89);
+
+  /* TODO */
+  /* Crear variables para:
+    color success 
+    color danger
+    color warning
+  
+  */
+  --color-success : hsl(151, 69%, 26%); 
+  --color-danger : hsl(348, 83%, 47%);
+  --color-warning: hsl(42, 100%, 50%); 
+
+
+
   /* --shadow: 1px 1px 15px gray;  */
+  /* ----------------------- */
+
+  /* style circle skill */
+
+  --width--skill__progress: 250px; 
+  --height--skill__progress: 250px;
+  --width--skill--circle: 250px; 
+  --height--skill--circle: 250px; 
+  --border-fondo1:20px solid rgb(34, 231, 34,.3);
+  --border-fondo2:20px solid rgba(206, 11, 11, 0.3);
+  --border-fondo3:20px solid rgba(6, 22, 168, 0.3);
+  --border1:20px solid rgb(10, 214, 10);
+  --border2:20px solid rgb(204, 10, 4);
+  --border3:20px solid rgba(5, 21, 170);
 }
 
 * {
@@ -43,6 +70,7 @@ body {
   /* background-image: url(assets/img/paven.png); */
   background: var(--color-background);
   background-repeat: no-repeat;
+
 }
 
 section {
@@ -61,27 +89,66 @@ section {
   position: fixed;
   width: 100%;
   height: 100vh;
-  z-index: 1001;
-  /* opacity: 0.6; */
-  /* background: var(--color-primary); */
+  z-index: 999;
+  top: 0px;
   background-color: rgba(67, 68, 69, 0.5);
   display: flex; 
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end; 
+  justify-content: center;
+  align-items: center; 
   padding: 45px; 
 }
 
-
 .container__edition{
-  position: absolute;
   width: 85%;
-  height: auto;
+  height: 600px;
   padding: 15px;  
   background: var(--color-background);
   border-radius: 10px;  
   color: var(--title-color);
-  z-index: 999;
+}
+
+@media (min-width: 650px){
+  .container__edition {
+    height: auto;
+  }
+}
+
+
+/* ICON FLOAT */
+
+.icon__float{
+  position: relative;
+  width: 20rem;  
+  display: flex; 
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 10px;
+  font-size: 2rem;
+}
+.icon__float li {
+  cursor: pointer;
+}
+.icon__float a{
+  padding: 2px 8px; 
+  border-radius: 25px;
+  box-shadow: var(--shadow);
+}
+.icon__float a i{
+  color: var(--title-color);
+}
+
+.tooltip{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: var(--color-primary);
+  padding: 5px;
+  transform: rotate(90deg);
+  border-radius: 25px;
+  box-shadow: var(--shadow);
+  color: var(--title-color);
+  font-size: 0.6em;
+  transition: all 20s ease-out;
 }
 
 /* button */
@@ -110,7 +177,7 @@ section {
 .btn__success {
   display: flex;
   width: 12rem; 
-  border: 3px solid #157347;
+  border: 3px solid var(--color-success);
   background: transparent; 
   color: var(--title-color);
   transition: 1s;
@@ -123,7 +190,7 @@ section {
 	z-index: 1;
 	top: 0;
 	left: calc(-100% - 80px);
-	border-bottom: 80px solid #0f5b37;
+	border-bottom: 80px solid var(--color-success);
 	border-right: 80px solid transparent;
 	transition: .4s ease-in-out all;
 }
@@ -138,7 +205,7 @@ section {
 
 .btn__danger {
   width: 12rem; 
-  border: 3px solid #BB2D3B;
+  border: 3px solid var(--color-danger);
   background: transparent; 
   color: var(--title-color);
   transition: .3s ease all;
@@ -149,7 +216,7 @@ section {
 	content: "";
 	width: 100%;
 	height: 100%;
-	background: #94212d;
+	background: var(--color-danger);
 	position: absolute;
 	z-index: 1;
 	top: -80px;
@@ -160,6 +227,49 @@ section {
 .btn__danger:hover::after {
 	top: 0;
 }
+
+/* btn close */
+
+.btn__close {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 2px 8px;
+  font-size: 2.2rem;
+  color: var(--color-danger);
+  cursor: pointer;
+}
+
+/* editing icon model*/
+
+
+.edit a i {
+  color: var(--color-warning); 
+}
+
+.create a i {
+  color: var(--color-success);
+}
+
+.delete a i {
+  color: var(--color-danger);
+}
+
+
+.float {
+  animation:  mover .7s linear forwards;
+}
+
+
+@keyframes mover {
+  0%{
+      transform: translateX(200px);
+  }
+  100%{
+      transform: translateX(0px);
+  }
+}
+
 
 /* forms */
 
@@ -195,7 +305,6 @@ section {
 }
 
 .invalid__feedback {
-  /* padding: 5px; */
   font-size: 1.2rem;
   color: var(--color-icon);
 }
