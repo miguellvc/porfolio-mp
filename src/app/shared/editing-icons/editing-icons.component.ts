@@ -1,21 +1,25 @@
-import { Component, Input, Output, EventEmitter, } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-editing-icons',
   templateUrl: './editing-icons.component.html',
   styleUrls: ['./editing-icons.component.css']
 })
-export class EditingIconsComponent {
 
-  @Input() valueInput: boolean;
-  @Output() valueOutput: EventEmitter<boolean> = new EventEmitter();
+export class EditingIconsComponent implements OnInit{
+
+  iconVisible:boolean = false; 
   
-  private output:boolean = true;
-  constructor() { }
+  constructor(private _auth: AuthService) {}
 
-  click(){
-    this.output = !this.valueInput; 
-    this.valueOutput.emit(this.output);
-    console.log("se ejecuta el evento click", this.output);
+  ngOnInit(): void {
+    
+    this._auth.$isLogin.subscribe(isLogin => {
+      this.iconVisible = isLogin 
+    });
+    this.iconVisible = this._auth.isSession; 
   }
+  
+
 }

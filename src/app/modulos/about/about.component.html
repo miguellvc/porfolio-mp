@@ -1,6 +1,6 @@
 <!-- abaut -->
 <section class="about">
-    <h1 class="section_title">Sobre Mi</h1>
+    <h1 class="section_title">Habilidades</h1>
     <div class="about__container">
         <article class="about__info">
             <div class="info_content">
@@ -46,17 +46,21 @@
             <p>years of experience</p>
            </div>
         </article>
+    
+    
+        
+        <!-- iditing icon -->
+        <div class="position__editing--icon">
+            <app-editing-icons></app-editing-icons>
+        </div>
+        <!-- end iditing icon -->
+
+        <div class="container__edition banner__edition" *ngIf="openModalAbout">
+            <h1>Contenedor</h1>
+        </div>
+    
     </div>
 
-     <!-- iditing icon -->
-     <div class="position__editing--icon">
-        <app-editing-icons (valueOutput) = "openModalAbout = $event"  [valueInput] = "openModalAbout"></app-editing-icons>
-    </div>
-    <!-- end iditing icon -->
-
-    <div class="container__edition banner__edition" *ngIf="openModalAbout">
-        <h1>Contenedor</h1>
-    </div>
     
 </section>
 

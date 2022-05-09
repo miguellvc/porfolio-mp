@@ -24,42 +24,12 @@
     color: var(--title-color);
 }
 
-.social{
-    position: relative;
-    width: 20rem;  
-    display: flex; 
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 10px;
-    font-size: 2rem;
-   
+.color-danger {
+    color: var(--color-danger);
 }
 
-.social a{
-    padding: 2px 8px; 
-    border-radius: 25px;
-    box-shadow: var(--shadow);
-}
-.social a i{
-    color: var(--title-color);
-}
-
-.login a i{
-    color: var(--color-icon); 
-}
-
-.tooltip{
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    background: var(--color-primary);
-    padding: 5px;
-    transform: rotate(90deg);
-    border-radius: 25px;
-    box-shadow: var(--shadow);
-    color: var(--title-color);
-    font-size: 0.6em;
-    transition: all 20s ease-out;
+.color-success {
+    color: var(--color-success);
 }
 
 .tooltip__email{

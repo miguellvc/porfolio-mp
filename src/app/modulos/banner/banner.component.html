@@ -1,3 +1,65 @@
+<div *ngIf="modalVisible" class="background_modal">
+    <div class="container__edition banner__edition">
+        <span class="btn__close" (click)="closeModal()"><i class="fas fa-times"></i></span>
+        <h2 class="content__sub-title">Editando Banner</h2>
+        <div class="column">
+            <article class="banner__img">
+                <img src="assets/img/personal_img.png" alt="foto_personal">
+            </article>
+    
+            <article class="banner__content column__right">
+    
+                <form [formGroup]="bannerForm" (ngSubmit)="submit()" >
+                    
+                    <div class="form__group">
+                        <label class="form__label" for="title">Nombre</label>
+                        <input 
+                            class="form__control" 
+                            id="title" 
+                            type="input" 
+                            formControlName="title">
+                        <span class="invalid__feedback" *ngIf="invalidFiel('title')">campo requerido</span>
+                    </div>
+    
+                    <div class="form__group">
+                        <label class="form__label" for="sub_title">Formación</label>
+                        <input 
+                            class="form__control" 
+                            id="sub_title" 
+                            type="input" 
+                            formControlName="sub_title"
+                            >
+                        <span  class="invalid__feedback" *ngIf="invalidFiel('sub_title')">campo requerido</span>
+                    </div>
+    
+                    <div  class="form__group">
+                        <label class="form__label" for="content">Descripción</label>
+                        <textarea 
+                            class="form__control form__textarea" 
+                            id="content" 
+                            rows="2"
+                            formControlName="content"
+                        > </textarea>
+                        <span class="invalid__feedback" *ngIf="invalidFiel('content')">campo requerido</span>
+                        
+                    </div>
+    
+                    <div class="form__group btn__form--banner">
+                        <button [disabled]="loading"  class="btn btn__danger" (click)="closeModal()"> <span>Cancelar</span> </button>
+                        <button [disabled]="loading" class="btn btn__success" [ngClass]="{'btn--loading' : loading}" type="submit"> 
+                            <span *ngIf="loading" class="btn__success--spinner"><app-spinner></app-spinner> Loandig...</span>  
+                            <span *ngIf="!loading">Aceptar</span>
+                        </button>           
+                    </div>
+    
+                </form>
+            </article>
+    
+        </div>
+    </div>
+</div>
+
+
 <!-- banner -->
 <section class="banner">
     <article class="banner__img">
@@ -5,76 +67,16 @@
     </article>
 
     <article class="banner__content">
-        <h2 class="content__title">Hola, mi nombre es {{banner.name}}</h2>
-        <h3 class="content__sub-title">{{banner.training}}</h3>
-        <p class="content__description">{{banner.description}}</p>
+        <h2 class="content__title">Hola, soy {{banner[0].title}}</h2>
+        <h3 class="content__sub-title">{{banner[0].sub_Title}}</h3>
+        <p class="content__description">{{banner[0].content}}</p>
     </article>
 
     <!-- iditing icon -->
     <div class="position__editing--icon">
-        <app-editing-icons (valueOutput)="openModalBanner = $event" [valueInput]="openModalBanner"></app-editing-icons>
+        <app-editing-icons (click)="openModal()"></app-editing-icons>
     </div>
     <!-- end iditing icon -->
-
-    <div class="container__edition banner__edition" *ngIf="openModalBanner && userLogin">
-        <h2 class="content__sub-title banner__edition--title">Editando banner</h2>
-
-        <div class="column">
-
-            <article class="banner__img">
-                <img src="assets/img/personal_img.png" alt="foto_personal">
-            </article>
-
-            <article class="banner__content column__right">
-
-                <form [formGroup]="bannerForm" (ngSubmit)="submit()" >
-                    
-                    <div class="form__group">
-                        <label class="form__label" for="name">Nombre</label>
-                        <input 
-                            class="form__control" 
-                            id="name" 
-                            type="input" 
-                            formControlName="name">
-                        <span class="invalid__feedback" *ngIf="invalidFiel('name')">campo requerido</span>
-                    </div>
-
-                    <div class="form__group">
-                        <label class="form__label" for="training">Formación</label>
-                        <input 
-                            class="form__control" 
-                            id="training" 
-                            type="input" 
-                            formControlName="training"
-                            >
-                        <span  class="invalid__feedback" *ngIf="invalidFiel('training')">campo requerido</span>
-                    </div>
-
-                    <div  class="form__group">
-                        <label class="form__label" for="description">Descripción</label>
-                        <textarea 
-                            class="form__control form__textarea" 
-                            id="description" 
-                            rows="5"
-                            formControlName="description"
-                        > </textarea>
-                        <span class="invalid__feedback" *ngIf="invalidFiel('description')">campo requerido</span>
-                        
-                    </div>
-
-                    <div class="form__group btn__form--banner">
-                        <button [disabled]="loading"  class="btn btn__danger" (click)="closeModalBanner()"> <span>Cancelar</span> </button>
-                        <button [disabled]="loading" class="btn btn__success" [ngClass]="{'btn--loading' : loading}" type="submit"> 
-                            <span *ngIf="loading" class="btn__success--spinner"><app-spinner></app-spinner> Loandig...</span>  
-                            <span *ngIf="!loading">Aceptar</span>
-                        </button>           
-                    </div>
-
-                </form>
-            </article>
-
-        </div>
-    </div>
 
 </section>
 <!-- end banner -->

@@ -1,0 +1,113 @@
+<div *ngIf="modalVisible" class="background_modal">
+    <div class="container__edition skill__edition">
+        <span class="btn__close" (click)="closeModal()"><i class="fas fa-times"></i></span>
+        <h2 class="content__sub-title">Editando Skill</h2>
+        
+        <form [formGroup]="skillForm" (ngSubmit)="submit()">
+            <div class="row">
+                <div class="left">
+                    <div class="skill__progress">
+                        <div class="progress" [ngStyle]="{'border' : setColorBackgroud(dataModel.background), 'color' : dataModel.color}">
+                            <div class="circle circle--1" [ngStyle]="{'border-top' : setColorBorder(dataModel.border), 'border-left' : setColorBorder(dataModel.border), 'transform' : setRotate(dataModel.rotate) }"></div>
+                            <h2>{{dataModel.porcentage}}%</h2>
+                            <h3>{{dataModel.language}}</h3>
+                        </div>
+                           
+                    </div>
+                </div>
+    
+                <div class="right">
+                    <div class="row">
+                        <div class="form__group">
+                            <label for="colorBackground" class="form__label">Color de fondo</label>
+                            <ngx-colors 
+                                ngx-colors-trigger style="display: inline-block; margin:5px;" 
+                                formControlName="background">
+                            </ngx-colors>
+                        </div>
+                        <div class="form__group">
+                            <label for="color" class="form__label">Color</label>
+                            <ngx-colors 
+                                ngx-colors-trigger style="display: inline-block; margin:5px;" 
+                                formControlName="color">
+                            </ngx-colors>
+
+                            <!-- color border es igual al color -->
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    <div class="form__group">
+                        <label class="form__label" for="language">Lenguaje</label>
+                        <input 
+                        class="form__control" 
+                        id="language" 
+                        type="input"
+                        formControlName="language">
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="porcentage">Porcentaje</label>
+                        <input 
+                        class="form__control" 
+                        id = "porcentage"
+                        type="number"
+                        min="1"
+                        max="100" 
+                        formControlName="porcentage">
+                    </div>
+                   </div>
+                </div>
+            </div>
+
+            <div class="container__btn">
+                
+                <button *ngIf="!iconFloatVisible" class="btn btn__danger" (click)="cancelAction(false)">
+                    <span>Cancelar</span> 
+                 </button>
+                 <button *ngIf="!iconFloatVisible" class="btn btn__success" type="submit">
+                     <span>Aceptar</span>
+                 </button>
+                 
+                 <!-- AQUÍ VAN LOS OTROS BOTONES -->
+                 <ul *ngIf="iconFloatVisible" class="icon__float float">
+                    <li class="edit">
+                        <!-- <div class="tooltip tooltip__edit">Editar</div> -->
+                        <a (click)="editSkill(true)"><i class="fas fa-edit"></i></a>
+                    </li>
+
+                    <li class="create">
+                        <!-- <div class="tooltip tooltip__edit">Editar</div> -->
+                        <a (click)="newSkill(true)"><i class="fas fa-plus"></i></a>
+                    </li>
+
+                    <li class="delete">
+                        <!-- <div class="tooltip tooltip__edit">Editar</div> -->
+                        <a (click)="deleteSkill(dataModel.language, dataModel.id)"><i class="fas fa-trash"></i></a>
+                    </li>
+                </ul>
+    
+        </div>
+        </form>
+    </div>
+    
+</div>
+<section class="skill">
+    <h1 class="section_title">Skill</h1>
+
+    <div class="skill__container">
+
+        <div *ngFor="let skill of skills" class="skill__progress">
+            <div class="position__editing--icon">
+                <app-editing-icons (click)="openModal(skill.id)"></app-editing-icons>
+            </div>
+                <div class="progress" [ngStyle]="{'border' : setColorBackgroud(skill.background), 'color' : skill.color}">
+                    <div class="circle circle--1" [ngStyle]="{'border-top' : setColorBorder(skill.border), 'border-left' : setColorBorder(skill.border), 'transform' : setRotate(skill.rotate) }"></div>
+                    <h2>{{skill.porcentage}}%</h2>
+                    <h3>{{skill.language}}</h3>
+                </div>
+        </div>
+    </div>
+
+
+
+</section>

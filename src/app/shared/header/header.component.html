@@ -3,10 +3,10 @@
         <img src="assets/img/logo_AP.png" alt="logo_ap">
     </div>
 
-    <ul class="social">
+    <ul class="icon__float">
         <li class="email">
             <div class="tooltip tooltip__email">Gmail</div>
-            <a href=""><i class="far fa-envelope"></i></a>
+            <a [routerLink]="['/listar-data259']" routerLinkActive="router-link-active" ><i class="far fa-envelope"></i></a>
         </li>
         <li class="facebook">
             <div class="tooltip tooltip__facebook">Facebook</div>
@@ -20,9 +20,9 @@
             <div class="tooltip tooltip__github">Github</div>
             <a href=""><i class="fab fa-github-square"></i></a>
         </li>
-        <li class="login" (click)="openLogin()">
-            <div class="tooltip tooltip__login">Login</div>
-            <a><i class="far fa-user"></i></a>
+        <li class="login" (click)="openModal(login.isLogin)">
+            <div class="tooltip tooltip__login">{{login.msg}}</div>
+            <a><i class="far fa-user color" [class]="login.color"></i></a>
         </li>
     </ul>
 
@@ -31,26 +31,3 @@
     <app-login></app-login>
 </div>
 
-
-
-
-<!-- <div >
-    <ul id="navbar">
-        <li><a href="">INCIO</a></li>
-        <li><a href="">PROYECTOS</a></li>
-        <li><a href="">CONTACTO</a></li>
-    </ul>
-
-    <div id="logo">
-        <h1>MP</h1>
-    </div>
-
-    <div id="textcenter">
-        <h1>Hola, mi nombre es Miguel</h1>
-        <span>
-            <h2>Fullstack Developer</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus reprehenderit sunt deleniti ullam nesciunt facilis voluptate temporibus provident iusto sapiente repudiandae amet, dolor adipisci voluptatem. Ea tempore rerum velit. Dignissimos.</p> 
-            <img src="../assets/img/pen.jpg" alt="">
-        </span>
-    </div>
-</div> -->

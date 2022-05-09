@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { HttpClientModule } from "@angular/common/http";
+
+// import { ColorPickerModule } from 'ngx-color-picker';
+import { NgxColorsModule } from 'ngx-colors';
+
 
 // modules
 import { ModulosComponentModule } from './modulos/modulos-component.module';
@@ -13,6 +16,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 
 // components
+import { AppComponent } from './app.component';
 
 
 @NgModule({
@@ -22,9 +26,11 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     ModulosComponentModule,
     PagesModule,
     AuthModule,
+    NgxColorsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],

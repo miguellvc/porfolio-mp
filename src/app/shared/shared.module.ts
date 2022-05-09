@@ -9,6 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { EditingIconsComponent } from './editing-icons/editing-icons.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
   ],
   imports: [
     CommonModule,
-    AuthModule
+    AuthModule, 
+    RouterModule
   ],
   exports: [
     HeaderComponent,

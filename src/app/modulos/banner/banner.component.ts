@@ -1,10 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { AuthService } from 'src/app/services/auth.service';
 import { BannerService } from 'src/app/services/banner.service';
 
+import { Banner } from 'src/app/interfaces/banner';
+
+import Swal from 'sweetalert2';
+
 // import functions
-import { setValueForm, enableForm } from 'src/app/util/util';
+import { setValueForm, enableForm } from 'src/app/util/form';
+import { animate } from 'src/app/util/animate';
 
 @Component({
   selector: 'app-banner',
@@ -13,11 +19,11 @@ import { setValueForm, enableForm } from 'src/app/util/util';
 })
 export class BannerComponent implements OnInit {
 
-  public openModalBanner:boolean = true; 
-  public userLogin:boolean; 
+  public modalVisible:boolean = false; 
   public formSubmitted = false;
-  public banner; 
   
+  @Input() banner: Banner;
+
   public loading = false; 
   
 
@@ -25,66 +31,54 @@ export class BannerComponent implements OnInit {
               private fb: FormBuilder, 
               private _banner: BannerService
               ) { 
-    this.userLogin = this._auth.userLogin; 
   }
 
   public bannerForm:FormGroup = this.fb.group({
-    name: [ '', [ Validators.required ] ], 
-    training: [ '', [ Validators.required ] ], 
-    description: [ '', [ Validators.required ] ], 
-    urlImgBanner: [ 'assets/img/personal_img.png', [ Validators.required ] ]
+    title: [ '', [ Validators.required ] ], 
+    sub_title: [ '', [ Validators.required ] ], 
+    content: [ '', [ Validators.required ] ], 
+    url_img: [ 'assets/img/personal_img.png', [ Validators.required ] ]
   })
 
 
-  ngOnInit(): void {
-    this.banner = this._banner.getBanner();
-    setValueForm(this.bannerForm, this.banner); 
+  ngOnInit(): void { 
+    animate('banner', 3000, 'top', '-100px'); 
   }
   
   submit() {
-    this.formSubmitted = true; 
-    enableForm(this.bannerForm, this.banner, false ); 
+    this.formSubmitted = true;  
     
     if ( this.bannerForm.invalid ) {
       return;
     }
-    
-    this.loading = true; 
-    // llamada al método para actulizar el banner 
-
-    setTimeout(()=>{
-      this._banner.updateBanner(this.bannerForm.value); 
-      this.banner = this._banner.getBanner(); 
-      console.log("se ejecuta la función setInterval");  
-      this.loading = false; 
-      enableForm(this.bannerForm, this.banner, true ); 
-    },5000)
-    // console.log(this.bannerForm.value); 
   }
   
-  // disabledForm(){
-  //   this.bannerForm.controls['name'].disable();
-  //   this.bannerForm.controls['training'].disable();
-  //   this.bannerForm.controls['description'].disable();
-  //   this.bannerForm.controls['urlImgBanner'].disable();
-  // }
-
-
-
-
   invalidFiel( value: string ): boolean {
-       
-    console.log("se ejecuta el método")
+
     if ( this.bannerForm.get(value).invalid && this.formSubmitted ) {
       return true;
     } else {
       return false;
     }
   }
- 
 
-  closeModalBanner(){
-     this.openModalBanner = false;
+  setBannerForm(banner:Banner, valueForm = false){
+    setValueForm(this.bannerForm, banner); 
+    enableForm(this.bannerForm, valueForm);
   }
+ 
+  openModal(){
+    console.log("contenido de banner", this.banner);
+    this.setBannerForm(this.banner[0], true);
+    this.modalVisible = true; 
+  }
+
+  closeModal(){  
+     this.modalVisible = false;
+  }
+
+  // Method rest
+
+
 
 }

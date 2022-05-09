@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
+import { BannerService } from 'src/app/services/banner.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -6,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public cargandoData = true; 
+  arrayConten:any[];
+  arrayOfData: any[] = [];
+  constructor(private _auth: AuthService, 
+              private _banner: BannerService) { 
+                this.arrayOfData.push(this._banner.getBanner().getBannerApi, this._auth.validateSession());   
+              }
 
   ngOnInit(): void {
-  }
 
+    // this.getUsers();
+    
+    forkJoin(this.arrayOfData)
+       .subscribe(data => {
+         this.arrayConten = data; 
+         this.cargandoData = false;
+       }); 
+       
+  }
+  
 }
