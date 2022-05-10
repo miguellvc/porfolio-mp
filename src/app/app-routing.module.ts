@@ -10,10 +10,6 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'listar-data259',
-    component: ListarDataComponent
-  },
-  {
     path: '**',
     pathMatch : 'full',
     redirectTo : 'home'
