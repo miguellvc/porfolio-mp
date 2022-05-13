@@ -71,7 +71,6 @@ export class BannerComponent implements OnInit {
   }
  
   openModal(){
-    console.log("contenido de banner", this.banner);
     this.setBannerForm(this.banner[0], true);
     this.modalVisible = true; 
   }
@@ -87,8 +86,6 @@ export class BannerComponent implements OnInit {
     let banner:Banner = this.bannerForm.value; 
     
     banner.id = this.banner[0].id; 
-    
-    console.log("banner1", banner,  "banner2", this.banner[0], "token", this._auth.getToken());
 
       this._banner.updateBanner(banner, this._auth.getToken())
         .subscribe(res =>{

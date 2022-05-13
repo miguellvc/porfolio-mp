@@ -117,7 +117,6 @@ export class EducationComponent implements OnInit {
   updateEducation() {
     this._education.updateEducation(this.dataModel, this._auth.getToken())
     .subscribe((res:string[]) =>{
-      console.log("respuesta de res", res);
       if(res[0] == "ok") {
         swalIsConfirmed("Se editó correctamente el componente") 
         this.getEducationData();
@@ -150,7 +149,6 @@ export class EducationComponent implements OnInit {
         if (result.isConfirmed) {    
           this._education.deleteEducationData(idEducation, this._auth.getToken())
           .subscribe((resp)=>{
-            console.log(resp)
             if(resp[0] == "ok"){
                this.actionConfirmed("El archivo fue eliminado correctamente");
             }

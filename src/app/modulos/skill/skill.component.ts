@@ -84,8 +84,7 @@ export class SkillComponent implements OnInit {
   
   openModal(id:Number) {
     this.modalVisible = true;
-    this.iconFloatVisible = true; 
-    console.log("data model", this.dataModel); 
+    this.iconFloatVisible = true;  
     this.getSkill(id);
   }
 
@@ -153,14 +152,12 @@ export class SkillComponent implements OnInit {
     this._skill.getSkills()
       .subscribe((skills:Skill[])=>{
         this.skills = skills;
-        console.log("se ejecuta getSkills", this.skills); 
       })
   }
   
   updateSkill() {
     this._skill.updateSkill(this.dataModel, this._auth.getToken())
     .subscribe((res:string[]) => {
-      console.log("respuesta de res", res);
       if(res[0] == "ok") {
         swalIsConfirmed("Se editó correctamente el componente") 
         this.getSkills();
@@ -198,7 +195,6 @@ export class SkillComponent implements OnInit {
         if (result.isConfirmed) {    
           this._skill.deleteSkill(idSkill, this._auth.getToken())
           .subscribe((resp)=>{
-            console.log(resp)
             if(resp[0] == "ok"){
                this.actionConfirmed("El archivo fue eliminado correctamente");
             }

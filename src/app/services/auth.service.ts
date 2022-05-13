@@ -24,17 +24,6 @@ export class AuthService {
              .pipe(tap((resp:any) =>{
                  this.initSession(resp);
              } ));
-     
-     
-     
-    // if(user.mail == "miguellrvc@gmail.com" && user.password == "123") {
-    //      console.log("son iguales"); 
-    //      this.$isLogin.emit(true);
-    //      this.$modal.emit(false); 
-    //      localStorage.setItem('x_token', '123');
-    //      return; 
-    //    }
-    //  console.log("no son iguales");
 
   }
 

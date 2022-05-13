@@ -117,14 +117,12 @@ export class ProjectsComponent implements OnInit {
     this._project.getProjects()
       .subscribe((projects:Project[])=>{
         this.projects = projects;
-        console.log("se ejecuta getprojects", this.projects); 
       })    
   }
 
   updateProject(){
     this._project.updateProject(this.dataModel, this._auth.getToken())
     .subscribe((res:string[]) =>{
-      console.log("respuesta de res", res);
       if(res[0] == "ok") {
         swalIsConfirmed("Se editó correctamente el componente") 
         this.getProjects();
@@ -136,8 +134,6 @@ export class ProjectsComponent implements OnInit {
   }
 
   postProject(){
-    console.log(this.projectForm.value);
-    
     this._project.newProject(this.projectForm.value, this._auth.getToken())
      .subscribe((project:Project)=>{
        if(project!= null){
@@ -159,7 +155,6 @@ export class ProjectsComponent implements OnInit {
         if (result.isConfirmed) {    
           this._project.deleteProject(idProject, this._auth.getToken())
           .subscribe((resp)=>{
-            console.log(resp)
             if(resp[0] == "ok"){
                this.actionConfirmed("El archivo fue eliminado correctamente");
             }
