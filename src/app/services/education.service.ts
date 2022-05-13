@@ -48,12 +48,12 @@ export class EducationService {
   }
 
 
-  upDateEducationData(id, key, value) {
-    const updateData = this.educationData.map(data => {
-      data.id === id ? {...data, key: value} : data
-    });
-
-    return updateData; 
+  updateEducation(education:Education, token):Observable<string[]> {
+     return this.http.put(`${this.urlApiPorfolio}/education`, education, {
+       headers: {
+        'x-token' : token
+       }
+     }).pipe(map( (resp:string[]) =>resp))
   }
 
   deleteEducationData(id:Number, token) {

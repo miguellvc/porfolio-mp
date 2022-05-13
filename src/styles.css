@@ -3,11 +3,13 @@
 /* variables globales */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap");
 :root {
-  --color-background: linear-gradient(
+  /* --color-background: linear-gradient(
     0deg,
     rgba(3, 14, 14, 1) 0%,
     rgb(1, 2, 49) 100%
-  );
+  ); */
+
+  --color-background: #01032F; 
   --color-primary: linear-gradient(
     90deg,
     rgba(8, 6, 10, 1) 0%,

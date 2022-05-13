@@ -6,11 +6,12 @@ import { BannerService } from 'src/app/services/banner.service';
 
 import { Banner } from 'src/app/interfaces/banner';
 
-import Swal from 'sweetalert2';
 
 // import functions
 import { setValueForm, enableForm } from 'src/app/util/form';
 import { animate } from 'src/app/util/animate';
+import { swalIsConfirmed, swalError } from 'src/app/util/swal';
+
 
 @Component({
   selector: 'app-banner',
@@ -35,14 +36,14 @@ export class BannerComponent implements OnInit {
 
   public bannerForm:FormGroup = this.fb.group({
     title: [ '', [ Validators.required ] ], 
-    sub_title: [ '', [ Validators.required ] ], 
+    sub_Title: [ '', [ Validators.required ] ], 
     content: [ '', [ Validators.required ] ], 
-    url_img: [ 'assets/img/personal_img.png', [ Validators.required ] ]
+    url_Img: [ 'assets/img/personal_img.png', [ Validators.required ] ]
   })
 
 
   ngOnInit(): void { 
-    animate('banner', 3000, 'top', '-100px'); 
+    animate('banner', 2000, 'bottom', '0px'); 
   }
   
   submit() {
@@ -51,6 +52,8 @@ export class BannerComponent implements OnInit {
     if ( this.bannerForm.invalid ) {
       return;
     }
+
+    this.updateBanner();
   }
   
   invalidFiel( value: string ): boolean {
@@ -79,6 +82,24 @@ export class BannerComponent implements OnInit {
 
   // Method rest
 
+  updateBanner() {
+      
+    let banner:Banner = this.bannerForm.value; 
+    
+    banner.id = this.banner[0].id; 
+    
+    console.log("banner1", banner,  "banner2", this.banner[0], "token", this._auth.getToken());
 
+      this._banner.updateBanner(banner, this._auth.getToken())
+        .subscribe(res =>{
+          if(res == "ok") {
+            swalIsConfirmed("El banner se modificó correctamente") 
+            this.banner[0] = banner;
+            this.closeModal()
+          }else{
+            swalError("no se pudo actulizar el banner"); 
+          }
+        })
+  }
 
 }

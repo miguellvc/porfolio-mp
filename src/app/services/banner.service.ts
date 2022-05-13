@@ -12,31 +12,21 @@ import { Banner } from '../interfaces/banner';
 export class BannerService {
 
 
-  private banner = {
-    name: "Miguel Rolando Perez", 
-    training: "Fullstack Developer", 
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit itaque rem delectus enim voluptatibus deserunt",
-    urlImgBanner: "assets/img/personal_img.png"
-  }
-
   private urlApiPorfolio:string = environment.urlApiPorfolio; 
-  public cargandoData = true; 
   constructor(private http : HttpClient) { }
 
   
   getBanner() {
-    return  {
-             getBanner :  this.banner,
-             getBannerApi: this.http.get(`${this.urlApiPorfolio}/banner`)
-            }  ; 
+    return  this.http.get(`${this.urlApiPorfolio}/banner`)
+              .pipe(map((data:Banner[]) => data ))
   }
 
-  updateBanner(banner) {
-      this.banner = {
-        ...banner
-      } 
-
-      console.log(this.banner);
+  updateBanner(banner:Banner, token) {
+    return this.http.put(`${this.urlApiPorfolio}/banner`, banner, {
+      headers: {
+         'x-token' : token
+      }
+    })
   }
   
 }

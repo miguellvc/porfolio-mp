@@ -47,6 +47,8 @@ export class EducationComponent implements OnInit {
   }
   submit() {
     if(this.modifyEducation){   
+      
+      this.updateEducation();
       return 
     }
     this.postEducation(); 
@@ -112,35 +114,49 @@ export class EducationComponent implements OnInit {
       }) 
   }
 
-
- postEducation() {
-  this._education.newEducation(this.educationForm.value, this._auth.getToken())
-  .subscribe((education:Education)=>{
-    if(education!= null){
-      this.actionConfirmed("El archivo se añadío correctamente");
-    }
-  });
- }
-
- deleteEducation(content:String, idEducation:Number) {
-  
-  if(idEducation === 3726356235492834093) {
-    swalError('Error, esta card no puede eliminarse'); 
-    return; 
+  updateEducation() {
+    this._education.updateEducation(this.dataModel, this._auth.getToken())
+    .subscribe((res:string[]) =>{
+      console.log("respuesta de res", res);
+      if(res[0] == "ok") {
+        swalIsConfirmed("Se editó correctamente el componente") 
+        this.getEducationData();
+        this.closeModal() 
+      }else{
+        swalError("no fue posible llevar a caba la actulización del componente"); 
+      }
+    })
   }
 
-  swalDelete({content})
-    .then((result) => {
-      if (result.isConfirmed) {    
-        this._education.deleteEducationData(idEducation, this._auth.getToken())
-        .subscribe((resp)=>{
-          console.log(resp)
-          if(resp[0] == "ok"){
-             this.actionConfirmed("El archivo fue eliminado correctamente");
-          }
-        })
-      } 
-    })
- }
+
+   postEducation() {
+    this._education.newEducation(this.educationForm.value, this._auth.getToken())
+    .subscribe((education:Education)=>{
+      if(education!= null){
+        this.actionConfirmed("El archivo se añadío correctamente");
+      }
+    });
+   }
+
+   deleteEducation(content:String, idEducation:Number) {
+    
+    if(idEducation === 3726356235492834093) {
+      swalError('Error, esta card no puede eliminarse'); 
+      return; 
+    }
+  
+    swalDelete({content})
+      .then((result) => {
+        if (result.isConfirmed) {    
+          this._education.deleteEducationData(idEducation, this._auth.getToken())
+          .subscribe((resp)=>{
+            console.log(resp)
+            if(resp[0] == "ok"){
+               this.actionConfirmed("El archivo fue eliminado correctamente");
+            }
+          })
+        } 
+      })
+   }
 
 }

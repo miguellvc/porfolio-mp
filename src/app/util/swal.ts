@@ -20,5 +20,5 @@ export const swalIsConfirmed = (mgs) => {
 }
 
 export const swalError = (msg:string) => {
-    Swal.fire(msg, '', 'error')
+     Swal.fire(msg, '', 'error')
 }
