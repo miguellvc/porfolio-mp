@@ -45,7 +45,15 @@ export class ProjectsService {
       }
     }).pipe(map((resp:Project) => resp))
   }
-
+  
+  updateProject(project:Project, token):Observable<string[]> {
+    return this.http.put(`${this.urlApiPorfolio}/project`, project, {
+      headers: {
+        'x-token' : token
+      }
+    }).pipe(map((resp:string[])=> resp))
+  }
+  
   deleteProject(id:Number, token) {    
     return this.http.delete(`${this.urlApiPorfolio}/project/${id}`, {
       headers: {

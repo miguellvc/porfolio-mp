@@ -43,7 +43,8 @@ export class ProjectsComponent implements OnInit {
 
   submit() {
     
-    if(this.modifyProject) {console.log("se ejecuta el método para modificar el project") 
+    if(this.modifyProject) {
+      this.updateProject();
       return;
     } 
 
@@ -57,6 +58,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   closeModal() {
+    this.cancelAction(true, false);
     this.modalVisible = false; 
   }
 
@@ -69,16 +71,22 @@ export class ProjectsComponent implements OnInit {
 
   editProject(value: boolean) {
     this.iconFloatVisible = value; 
+    this.modifyProject = true; 
+    this.setProjectForm(this.project, !value); 
   }
   
   onNavigate(url: string){ 
     window.open(url, "_blank"); 
   }
   
-  cancelAction(value: boolean) {
+  cancelAction(value: boolean, actionCancel = true) {
     
-    this.iconFloatVisible = value; 
-    this.setProjectForm(this.project); 
+    this.iconFloatVisible = value;
+    if(actionCancel) {
+      this.setProjectForm(this.project); 
+      return; 
+    }
+    this.setProjectForm();
   }
 
   setProjectForm(project:Project = null, valueForm = false) {
@@ -111,6 +119,20 @@ export class ProjectsComponent implements OnInit {
         this.projects = projects;
         console.log("se ejecuta getprojects", this.projects); 
       })    
+  }
+
+  updateProject(){
+    this._project.updateProject(this.dataModel, this._auth.getToken())
+    .subscribe((res:string[]) =>{
+      console.log("respuesta de res", res);
+      if(res[0] == "ok") {
+        swalIsConfirmed("Se editó correctamente el componente") 
+        this.getProjects();
+        this.closeModal() 
+      }else{
+        swalError("no fue posible llevar a caba la actulización del componente"); 
+      }
+    })
   }
 
   postProject(){
