@@ -75,7 +75,7 @@ export class SkillComponent implements OnInit {
 
   submit(){
     if(this.modifySkill) {
-      console.log("llamar al método para modificar"); 
+     this.updateSkill(); 
       return; 
     }
 
@@ -156,6 +156,21 @@ export class SkillComponent implements OnInit {
         console.log("se ejecuta getSkills", this.skills); 
       })
   }
+  
+  updateSkill() {
+    this._skill.updateSkill(this.dataModel, this._auth.getToken())
+    .subscribe((res:string[]) => {
+      console.log("respuesta de res", res);
+      if(res[0] == "ok") {
+        swalIsConfirmed("Se editó correctamente el componente") 
+        this.getSkills();
+        this.closeModal() 
+      }else{
+        swalError("no fue posible llevar a caba la actulización del componente"); 
+      }
+    })
+  }
+
 
   postSkill(){
      const skill:Skill = { 
@@ -172,10 +187,6 @@ export class SkillComponent implements OnInit {
      
   }
   
-  updateSkill() {
-    const dataUpdate =  this.skills.map(data => data.id == this.dataModel.id? {...this.dataModel}  : data ); 
-  }
-
   deleteSkill(content, idSkill) {
     if(idSkill === 372343873403247) {
       swalError('Error, este component no se puede eliminar'); 
