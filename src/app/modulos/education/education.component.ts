@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { animate } from 'src/app/util/animate';
 import { setValueForm, getValueForm, enableForm } from 'src/app/util/form';
 import { swalDelete, swalIsConfirmed, swalError } from 'src/app/util/swal';
+import { logging } from 'protractor';
 
 @Component({
   selector: 'app-education',
@@ -25,6 +26,7 @@ export class EducationComponent implements OnInit {
   dataModel : Education = {certificate: '', description: '', year: '', color: ''}; 
   colorCardModel : String;  
   modifyEducation = true; 
+  loading = false; 
   // TODO
   centinela = true; 
   
@@ -46,6 +48,8 @@ export class EducationComponent implements OnInit {
     
   }
   submit() {
+    this.loading = true; 
+    
     if(this.modifyEducation){   
       
       this.updateEducation();
@@ -124,6 +128,7 @@ export class EducationComponent implements OnInit {
       }else{
         swalError("no fue posible llevar a caba la actulización del componente"); 
       }
+      this.loading = false;
     })
   }
 
@@ -133,6 +138,7 @@ export class EducationComponent implements OnInit {
     .subscribe((education:Education)=>{
       if(education!= null){
         this.actionConfirmed("El archivo se añadío correctamente");
+        this.loading = false;
       }
     });
    }

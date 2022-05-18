@@ -25,6 +25,7 @@ export class ProjectsComponent implements OnInit {
   dataModel : Project = {title: '', url_Img: '', url_Git: ''}
   iconFloatVisible : boolean = true; 
   modifyProject:boolean;
+  loading : boolean = false; 
   constructor(private _project : ProjectsService,
               private _auth: AuthService,
               private fb : FormBuilder ) { }
@@ -42,7 +43,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   submit() {
-    
+    this.loading = true;
     if(this.modifyProject) {
       this.updateProject();
       return;
@@ -130,6 +131,7 @@ export class ProjectsComponent implements OnInit {
       }else{
         swalError("no fue posible llevar a caba la actulización del componente"); 
       }
+      this.loading = false;
     })
   }
 
@@ -138,6 +140,7 @@ export class ProjectsComponent implements OnInit {
      .subscribe((project:Project)=>{
        if(project!= null){
          this.actionConfirmed("El archivo se añadío correctamente");
+         this.loading = false;
        }
      });
     

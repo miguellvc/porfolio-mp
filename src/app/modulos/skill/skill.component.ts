@@ -26,6 +26,7 @@ export class SkillComponent implements OnInit {
                                color: '', 
                                rotate: '' };
   public iconFloatVisible:boolean; 
+  public loading = false; 
   
   private skill:Skill;
   private modifySkill = true;
@@ -74,9 +75,12 @@ export class SkillComponent implements OnInit {
   }
 
   submit(){
+    
+    this.loading = true; 
+
     if(this.modifySkill) {
-     this.updateSkill(); 
-      return; 
+       this.updateSkill(); 
+        return; 
     }
 
     this.postSkill(); 
@@ -101,6 +105,7 @@ export class SkillComponent implements OnInit {
   
   editSkill(value:boolean) {
     // TODO
+    this.modifySkill = true; 
     this.iconFloatVisible = !value;
     enableForm(this.skillForm, value);
   }
@@ -159,9 +164,10 @@ export class SkillComponent implements OnInit {
     this._skill.updateSkill(this.dataModel, this._auth.getToken())
     .subscribe((res:string[]) => {
       if(res[0] == "ok") {
-        swalIsConfirmed("Se editó correctamente el componente") 
+        swalIsConfirmed("Se editó correctamente el componente"); 
+        this.loading = false; 
         this.getSkills();
-        this.closeModal() 
+        this.closeModal(); 
       }else{
         swalError("no fue posible llevar a caba la actulización del componente"); 
       }
@@ -179,6 +185,7 @@ export class SkillComponent implements OnInit {
       .subscribe((skill:Skill)=>{
         if(skill!= null){
           this.actionConfirmed("El archivo se añadío correctamente");
+          this.loading = false;
         }
       });
      

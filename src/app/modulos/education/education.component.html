@@ -65,9 +65,14 @@
                 <button *ngIf="!centinela" (click)="cancelAction(false)"  class="btn btn__danger ">
                     <span>Cancelar</span> 
                 </button>
-                <button *ngIf="!centinela" class="btn btn__success" type="submit">
-                    <span>Aceptar</span>
-                </button>
+
+                <div *ngIf="!centinela">
+                    <button [disabled]="loading" class="btn btn__success" [ngClass]="{'btn--loading' : loading}" type="submit"> 
+                        <span *ngIf="loading" class="btn__success--spinner"><app-spinner></app-spinner> Espere</span>  
+                        <span *ngIf="!loading">Aceptar</span>
+                    </button> 
+                </div>
+
                 
 
                 <ul *ngIf="centinela" class="icon__float float">
