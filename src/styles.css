@@ -63,7 +63,7 @@
   /* text-transform: capitalize; */
 }
 
-html {
+html { 
   font-size: 62.5%;
   overflow-x: hidden;
 }
@@ -296,8 +296,7 @@ section {
 }
 
 .form__control:focus {
-  outline: none;
-  outline: 3px solid var(--color-secondary);
+  transform: scale(1.02);
   box-shadow: var(--shadow);
 }
 

@@ -130,6 +130,10 @@
 }
 
 /* form */
+.input-range:focus {
+    transform: scale(1);
+}
+
 .row {
     display: flex;
     gap: 50px; 

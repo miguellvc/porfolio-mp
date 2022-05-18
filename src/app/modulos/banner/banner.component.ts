@@ -85,7 +85,7 @@ export class BannerComponent implements OnInit {
       
     let banner:Banner = this.bannerForm.value; 
     
-    banner.id = this.banner[0].id; 
+    banner.id = this.banner[0].id;
 
       this._banner.updateBanner(banner, this._auth.getToken())
         .subscribe(res =>{
