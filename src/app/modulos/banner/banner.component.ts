@@ -22,7 +22,7 @@ export class BannerComponent implements OnInit {
 
   public modalVisible:boolean = false; 
   public formSubmitted = false;
-  
+  btnDisabled = false;
   @Input() banner: Banner;
 
   public loading = false; 
@@ -48,7 +48,7 @@ export class BannerComponent implements OnInit {
   
   submit() {
     this.formSubmitted = true;  
-    
+    this.loading = true;
     if ( this.bannerForm.invalid ) {
       return;
     }
@@ -96,6 +96,8 @@ export class BannerComponent implements OnInit {
           }else{
             swalError("no se pudo actulizar el banner"); 
           }
+
+          this.loading = false; 
         })
   }
 

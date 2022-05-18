@@ -68,10 +68,6 @@
 
 /* banner edition */
 
-.banner__edition {
-    
-}
-
 .column{
     max-width: 90%;
     margin-top: 3rem;
@@ -85,20 +81,6 @@
     display: flex;
     justify-content: flex-end;
     gap: 2rem;
-}
-
-.btn__success--spinner {
-    display: flex;
-    align-items: center;
-    justify-content:center;
-    gap: .2rem;
-}
-
-.btn--loading {
-    cursor: progress;
-}
-.btn--loading::after {
-    border-bottom: none;
 }
 
 .form__group {

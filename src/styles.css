@@ -202,6 +202,20 @@ section {
 }
 
 
+.btn__success--spinner {
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  gap: .2rem;
+}
+
+.btn--loading {
+  cursor: progress;
+}
+.btn--loading::after {
+  border-bottom: none;
+}
+
 
 /* btn danger */
 
