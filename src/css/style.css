@@ -41,6 +41,7 @@
 html { 
   font-size: 62.5%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -51,8 +52,19 @@ body {
 }
 
 section {
+  height: 100vh;
   padding: 5rem 9%;
 }
+
+.banner {
+  height: 100vh;
+  background: red;
+}
+
+.habilidades {
+  background: blue;
+}
+
 .section_title {
   text-align: center;
   font-size: 6vw;
@@ -75,24 +87,74 @@ section {
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px;
+  justify-content:space-between;
+  padding: 2em;
   position: fixed;
   z-index: 1000;
   background: var(--color-background);
   opacity: 0.9;
-  width: 100%;
+  width: 95%;
 }
 
-.logo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: var(--title-color);
+  font-weight: 500;
+  font-size: 1.7rem;
+  transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+  /* color: var(--primary-color); */
+}
+
+/* Responsive: menú en columna si pantalla es pequeña */
+@media screen and (max-width: 768px) {
+  .header {
+    /* flex-direction: column; */
+    align-items: flex-start;
+    /* justify-content: flex-end; */
+  }
+
+  .menu li {
+    width: 100%;
+    padding: 6px;
+  }
 }
 
 .logo img{
     width: 4rem;
-    height: 100%;
     border-radius: 20px;
     color: var(--title-color);
+}
+
+.menu {
+  display: flex;
+  /* gap: 1.5rem; */
+  list-style: none;
+  /* margin: 0; */
+  /* padding: 0; */
+}
+
+.menu li a {
+  text-decoration: none;
+  color: var(--title-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+  color: var(--text-color);
+  border-bottom: 2px solid;
 }
