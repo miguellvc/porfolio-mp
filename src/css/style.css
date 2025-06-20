@@ -39,7 +39,7 @@ body {
 
 section {
   height: 100vh;
-  padding: 5rem 9%;
+  padding: 1rem 9%;
 }
 
 
@@ -132,3 +132,58 @@ section {
   }
 }
 
+/* css banner */
+
+.banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    min-height: calc(100vh - 6.5rem);
+  }
+
+.banner__img img{
+    height: 40rem;
+    width: 40rem;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.banner__content{
+    flex: 1 1 35rem;
+}
+
+.banner__content .content__title{
+    font-size: 4rem;
+    color: var(--title-color);
+    margin-bottom: 2rem;
+}
+
+.banner__content .content__sub-title{
+    font-size: 3rem; 
+    color: var(--text-color);
+    padding: .5rem 0;
+    display: block;
+}
+
+.banner__content .content__description{
+    font-size: 1.5rem;
+    color: var(--text-color);
+    padding: 1rem 0;
+}
+
+@media (max-width: 500px) {
+    .banner {
+      padding-top: 9rem;
+      /* display: block; */
+    }
+    .banner__img img{
+        margin-bottom: -50px;
+        height: 35rem;
+        width: 35rem;
+
+    }
+    .banner__content{
+      margin-bottom: 10rem;
+    }
+}
