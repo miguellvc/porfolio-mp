@@ -590,3 +590,19 @@ section {
         flex: 30px;
     }
 }
+
+/* footer */
+
+#footer{
+    width: 100%;
+    min-height: 50px;
+    background: var(--color-fondo);
+    font-family: cursive;
+    text-align: center;
+    
+}
+#footer h3{
+    font-size: 15px;
+    color: white;
+    padding: 10px;
+}
